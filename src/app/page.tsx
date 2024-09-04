@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+//AUTH_SECRET="TTA+N5Nzr5dqhVgRCJeznlCIK0tBpALiBq7T9IiX6Zo=" # Added by `npx auth`. Read more: https://cli.authjs.dev
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
