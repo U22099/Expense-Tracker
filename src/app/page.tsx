@@ -5,13 +5,13 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex flex-col justify-center items-center gap-3 w-screen h-screen bg-white dark:bg-black">
-      <h1>Expense Tracker</h1>
-      <Link href="/homepage">Homepage</Link>
+      <h1 className="text-[2em] md:text-[3em] text-bold w-screen ml-5 mb-4 text-black dark:text-white">Expense Tracker</h1>
+      <Link href="/homepage" className="text-bold text-black dark:text-white">Homepage</Link>
       <form action="">
-        <button className="flex w-3/4 md:w-2/4 rounded-full bg-black dark:bg-white dark:text-black"><FaGoogle className="inline fill-white dark:fill-black"/> SignIn with Google</button>
+        <button className="flex justify-between p-3 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black"><FaGoogle className="fill-white dark:fill-black"/> SignIn with Google</button>
       </form>
       <form action={handleGitHubLogin}>
-        <button className="flex w-3/4 md:w-2/4 rounded-full bg-black dark:bg-white dark:text-black"><FaGithub className="inline fill-white dark:fill-black"/> SignIn with GitHub</button>
+        <button className="flex justify-between p-3 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black"><FaGithub className="fill-white dark:fill-black"/> SignIn with GitHub</button>
       </form>
     </div>
   );
