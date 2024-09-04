@@ -7,7 +7,7 @@ export default function Home() {
     <div className="flex justify-center items-center gap-3 w-screen h-screen bg-white dark:bg-black">
       <h1>Expense Tracker</h1>
       <Link href="/homepage">Homepage</Link>
-      <form action="none">
+      <form action="">
         <button className="flex w-3/4 md:w-2/4 rounded-full bg-black dark:bg-white dark:text-black"><FaGoogle className="inline fill-white dark:fill-black"/> SignIn with Google</button>
       </form>
       <form action={handleGitHubLogin}>
