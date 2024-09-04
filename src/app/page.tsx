@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center gap-3 w-screen h-screen bg-white dark:bg-black">
+    <div className="flex flex-col justify-center items-center gap-3 w-screen h-screen bg-white dark:bg-black">
       <h1>Expense Tracker</h1>
       <Link href="/homepage">Homepage</Link>
       <form action="">
