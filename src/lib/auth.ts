@@ -9,7 +9,7 @@ import Credentials from "next-auth/providers/credentials";
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     providers: [GitHub, Google],
     callbacks: {
-        async signIn({ account , profile }): Promise<string | boolean>{
+        async signIn({ account , profile }: { [index: string] : object }): Promise<string | boolean>{
             if(account.provider === "github"){
                 await connectToDb();
                 try{
