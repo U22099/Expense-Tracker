@@ -29,8 +29,23 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
                 }
                 return true
             } else if(account?.provider === "google"){
-                console.log( account, profile );
-                return true;
+                await connectToDb();
+                try{
+                    const user = await User.findOne({ email: profile?.email });
+                    if(!user){
+                        const user = new User({
+                            username: profile?.name,
+                            email: profile?.email,
+                            image: profile?.picture,
+                        })
+                        await user.save();
+                    }
+
+                } catch(e) {
+                    console.log(e);
+                    return false;
+                }
+                return true
             } else {return false}
         }
     }
