@@ -5,14 +5,18 @@ import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 
+
+type params = {
+    [index: string]: string
+}
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     providers: [GitHub, Google],
     callbacks: {
-        async signIn({ user, account, profile }){
+        async signIn({ account: params , profile: params }): Promise<string | boolean>{
             if(account.provider === "github"){
                 await connectToDb();
                 try{
-                    const user = User.findOne({ email: profile.email });
+                    const user = await User.findOne({ email: profile.email });
                     if(!email){
                         const user = new User({
                             username: profile.login,
@@ -28,7 +32,7 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
                 }
                 return true
             } else if(account.provider === "google"){
-                console.log(user, account, profile);
+                console.log( account, profile );
                 return true;
             }
         }
