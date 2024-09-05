@@ -6,13 +6,10 @@ import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
 
 
-type params = {
-    [index: string]: string
-}
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     providers: [GitHub, Google],
     callbacks: {
-        async signIn({ account: params , profile: params }): Promise<string | boolean>{
+        async signIn({ account , profile }): Promise<string | boolean>{
             if(account.provider === "github"){
                 await connectToDb();
                 try{
