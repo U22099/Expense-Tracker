@@ -31,7 +31,7 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
             } else if(account.provider === "google"){
                 console.log( account, profile );
                 return true;
-            }
+            } else {return false}
         }
     }
 })
