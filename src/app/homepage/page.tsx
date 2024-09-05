@@ -9,7 +9,7 @@ const page = async () => {
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
-        <Image src={session.user?.image ?? ''} alt="image" width={200} height={200} className="object-cover rounded"/>
+        <Image src={session.user?.image ?? ''} alt="image" className="object-cover rounded-full mx-auto w-40 h-40"/>
         <div className="flex text-black bg-white text-3xl font-serif">{session.user?.name}</div>
         <div className="flex text-black bg-white text-3xl font-serif">{session.user?.email}</div>
         <form action={handleSocialLogout}>
