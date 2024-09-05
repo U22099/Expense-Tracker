@@ -1,5 +1,7 @@
 import { auth } from '@/lib/auth';
-import image from "next/image";
+import Image from "next/image";
+import { handleSocialLogout } from "@/lib/action";
+
 
 const page = async () => {
     const session = await auth();
@@ -7,9 +9,12 @@ const page = async () => {
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
-        <image src={session.user?.image ?? ''} className="object-cover rounded"/>
+        <Image src={session.user?.image ?? ''} className="object-cover rounded"/>
         <div className="flex text-black bg-white text-3xl font-serif">{session.user?.name}</div>
         <div className="flex text-black bg-white text-3xl font-serif">{session.user?.email}</div>
+        <form action={handleSocialLogout}>
+          <button className="flex p-4 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black">Logout</button>
+      </form>
     </div>
   )
 }
