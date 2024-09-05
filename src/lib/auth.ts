@@ -1,13 +1,43 @@
 import NextAuth from "next-auth";
 import { User } from "@/lib/model";
+import { compare } from "bcryptjs";
 import { connectToDb } from "@/lib/utils";
-import GitHub from "next-auth/providers/github";
-import Google from "next-auth/providers/google";
-import Credentials from "next-auth/providers/credentials";
+import GitHubProvider from "next-auth/providers/github";
+import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
+const logIn = async ({email, password}): Promise<Object>{
+    try{
+        await connectToDb();
+        const user = User.findOne({email});
 
+        if(!user) throw new Error("Username or email does not exist");
+
+        const match = await compare(password, user.password);
+        if(!match){
+            throw new Error("Incorrect password")
+        }
+
+        return user;
+    } catch(err) {
+        throw new Error("Error while logging user in");
+    }
+}
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
-    providers: [GitHub, Google],
+    providers: [
+        GitHubProvider, 
+        GoogleProvider,
+        CredentialsProvider({
+            async authorize(credentials): Promise<Object>{
+                try{
+                    const user = await logIn(credentials);
+                    return user;
+                } catch(err) {
+                    return null
+                }
+            }
+        })
+    ],
     callbacks: {
         async signIn({ account , profile }): Promise<string | boolean>{
             if(account?.provider === "github"){
@@ -48,5 +78,8 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
                 return true
             } else {return false}
         }
+    },
+    pages: {
+        signIn: "/"
     }
 })
