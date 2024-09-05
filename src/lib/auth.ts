@@ -9,16 +9,16 @@ import Credentials from "next-auth/providers/credentials";
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     providers: [GitHub, Google],
     callbacks: {
-        async signIn({ account , profile }: { [index: string] : object }): Promise<string | boolean>{
-            if(account.provider === "github"){
+        async signIn({ account , profile }): Promise<string | boolean>{
+            if(account?.provider === "github"){
                 await connectToDb();
                 try{
-                    const user = await User.findOne({ email: profile.email });
-                    if(!email){
+                    const user = await User.findOne({ email: profile?.email });
+                    if(!user){
                         const user = new User({
-                            username: profile.login,
-                            email: profile.email,
-                            image: profile.avatar_url,
+                            username: profile?.login,
+                            email: profile?.email,
+                            image: profile?.avatar_url,
                         })
                         await user.save();
                     }
@@ -28,7 +28,7 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
                     return false;
                 }
                 return true
-            } else if(account.provider === "google"){
+            } else if(account?.provider === "google"){
                 console.log( account, profile );
                 return true;
             } else {return false}
