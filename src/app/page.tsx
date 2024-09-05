@@ -10,7 +10,7 @@ export default function Home() {
   const [count, setCount] = useState(1);
   return (
     <div className="flex flex-col justify-start items-center gap-3 w-screen h-screen bg-white dark:bg-black p-3">
-      <Image src={`/logo${count}.jpg`} alt="logo" className="rounded-full object-cover w-28 h-28 md:w-32 md:h-32 mx-auto mb-4 mt-4"/>
+      <Image src={`/logo${count}.${count < 3 ? 'jpg': count < 5 ? 'jpeg' : count < 8 ? 'png' : 'jpeg'}`} alt="logo" className="rounded-full object-cover w-28 h-28 md:w-32 md:h-32 mx-auto mb-4 mt-4"/>
       <h1 className="text-[2.3em] md:text-[4em] text-bold text-black dark:text-white text-center">Expense Tracker</h1>
       <p className="text-black dark:text-white text-center" >Sign in with the following no sign up needed</p>
       <form action={handleSocialLogin} className="flex flex-col gap-3 mx-auto mt-4">
