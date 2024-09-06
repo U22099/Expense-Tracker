@@ -23,8 +23,6 @@ export const handleLogin = async (formData: FormData) => {
 export const handleRegister = async (formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
-        console.log(formData);
-        console.log(new FormData(formData));
         const { username, email, password } = Object.fromEntries(formData) as {username: string, email: string, password: string};
 
         const user = await User.findOne({email});
@@ -43,7 +41,7 @@ export const handleRegister = async (formData: FormData): Promise<Object> => {
         await handleLogin(formData);
         return {success: true}
     } catch(err) {
-        throw new Error("Error while logging user in");
+        throw new Error(`Error while logging user in:  ${err}`);
         return {error: "Error while logging user in"}
     }
 }
