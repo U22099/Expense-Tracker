@@ -7,7 +7,7 @@ const { auth } = NextAuth(authConfig);
 export default async function middleware(request: NextRequest){
     const session = await auth();
     const { nextUrl } = request;
-    const authenticated: boolean = session.user ? true : false;
+    const authenticated: boolean = !session ? false : session.user ? true : false
     const currentPath: string = nextUrl.pathname;
     const publicRoutes: string[] = ['/', '/register', '/api/auth/callback/google', '/api/auth/callback/github']
     const isPublicRoute: boolean = (publicRoutes.find(route => currentPath.startsWith(route))) ? true : false;
