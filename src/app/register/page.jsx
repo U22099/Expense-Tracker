@@ -13,7 +13,7 @@ export default function page() {
         <input type="password" name="password" placeholder="Password" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-gray-300 shadow-md text-black custom-font"/>
         <button className="p-4 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.3em] md:text-[1.5em] flex justify-center gap- custom-font"> Sign Up </button>
       </form>
-      <p className="text-gray-700">Already have an account? <Link href="/" className="text-black custom-font">Sign In<Link></p>
+      <p className="text-gray-700">Already have an account? <Link href="/" className="text-black custom-font">Sign In</Link></p>
     </div>
   );
 }

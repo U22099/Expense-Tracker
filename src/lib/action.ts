@@ -18,7 +18,7 @@ export const handleLogin = async (formData: FormData) => {
     await signIn("credentials", { email, password, redirectTo: "/homepage" });
 }
 
-export const handleRegister = async (formData: FormData): Promise<Object>{
+export const handleRegister = async (formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
         const { username, email, password } = Object.entries(formData);

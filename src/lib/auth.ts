@@ -6,10 +6,10 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const logIn = async ({email, password}): Promise<Object>{
+const logIn = async ({email, password}): Promise<Object> => {
     try{
         await connectToDb();
-        const user = User.findOne({email});
+        const user = await User.findOne({email});
 
         if(!user) throw new Error("Username or email does not exist");
 
