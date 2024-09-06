@@ -1,9 +1,10 @@
-"use client";
 import { handleLogout } from "@/lib/action";
+import { auth } from "@/lib/auth";
 import Image from "next/image";
 
 
-export default function Page(){
+export default async function Page(){
+  const session = await auth();
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
