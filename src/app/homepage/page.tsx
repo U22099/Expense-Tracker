@@ -3,7 +3,7 @@ import Image from "next/image";
 import { handleLogout } from "@/lib/action";
 
 
-const page = async () => {
+export default async function Page(){
     const session = await auth();
     if(!session) return null
   return (
@@ -18,5 +18,3 @@ const page = async () => {
     </div>
   )
 }
-
-export default page
