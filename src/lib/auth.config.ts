@@ -2,7 +2,7 @@
 type objType = {
     [index: string]: string,
 }
-const authConfig = {
+export const authConfig = {
     providers: [],
     callbacks: {
         async jwt({token, user}: any){
