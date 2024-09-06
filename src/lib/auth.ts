@@ -6,7 +6,7 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Object> => {
+const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Object | null> => {
     try{
         await connectToDb();
         const email = credentials.email as string;
@@ -30,7 +30,7 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
         GitHubProvider, 
         GoogleProvider,
         CredentialsProvider({
-            async authorize(credentials): Promise<Object>{
+            async authorize(credentials): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
                     return user;
