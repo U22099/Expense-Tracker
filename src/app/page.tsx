@@ -24,7 +24,7 @@ export default function Page(){
     <motion.div
     initial={{opacity: 0, y: 200}}
     animate={{opacity: 1, y: 0}}
-    duration={{type: "spring"}}
+    transition={{type: "spring"}}
      className="flex flex-col justify-center items-start gap-3 w-screen min-h-screen bg-gray-200 dark:bg-black p-3 pb-10">
       <Image src="/Logo.JPG" alt="logo" className="rounded-full object-cover w-32 h-32 md:w-40 md:h-40 mx-auto mb-2 mt-4" />
       <h1 className="text-[2.3em] md:text-[4em] text-bold text-black dark:text-white text-center custom-font">Expense Tracker</h1>
