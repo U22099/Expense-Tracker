@@ -5,6 +5,7 @@ import Image from "next/image";
 
 export default async function Page(){
   const session = await auth();
+  if(!session) return null
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
