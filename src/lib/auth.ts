@@ -13,6 +13,7 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         const password = credentials.password as string;
         const user = await User.findOne({email});
 
+        console.log(email, user);
         if(!user) throw new Error("Username or email does not exist");
 
         const match = await compare(password, user.password);
@@ -25,7 +26,7 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         throw new Error("Error while logging user in");
     }
 }
-export const { handlers: {GET, POST}, auth } = NextAuth({
+export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     providers: [
         GitHub, 
         Google,
@@ -54,9 +55,8 @@ export const { handlers: {GET, POST}, auth } = NextAuth({
                         })
                         await user.save();
                     }
-
                 } catch(e) {
-                    console.log(e);
+                    console.log(e, "Error in callback");
                     return false;
                 }
                 return true
@@ -74,7 +74,7 @@ export const { handlers: {GET, POST}, auth } = NextAuth({
                     }
 
                 } catch(e) {
-                    console.log(e);
+                    console.log(e, "Error in callback");
                     return false;
                 }
                 return true
@@ -83,5 +83,5 @@ export const { handlers: {GET, POST}, auth } = NextAuth({
     },
     pages: {
         signIn: "/",
-    }
+    },
 })
