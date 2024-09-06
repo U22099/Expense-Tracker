@@ -23,6 +23,8 @@ export const handleLogin = async (formData: FormData) => {
 export const handleRegister = async (formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
+        console.log(formData);
+        console.log(new FormData(formdata));
         const { username, email, password } = Object.fromEntries(formData) as {username: string, email: string, password: string};
 
         const user = await User.findOne({email});

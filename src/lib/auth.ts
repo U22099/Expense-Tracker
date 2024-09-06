@@ -2,9 +2,9 @@ import NextAuth from "next-auth";
 import { User } from "@/lib/model";
 import { compare } from "bcryptjs";
 import { connectToDb } from "@/lib/utils";
-import GitHubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
+import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
+import Credentials from "next-auth/providers/credentials";
 
 const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Object | null> => {
     try{
@@ -27,9 +27,9 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
 }
 export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
     providers: [
-        GitHubProvider, 
-        GoogleProvider,
-        CredentialsProvider({
+        GitHub, 
+        Google,
+        Credentials({
             async authorize(credentials): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
@@ -82,6 +82,6 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
         }
     },
     pages: {
-        signIn: "/"
+        signIn: "/",
     }
 })
