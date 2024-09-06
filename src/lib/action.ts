@@ -5,7 +5,7 @@ import { User } from "@/lib/model";
 import { hash } from "bcryptjs";
 
 export const handleSocialLogin = async (formData: FormData) => {
-    const provider = formData.get("action") as string;
+    const provider = formData.get("provider") as string;
     console.log(provider)
 
     await signIn(provider, {redirectTo: "/homepage"});
