@@ -13,7 +13,7 @@ export const handleLogout = async () => {
 }
 
 export const handleLogin = async (formData: FormData) => {
-    const { email, password } = Object.entries(formData);
+    const { email, password } = Object.fromEntries(formData);
 
     await signIn("credentials", { email, password, redirectTo: "/homepage" });
 }
@@ -21,7 +21,7 @@ export const handleLogin = async (formData: FormData) => {
 export const handleRegister = async (formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
-        const { username, email, password } = Object.entries(formData);
+        const { username, email, password } = Object.fromEntries(formData);
 
         const user = await User.findOne({email});
 
