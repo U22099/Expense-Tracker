@@ -42,6 +42,6 @@ export const handleRegister = async (formData: FormData): Promise<Object> => {
         return {success: true}
     } catch(err) {
         throw new Error("Error while logging user in");
-        return {error: e.message}
+        return {error: err.message}
     }
 }
