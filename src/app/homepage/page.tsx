@@ -1,11 +1,17 @@
-import { auth } from '@/lib/auth';
-import Image from "next/image";
+"use client";
+import { useSession } from 'next-auth/react';
 import { handleLogout } from "@/lib/action";
+import { useRouter } from 'next/navigation';
+import Image from "next/image";
 
 
-export default async function Page(){
-    const session = await auth();
-    if(!session) return null
+export default function Page(){
+    const {data: session} = useSession();
+    const router = useRouter();
+    if(!session){
+      router.replace("/");
+      return null;
+    }
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>

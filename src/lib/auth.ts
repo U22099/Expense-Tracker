@@ -13,14 +13,13 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         const password = credentials.password as string;
         const user = await User.findOne({email});
 
-        console.log(email, user);
+        console.log(email);
         if(!user) throw new Error("Username or email does not exist");
 
         const match = await compare(password, user.password);
         if(!match){
             throw new Error("Incorrect password")
         }
-
         return user;
     } catch(err) {
         throw new Error("Error while logging user in");
