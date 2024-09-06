@@ -9,7 +9,7 @@ export default async function middleware(request: NextRequest){
     const { nextUrl } = request;
     const authenticated: boolean = session.user ? true : false;
     const currentPath: string = nextUrl.pathname;
-    const publicRoutes: [string, string] = ['/', '/register']
+    const publicRoutes: string[] = ['/', '/register', '/api/auth/callback/google', '/api/auth/callback/github']
     const isPublicRoute: boolean = (publicRoutes.find(route => currentPath.startsWith(route))) ? true : false;
     const homepage = "/homepage";
 
