@@ -30,7 +30,7 @@ export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
         GitHubProvider, 
         GoogleProvider,
         CredentialsProvider({
-            async authorize(credentials): Promise<Object>{
+            async authorize(credentials: <Record <string, string>>): Promise<Object>{
                 try{
                     const user = await logIn(credentials);
                     return user;
