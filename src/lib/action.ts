@@ -20,7 +20,7 @@ export const handleLogin = async (formData: FormData) => {
     await signIn("credentials", { email, password, callbackUrl: "/homepage" });
 }
 
-export const handleRegister = async (prevState, formData: FormData): Promise<Object> => {
+export const handleRegister = async (prevState: {error?: string, success?: string}, formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
         const { username, email, password } = Object.fromEntries(formData) as {username: string, email: string, password: string};
