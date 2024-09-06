@@ -1,5 +1,7 @@
 "use server"
 import { signIn, signOut } from "./auth";
+import { connectToDb } from "./utils";
+import { User } from "./model";
 import { hash } from "bcryptjs";
 
 export const handleSocialLogin = async (formData: FormData) => {
@@ -12,7 +14,7 @@ export const handleLogout = async () => {
     await signOut({redirectTo: "/"});
 }
 
-export const handleLogin = async (formData: FormData) => {
+export const handleLogin = async (formData: FormData): Promise => {
     const { email, password } = Object.fromEntries(formData);
 
     await signIn("credentials", { email, password, redirectTo: "/homepage" });
