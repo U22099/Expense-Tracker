@@ -25,12 +25,12 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         throw new Error("Error while logging user in");
     }
 }
-export const { handlers: {GET, POST}, auth, signIn, signOut } = NextAuth({
+export const { handlers: {GET, POST}, auth } = NextAuth({
     providers: [
         GitHub, 
         Google,
         Credentials({
-            async authorize(credentials): Promise<Object | null>{
+            async authorize(credentials: Partial<Record<string, unknown>>): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
                     return user;

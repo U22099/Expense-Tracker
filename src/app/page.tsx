@@ -15,7 +15,11 @@ const page = () => {
         <button name="provider" value="google" className="p-2 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.2em] md:text-[1.5em] flex justify-center gap-4"><FcGoogle className="text-3xl custom-font"/> Sign In with Google</button>
         <button name="provider" value="github" className="p-2 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.3em] md:text-[1.5em] flex justify-center gap-4"><FaGithub className="fill-[#333333] text-3xl custom-font"/> Sign In with GitHub</button>
       </form>
-      <hr className="w-[65vw] md:w-[28vw] mx-auto border-black dark:border-white"/>
+      <div className="flex gap-1 w-[65vw] md:w-[28vw] mx-auto mx-4">
+        <hr className="border-black dark:border-white"/>
+        Or
+        <hr className="border-black dark:border-white"/>
+      </div>
       <form action={handleLogin} className="flex flex-col gap-3 mx-auto mt-3">
         <input type="email" name="email" placeholder="Email" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
         <input type="password" name="password" placeholder="Password" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
