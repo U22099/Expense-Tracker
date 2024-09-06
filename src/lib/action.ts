@@ -24,7 +24,7 @@ export const handleRegister = async (formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
         console.log(formData);
-        console.log(new FormData(formdata));
+        console.log(new FormData(formData));
         const { username, email, password } = Object.fromEntries(formData) as {username: string, email: string, password: string};
 
         const user = await User.findOne({email});
