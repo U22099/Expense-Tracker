@@ -43,7 +43,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
         })
     ],
     callbacks: {
-        async signIn({ account , profile }): Promise<string | boolean>{
+        async signIn({ account , profile }: any): Promise<string | boolean>{
             if(account?.provider === "github"){
                 await connectToDb();
                 try{
@@ -81,7 +81,6 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                 return true
             } else {return false}
         },
-        ...authConfig.callbacks
     },
     pages: {
         signIn: "/",
