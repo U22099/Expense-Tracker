@@ -23,19 +23,19 @@ export const handleRegister = async (formData: FormData): Promise<Object> => {
         await connectToDb();
         const { username, email, password } = Object.entries(formData);
 
-        const user = User.findOne({email});
+        const user = await User.findOne({email});
 
         if(user) throw new Error("Email already exists");
 
         const hash = await hash(password, 10);
 
-        const user = new User({
+        const newUser = new User({
             username,
             email,
             password: hash,
             image: "/avatar.JPG",
         })
-        await user.save();
+        await newUser.save();
         await handleLogin(formData);
         return {success: true}
     } catch(err) {
