@@ -5,7 +5,7 @@ import { useFormState } from "react-dom";
 import Link from "next/link";
 
 export default function Page() {
-  const [state, formAction] = useFormState(handleRegister , undefined) as [{error?: string, success?: string}, unknown, boolean]
+  const [state, formAction] = useFormState(handleRegister , undefined) as [{error?: string, success?: string}, string | ((formData: FormData) => void) | undefined, boolean]
   return (
     <div className="flex flex-col justify-center items-center gap-3 w-screen min-h-screen bg-gray-200 dark:bg-black p-3">
       <h1 className="w-[70vw] md:w-[30vw] text-[2em] md:text-[3em] text-bold text-black dark:text-white text-center text-wrap custom-font">Sign Up for Expense Tracker</h1>
