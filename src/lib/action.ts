@@ -1,7 +1,7 @@
 "use server"
 import { signIn, signOut } from "@/lib/auth";
 import { connectToDb } from "@/lib/utils";
-import { User } from ""@/lib/model";
+import { User } from "@/lib/model";
 import { hash } from "bcryptjs";
 
 export const handleSocialLogin = async (formData: FormData) => {
