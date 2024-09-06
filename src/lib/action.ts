@@ -1,23 +1,24 @@
 "use server"
-import { signIn, signOut } from "next-auth/react";
-import { connectToDb } from "./utils";
-import { User } from "./model";
+import { signIn, signOut } from "@/lib/auth";
+import { connectToDb } from "@/lib/utils";
+import { User } from ""@/lib/model";
 import { hash } from "bcryptjs";
 
 export const handleSocialLogin = async (formData: FormData) => {
     const provider = formData.get("action") as string;
+    console.log(provider)
 
-    await signIn(provider, {callbackUrl: "/homepage"});
+    await signIn(provider, {redirectTo: "/homepage"});
 }
 
 export const handleLogout = async () => {
-    await signOut({callbackUrl: "/"});
+    await signOut({redirectTo: "/"});
 }
 
 export const handleLogin = async (formData: FormData) => {
     const { email, password } = Object.fromEntries(formData);
 
-    await signIn("credentials", { email, password, callbackUrl: "/homepage" });
+    await signIn("credentials", { email, password, redirectTo: "/homepage" });
 }
 
 export const handleRegister = async (prevState: {error?: string, success?: string} | undefined, formData: FormData): Promise<Object> => {
@@ -38,7 +39,7 @@ export const handleRegister = async (prevState: {error?: string, success?: strin
             image: "/avatar.JPG",
         })
         await newUser.save();
-        await signIn("credentials", { email, password, callbackUrl: "/homepage" });
+        await signIn("credentials", { email, password, redirectTo: "/homepage" });
         return {success: true}
     } catch(err) {
         return {error: `Error while logging user in: ${err}`}
