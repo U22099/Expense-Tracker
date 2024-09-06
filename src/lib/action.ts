@@ -29,7 +29,7 @@ export const handleRegister = async (formData: FormData): Promise<Object> => {
 
         if(user) throw new Error("Email already exists");
 
-        const hashed: string = await hash(password, 10);
+        const hashed = await hash(password, 10);
 
         const newUser = new User({
             username,
