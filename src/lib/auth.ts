@@ -6,7 +6,7 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const logIn = async ({email, password}): Promise<Object> => {
+const logIn = async ({email, password}: {email: string, password: string}): Promise<Object> => {
     try{
         await connectToDb();
         const user = await User.findOne({email});
