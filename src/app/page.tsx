@@ -5,7 +5,7 @@ import { FcGoogle  } from "react-icons/fc";
 import Image from "next/image";
 import Link from "next/link";
 
-export default const Page = () => {
+export default function Page(){
   return (
     <div className="flex flex-col justify-start items-center gap-3 w-screen min-h-screen bg-gray-200 dark:bg-black p-3">
       <Image src="/Logo.JPG" alt="logo" className="rounded-full object-cover w-32 h-32 md:w-40 md:h-40 mx-auto mb-2 mt-4" />
