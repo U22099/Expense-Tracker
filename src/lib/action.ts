@@ -14,7 +14,7 @@ export const handleLogout = async () => {
     await signOut({redirectTo: "/"});
 }
 
-export const handleLogin = async (formData: FormData): Promise => {
+export const handleLogin = async (formData: FormData) => {
     const { email, password } = Object.fromEntries(formData);
 
     await signIn("credentials", { email, password, redirectTo: "/homepage" });
