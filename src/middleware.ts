@@ -6,12 +6,13 @@ const { auth } = NextAuth(authConfig);
 
 export default async function middleware(request: NextRequest){
     const session = await auth();
+    console.log(session, "middleware");
     const { nextUrl } = request;
-    const authenticated: boolean = !session ? false : session.user ? true : false
+    const authenticated: boolean = !!session?.user;
     const currentPath: string = nextUrl.pathname;
     const publicRoutes: string[] = ['/', '/register', '/api/auth/callback/google', '/api/auth/callback/github']
     const isPublicRoute: boolean = (publicRoutes.find(route => currentPath.startsWith(route))) ? true : false;
-    const homepage = "/homepage";
+    const homepage: string = "/homepage";
 
     console.log(nextUrl, request, isPublicRoute, authenticated);
     //if(isPublicRoute && authenticated) return NextResponse.redirect(new URL(homepage, nextUrl));    

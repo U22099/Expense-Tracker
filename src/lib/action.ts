@@ -38,7 +38,7 @@ export const handleRegister = async (prevState: {error?: string, success?: strin
         const hashed = await hash(password.trim(), 10);
 
         const newUser = new User({
-            username: firstname.trim() +" "+lastname.trim(),
+            username: firstname.trim() +" "+ lastname.trim(),
             email: email.trim(),
             password: hashed,
             image: "/avatar.JPG",
