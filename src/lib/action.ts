@@ -21,8 +21,8 @@ export const handleLogin = async (prevState: {error?: string} | undefined, formD
     try{
         await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
     } catch(e){
-        console.log(e);
-        return {error: "An error occured, Please try again"}
+        console.log("Start", e, "End");
+        //return {error: "An error occured, Please try again"}
     }
 }
 

@@ -3,11 +3,18 @@
 import { AiOutlineLoading } from "react-icons/ai";
 import { handleRegister } from "@/lib/action";
 import { useFormState, useFormStatus } from "react-dom";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { auth }  from "@/lib/auth";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Page() {
+  const router = useRouter();
+  auth().then(session => {
+    if(session) router.push("/homepage");
+  });
   const [state, formAction] = useFormState(handleRegister , undefined) as [{error?: string, success?: string} | undefined, string | ((formData: FormData) => void) | undefined, boolean]
   return (
     <motion.div
