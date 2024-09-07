@@ -24,10 +24,10 @@ export default function Page(){
         <button name="provider" value="google" className="p-2 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.2em] md:text-[1.5em] flex justify-center gap-4"><FcGoogle className="text-3xl custom-font"/> Sign In with Google</button>
         <button name="provider" value="github" className="p-2 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.3em] md:text-[1.5em] flex justify-center gap-4"><FaGithub className="fill-[#333333] text-3xl custom-font"/> Sign In with GitHub</button>
       </form>
-      <div className="w-[65vw] md:w-[28vw] mx-auto mx-4">
-        <span className="max-w-[45%] text-black dark:text-white">----------</span>
+      <div className="flex justify-center items-center w-[65vw] md:w-[28vw] mx-auto mx-4 gap-1">
+        <span className="max-w-[45%] text-black dark:text-white">-------------</span>
           Or
-        <span className="max-w-[45%] text-black dark:text-white">----------</span>
+        <span className="max-w-[45%] text-black dark:text-white">-------------</span>
       </div>
       <form action={formAction} className="flex flex-col gap-3 mx-auto mt-3">
         <input type="email" name="email" placeholder="Email" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
