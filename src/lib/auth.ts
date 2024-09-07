@@ -20,8 +20,9 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         }
         return {
             id: user._id.toString,
-            username: user.username,
-            email: user.email
+            name: user.username,
+            email: user.email,
+            image: user.image
         };
     } catch(err) {
         throw new Error("Error while logging user in");
