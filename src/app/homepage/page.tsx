@@ -1,11 +1,12 @@
 import { handleLogout } from "@/lib/action";
+import { redirect } from " next/navigation";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
 
 
 export default async function Page(){
   const session = await auth();
-  if(!session) return null
+  if(!session) redirect("/");
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
