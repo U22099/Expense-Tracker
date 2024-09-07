@@ -43,10 +43,10 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
         })
     ],
     callbacks: {
-        async signIn({ account , profile }: any): Promise<string | boolean>{
+        async signIn({ account , profile }): Promise<string | boolean>{
             if(account?.provider === "github"){
-                await connectToDb();
                 try{
+                    await connectToDb();
                     const user = await User.findOne({ email: profile?.email });
                     if(!user){
                         const user = new User({
@@ -62,8 +62,8 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                 }
                 return true
             } else if(account?.provider === "google"){
-                await connectToDb();
                 try{
+                    await connectToDb();
                     const user = await User.findOne({ email: profile?.email });
                     if(!user){
                         const user = new User({
@@ -79,7 +79,9 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     return false;
                 }
                 return true
-            } else {return false}
+            } else {
+                return false
+            }
         },
     },
     pages: {
