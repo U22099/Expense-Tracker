@@ -36,7 +36,6 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             async authorize(credentials: Partial<Record<string, unknown>>): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
-                    console.log(user);
                     return user;
                 } catch(err) {
                     console.log(err);
@@ -81,6 +80,8 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     console.log(e, "Error in callback");
                     return false;
                 }
+                return true
+            } else if(account?.provider === "credentials"){
                 return true
             } else {
                 return false
