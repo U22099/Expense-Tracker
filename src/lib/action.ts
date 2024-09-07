@@ -17,7 +17,7 @@ export const handleLogout = async () => {
 export const handleLogin = async (prevState: {error?: string} | undefined, formData: FormData) => {
     const { email, password } = Object.fromEntries(formData) as {email: string, password: string};
 
-    console.log(email);
+    console.log(email, "loginBase");
     try{
         await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
     } catch(e){
@@ -45,7 +45,7 @@ export const handleRegister = async (prevState: {error?: string, success?: strin
         })
         await newUser.save();
         await signIn("credentials", { email, password, redirectTo: "/homepage" });
-        return { success: true }
+        return { success: "Successfull" }
     } catch(err) {
         return {error: "Error while registering user, Try again"}
     }

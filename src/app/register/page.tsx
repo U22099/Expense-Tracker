@@ -21,6 +21,7 @@ export default function Page() {
         <input type="text" name="lastname" placeholder="Lastname" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
         <input type="email" name="email" placeholder="Email" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
         <input type="password" name="password" placeholder="Password" className="flex p-2 items-center w-[80vw] md:w-[40vw] rounded-lg bg-white text-[1.2em] md:text-[1.5em] shadow-md text-black custom-font"/>
+        {state?.success && <p className="text-green-600 font-mono text-sm">{state.success}</p>}
         {state?.error && <p className="text-red-600 font-mono text-sm">{state.error}</p>}
         <Button text="Sign Up" />
       </form>
