@@ -87,4 +87,5 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     pages: {
         signIn: "/",
     },
+    baseUrl: "https://expense-tracker-z9y9.onrender.com",
 })
