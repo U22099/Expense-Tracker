@@ -14,10 +14,12 @@ export default async function middleware(request: NextRequest){
     const isPublicRoute: boolean = (publicRoutes.find(route => currentPath.startsWith(route))) ? true : false;
     console.log(isPublicRoute);
     const homepage: string = "/homepage";
+    const basePath: string = "https://expense-tracker-z9y9.onrender.com";
 
-    if(isPublicRoute && authenticated) return NextResponse.redirect(new URL(homepage, "https://expense-tracker-z9y9.onrender.com"));    
-    if(!isPublicRoute && !authenticated) return NextResponse.redirect(new URL(publicRoutes[0], "https://expense-tracker-z9y9.onrender.com"));
+    if(isPublicRoute && authenticated) return NextResponse.redirect(new URL(homepage, basePath));    
+    if(!isPublicRoute && !authenticated) return NextResponse.redirect(new URL(publicRoutes[0], basePath));
 
+    return NextResponse.next();
 }
 
 
