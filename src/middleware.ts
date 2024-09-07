@@ -13,7 +13,8 @@ export default async function middleware(request: NextRequest){
     const isPublicRoute: boolean = (publicRoutes.find(route => currentPath.startsWith(route))) ? true : false;
     const homepage = "/homepage";
 
-    if(isPublicRoute && authenticated) return NextResponse.redirect(new URL(homepage, nextUrl));    
+    console.log(nextUrl);
+    //if(isPublicRoute && authenticated) return NextResponse.redirect(new URL(homepage, nextUrl));    
     if(!isPublicRoute && !authenticated) return NextResponse.redirect(new URL(publicRoutes[0], nextUrl));
 
 }
