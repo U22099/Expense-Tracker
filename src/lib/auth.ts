@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import { User } from "@/lib/model";
 import { compare } from "bcryptjs";
 import { connectToDb } from "@/lib/utils";
-import { authConfig } from "@/lib/auth.config";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
@@ -27,7 +26,6 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
     }
 }
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
-    ...authConfig,
     providers: [
         GitHub, 
         Google,
