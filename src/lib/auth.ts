@@ -19,7 +19,7 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
             throw new Error("Incorrect password")
         }
         return {
-            id: user._id.toString,
+            id: user._id.toString(),
             name: user.username,
             email: user.email,
             image: user.image
@@ -36,6 +36,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             async authorize(credentials: Partial<Record<string, unknown>>): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
+                    console.log(user);
                     return user;
                 } catch(err) {
                     console.log(err);
