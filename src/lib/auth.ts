@@ -35,6 +35,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     const user = await logIn(credentials);
                     return user;
                 } catch(err) {
+                    console.log(err);
                     return null
                 }
             }
