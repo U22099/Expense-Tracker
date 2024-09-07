@@ -12,15 +12,17 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         const email = credentials.email as string;
         const password = credentials.password as string;
         const user = await User.findOne({email});
-
-        console.log(email, "login", user);
         if(!user) throw new Error("Username or email does not exist");
 
         const match = await compare(password, user.password);
         if(!match){
             throw new Error("Incorrect password")
         }
-        return user;
+        return {
+            id: user._id.toString,
+            username: user.username,
+            email: user.email
+        };
     } catch(err) {
         throw new Error("Error while logging user in");
     }
@@ -33,7 +35,6 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             async authorize(credentials: Partial<Record<string, unknown>>): Promise<Object | null>{
                 try{
                     const user = await logIn(credentials);
-                    console.log(user);
                     return user;
                 } catch(err) {
                     console.log(err);
