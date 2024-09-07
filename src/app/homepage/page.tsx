@@ -1,5 +1,5 @@
 import { handleLogout } from "@/lib/action";
-import { redirect } from " next/navigation";
+import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
 
