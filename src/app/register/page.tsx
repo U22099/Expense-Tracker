@@ -14,7 +14,7 @@ export default function Page() {
   auth().then(session => {
     if(session) router.push("/homepage");
   });
-  const [state, formAction] = useFormState(handleRegister , undefined) as [{error?: string, success?: string} | undefined, string | ((formData: FormData) => Promise<Object>) | void, boolean]
+  const [state, formAction] = useFormState(handleRegister , undefined) as unknown as [{error?: string, success?: string} | undefined, string | void | ((formData: FormData) => Promise<Object>), boolean]
 
   const parentVariant = {
     hidden: {opacity: 0},
