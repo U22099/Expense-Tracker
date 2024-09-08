@@ -26,7 +26,7 @@ export const handleLogin = async (prevState: {error?: string} | undefined, formD
     }
 }
 
-export const handleRegister = async (prevState: {error?: string, success?: string} | undefined, formData: FormData):: Promise<Object> => {
+export const handleRegister = async (prevState: {error?: string, success?: string} | undefined, formData: FormData): Promise<Object> => {
     try{
         await connectToDb();
         const { firstname, lastname, email, password } = Object.fromEntries(formData) as {firstname: string, lastname: string, email: string, password: string};
