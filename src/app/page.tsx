@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Page(){
-  const [state, formAction] = useFormState(handleLogin , undefined) as unknown as [{error?: string} | undefined | void, string | ((formData: FormData) => Promise<Object>) | void, boolean]
+  const [state, formAction] = useFormState(handleLogin , undefined);
 
   const parentVariant = {
     hidden: {opacity: 0},
