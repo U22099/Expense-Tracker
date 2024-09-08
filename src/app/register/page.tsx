@@ -11,7 +11,7 @@ import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
-  auth().then(session: any => {
+  auth().then((session: any) => {
     if(session) router.push("/homepage");
   });
   const [state, formAction] = useFormState(handleRegister , undefined) as unknown as [{error?: string, success?: string} | undefined | void, string | void | ((formData: FormData) => Promise<Object>), boolean]
