@@ -29,6 +29,9 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
     }
 }
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
+    session: {
+        strategy: 'jwt',
+    },
     providers: [
         GitHub, 
         Google,
