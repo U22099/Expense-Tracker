@@ -31,7 +31,7 @@ export default function Page() {
     visible: { x: 0 }
   }
   useEffect(()=>{
-    if(session){
+    if(session?.user){
       router.push("/homepage");
     }
   }, [session]);
