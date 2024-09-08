@@ -14,7 +14,7 @@ export const handleLogout = async () => {
     await signOut({redirectTo: "/"});
 }
 
-export const handleLogin = async (prevState: any, formData: FormData): any => {
+export const handleLogin = async (prevState: any, formData: FormData): Promise => {
     const { email, password } = Object.fromEntries(formData) as {email: string, password: string};
 
     console.log(email, "loginBase");
@@ -26,7 +26,7 @@ export const handleLogin = async (prevState: any, formData: FormData): any => {
     }
 }
 
-export const handleRegister = async (prevState: any, formData: FormData): any => {
+export const handleRegister = async (prevState: any, formData: FormData): Promise => {
     try{
         await connectToDb();
         const { firstname, lastname, email, password } = Object.fromEntries(formData) as {firstname: string, lastname: string, email: string, password: string};
