@@ -14,7 +14,7 @@ export const handleLogout = async () => {
     await signOut({redirectTo: "/"});
 }
 
-export const handleLogin = async (prevState: {error?: string} | undefined, formData: FormData) => {
+export const handleLogin = async (prevState: {error?: string} | undefined, formData: FormData): Promise<Object | void> => {
     const { email, password } = Object.fromEntries(formData) as {email: string, password: string};
 
     console.log(email, "loginBase");
@@ -22,11 +22,11 @@ export const handleLogin = async (prevState: {error?: string} | undefined, formD
         await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
     } catch(e){
         console.log("Start", e, "End");
-        //return {error: "An error occured, Please try again"}
+        return {error: "An error occured, Please try again"}
     }
 }
 
-export const handleRegister = async (prevState: {error?: string, success?: string} | undefined, formData: FormData): Promise<Object> => {
+export const handleRegister = async (prevState: {error?: string, success?: string} | undefined, formData: FormData):: Promise<Object> => {
     try{
         await connectToDb();
         const { firstname, lastname, email, password } = Object.fromEntries(formData) as {firstname: string, lastname: string, email: string, password: string};
