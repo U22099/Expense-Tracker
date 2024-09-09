@@ -7,9 +7,12 @@ import { useFormState, useFormStatus } from "react-dom";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Page(){
   const [state, formAction] = useFormState(handleLogin , undefined);
+	const router = useRouter();
 
   const parentVariant = {
     hidden: {opacity: 0},
@@ -24,6 +27,11 @@ export default function Page(){
     hidden: { x: -100 },
     visible: { x: 0 }
   }
+	useEffect(()=>{
+		if(state?.success){
+			router.push("/homepage");
+		}
+	},[state])
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}
