@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest} from "next/server";
-import { cookies } from "@/lib/headers";
+import { cookies } from "next/headers";
 
 
 export default async function middleware(request: NextRequest){
