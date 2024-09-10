@@ -5,14 +5,14 @@ import Image from "next/image";
 
 
 export default function Page(){
-  const router = useRouter();
-  const user = getSession() as {
-    id: string,
-    name: string,
-    image: string,
-    email: string
-  } | null;
-  if(!user) router.push("/");
+  // const router = useRouter();
+  // const user = getSession() as {
+  //   id: string,
+  //   name: string,
+  //   image: string,
+  //   email: string
+  // } | null;
+  // if(!user) router.push("/");
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>

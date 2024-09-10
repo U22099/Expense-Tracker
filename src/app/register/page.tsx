@@ -36,11 +36,11 @@ export default function Page() {
       router.push("/homepage");
     }
   }, [state]);
-  useEffect(()=>{
-		if(getSession()){
-			router.push("/homepage");
-		}
-	},[router])
+  // useEffect(()=>{
+	// 	if(getSession()){
+	// 		router.push("/homepage");
+	// 	}
+	// },[router])
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}
