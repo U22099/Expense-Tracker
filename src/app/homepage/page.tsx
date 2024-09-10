@@ -1,18 +1,17 @@
-"use client";
+"use server";
 import { handleLogout, getSession } from "@/lib/action";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import Image from "next/image";
 
 
-export default function Page(){
-  // const router = useRouter();
-  // const user = getSession() as {
-  //   id: string,
-  //   name: string,
-  //   image: string,
-  //   email: string
-  // } | null;
-  // if(!user) router.push("/");
+export default async function Page(){
+  const user = getSession() as {
+    id: string,
+    name: string,
+    image: string,
+    email: string
+  } | null;
+  if(!user) redirect("/");
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
