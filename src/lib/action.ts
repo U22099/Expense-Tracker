@@ -64,7 +64,7 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
 export const setCookie = (name: string, value: any) => {
     cookies().set(name, value);
 }
-export const getCookie = (name: string) => {
+export const getCookie = (name: string): any => {
     const data = cookies().get(name);
     return data;
 }
@@ -72,24 +72,28 @@ export const getCookie = (name: string) => {
 export const storeSession = async (): Promise<boolean> => {
     const session = await auth();
     if(session&&session.user){
-        setCookie("session", session);
+        setCookie("session", session.user);
         return true;
     } else {
         return false
     }
 }
-export const getSession = () => {
-    const session = getCookie("session");
-    if(session&&session.user){
-        return session
-    } else {
-        return false
+export const getSession = (): UserObj | null => {
+    const user = getCookie("session") as UserObj | null;
+    if(user){
+        return user
     }
 }
 export const deleteSession = (): boolean => {
-    const session = getSession();
-    if(session&&session.user){
+    const user = getSession();
+    if(user){
         setCookie("session", null);
     }
     return true;
+}
+type UserObj = {
+    id: string,
+    name: string,
+    image: string,
+    email: string
 }

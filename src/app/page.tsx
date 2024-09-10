@@ -39,7 +39,7 @@ export default function Page(){
 		if(getSession()){
 			router.push("/homepage");
 		}
-	},[])
+	},[router])
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}
