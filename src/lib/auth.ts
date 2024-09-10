@@ -56,22 +56,23 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                 try{
                     await connectToDb();
                     const user = await User.findOne({ email: profile?.email }, "username email image");
+                    let newUser;
                     if(!user){
-                        const newUser = new User({
+                        newUser = new User({
                             username: profile?.login,
                             email: profile?.email,
                             image: profile?.avatar_url,
                         })
-                        const session = user || newUser;
-                        const data = {
-                            id: "",
-                            name: session.username,
-                            image: session.image,
-                            email: session.email
-                        }
-                        storeSession(data);
                         await newUser.save();
                     }
+                    const session = user || newUser;
+                    const data = {
+                        id: "",
+                        name: session.username,
+                        image: session.image,
+                        email: session.email
+                    }
+                    storeSession(data);
                 } catch(e) {
                     console.log(e, "Error in callback");
                     return false;
@@ -81,22 +82,23 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                 try{
                     await connectToDb();
                     const user = await User.findOne({ email: profile?.email });
+                    let newUser;
                     if(!user){
-                        const newUser = new User({
+                        newUser = new User({
                             username: profile?.name,
                             email: profile?.email,
                             image: profile?.picture,
                         })
-                        const session = user || newUser;
-                        const data = {
-                            id: "",
-                            name: session.username,
-                            image: session.image,
-                            email: session.email
-                        }
-                        storeSession(data);
                         await newUser.save();
                     }
+                    const session = user || newUser;
+                    const data = {
+                        id: "",
+                        name: session.username,
+                        image: session.image,
+                        email: session.email
+                    }
+                    storeSession(data);
 
                 } catch(e) {
                     console.log(e, "Error in callback");
