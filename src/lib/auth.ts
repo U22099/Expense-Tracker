@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import { User } from "@/lib/model";
 import { compare } from "bcryptjs";
 import { connectToDb } from "@/lib/utils";
+import { storeSession } from "@/lib/action";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 import Credentials from "next-auth/providers/credentials";
@@ -18,12 +19,14 @@ const logIn = async (credentials: Partial<Record<string, unknown>>): Promise<Obj
         if(!match){
             throw new Error("Incorrect password")
         }
-        return {
+        const data = {
             id: user._id.toString(),
             name: user.username,
             email: user.email,
             image: user.image
         };
+        storeSession(data);
+        return data
     } catch(err) {
         throw new Error("Error while logging user in");
     }
@@ -52,14 +55,22 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
             if(account?.provider === "github"){
                 try{
                     await connectToDb();
-                    const user = await User.findOne({ email: profile?.email });
+                    const user = await User.findOne({ email: profile?.email }, "username email image");
                     if(!user){
-                        const user = new User({
+                        const newUser = new User({
                             username: profile?.login,
                             email: profile?.email,
                             image: profile?.avatar_url,
                         })
-                        await user.save();
+                        const session = user || newUser;
+                        const data = {
+                            id: "",
+                            name: session.username,
+                            image: session.image,
+                            email: session.email
+                        }
+                        storeSession(data);
+                        await newUser.save();
                     }
                 } catch(e) {
                     console.log(e, "Error in callback");
@@ -71,12 +82,20 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     await connectToDb();
                     const user = await User.findOne({ email: profile?.email });
                     if(!user){
-                        const user = new User({
+                        const newUser = new User({
                             username: profile?.name,
                             email: profile?.email,
                             image: profile?.picture,
                         })
-                        await user.save();
+                        const session = user || newUser;
+                        const data = {
+                            id: "",
+                            name: session.username,
+                            image: session.image,
+                            email: session.email
+                        }
+                        storeSession(data);
+                        await newUser.save();
                     }
 
                 } catch(e) {
