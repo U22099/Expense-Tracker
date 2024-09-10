@@ -70,15 +70,15 @@ export const deleteCookie = (name: string) => {
 export const storeSession = (value: UserObj | null): boolean => {
     const user = value;
     if(user){
-        setCookie("session", user, {expires: new Date(Date.now() + 30 * 24 * 60 * 60), httpOnly: true});
+        setCookie("session", JSON.stringify(user), {expires: new Date(Date.now() + 30 * 24 * 60 * 60), httpOnly: true});
         return true;
     } else {
         return false
     }
 }
 export const getSession = (): UserObj | null => {
-    const user = getCookie("session") as UserObj | null;
-    return user
+    const user = getCookie("session");
+    return JSON.parse(user);
 }
 export const deleteSession = () => {
     deleteCookie("session");

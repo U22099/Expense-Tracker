@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
 export default async function middleware(request: NextRequest) {
-    const user = cookies().get("session")?.value;
+    const user =  JSON.parse(cookies().get("session")?.value);
     console.log("User from cookies:", user);
 
     const nextUrl = request.nextUrl;
@@ -27,13 +27,11 @@ export default async function middleware(request: NextRequest) {
 
     // If a user is authenticated and they are on a public route, redirect to homepage
     if (isPublicRoute && authenticated) {
-        console.log("Redirecting authenticated user to homepage");
         return NextResponse.redirect(new URL(homepage, basePath));
     }
 
     // If the user is not authenticated and they are on a private route, redirect to login
     if (!isPublicRoute && !authenticated) {
-        console.log("Redirecting unauthenticated user to login page");
         return NextResponse.redirect(new URL(publicRoutes[0], basePath));
     }
 
