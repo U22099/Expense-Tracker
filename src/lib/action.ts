@@ -1,16 +1,20 @@
 "use server"
-import { signIn, signOut } from "@/lib/auth";
+import { signIn, signOut, auth } from "@/lib/auth";
 import { connectToDb } from "@/lib/utils";
 import { User } from "@/lib/model";
 import { hash } from "bcryptjs";
+import { cookies } from "next/headers";
+
 
 export const handleSocialLogin = async (formData: FormData) => {
     const provider = formData.get("provider") as string;
 
     await signIn(provider, {redirectTo: "/homepage"});
+    await storeSession();
 }
 
 export const handleLogout = async () => {
+    deleteSession();
     await signOut({redirectTo: "/"});
 }
 
@@ -20,9 +24,11 @@ export const handleLogin = async (prevState: any, formData: FormData) => {
     console.log(email, "loginBase");
     try{
         await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
+        await storeSession();
     } catch(e: any){
-		  if(e.digest.includes("NEXT_REDIRECT")){
-		return { success: "Successfull" }
+		if(e.digest.includes("NEXT_REDIRECT")){
+            await storeSession();
+		    return { success: "Successfull" }
 		}
         console.log("*Start*", e, "*End*");
         return {error: "An error occured, Please try again"}
@@ -48,8 +54,42 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
         })
         await newUser.save();
         await signIn("credentials", { email, password, redirectTo: "/homepage" });
+        await storeSession();
         return { success: "Successfull" }
     } catch(err) {
         return {error: "Error while registering user, Try again"}
     }
+}
+
+export const setCookie = (name: string, value: any) => {
+    cookies().set(name, value);
+}
+export const getCookie = (name: string) => {
+    const data = cookies().get(name);
+    return data;
+}
+
+export const storeSession = async (): Promise<boolean> => {
+    const session = await auth();
+    if(session&&session.user){
+        setCookie("session", session);
+        return true;
+    } else {
+        return false
+    }
+}
+export const getSession = () => {
+    const session = getCookie("session");
+    if(session&&session.user){
+        return session
+    } else {
+        return false
+    }
+}
+export const deleteSession = (): boolean => {
+    const session = getSession();
+    if(session&&session.user){
+        setCookie("session", null);
+    }
+    return true;
 }

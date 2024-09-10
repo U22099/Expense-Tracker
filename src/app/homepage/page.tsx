@@ -1,11 +1,12 @@
-import { handleLogout } from "@/lib/action";
+"use client";
+import { handleLogout, getSession } from "@/lib/action";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import Image from "next/image";
 
 
-export default async function Page(){
-  const session = await auth();
+export default function Page(){
+  const session = getSession();
   if(!session) redirect("/");
   return (
     <div>

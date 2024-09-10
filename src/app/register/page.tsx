@@ -1,7 +1,7 @@
 "use client";
 
 import { AiOutlineLoading } from "react-icons/ai";
-import { handleRegister } from "@/lib/action";
+import { handleRegister, getSession } from "@/lib/action";
 import { useFormState, useFormStatus } from "react-dom";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -12,7 +12,6 @@ import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
-  const { data: session } = useSession();
   
   const [state, formAction] = useFormState(handleRegister , undefined);
 
@@ -21,6 +20,9 @@ export default function Page() {
     visible: {
       opacity: 1,
       transition: {
+        duration: 1,
+        delay: 0.5,
+        delayChildren: 0.5,
         staggerChildren: 0.3
       }
     }
@@ -30,10 +32,15 @@ export default function Page() {
     visible: { x: 0 }
   }
   useEffect(()=>{
-    if(session?.user){
+    if(state?.success){
       router.push("/homepage");
     }
-  }, [session]);
+  }, [state]);
+  useEffect(()=>{
+		if(getSession()){
+			router.push("/homepage");
+		}
+	},[])
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}

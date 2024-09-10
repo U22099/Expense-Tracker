@@ -1,5 +1,5 @@
 "use client";
-import { handleLogin, handleSocialLogin } from "@/lib/action";
+import { handleLogin, handleSocialLogin, getSession } from "@/lib/action";
 import { AiOutlineLoading } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa6";
 import { FcGoogle  } from "react-icons/fc";
@@ -19,6 +19,9 @@ export default function Page(){
     visible: {
       opacity: 1,
       transition: {
+        duration: 1,
+        delay: 0.5,
+        delayChildren: 0.5,
         staggerChildren: 0.3
       }
     }
@@ -32,6 +35,11 @@ export default function Page(){
 			router.push("/homepage");
 		}
 	},[state])
+	useEffect(()=>{
+		if(getSession()){
+			router.push("/homepage");
+		}
+	},[])
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}
