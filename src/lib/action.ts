@@ -80,9 +80,7 @@ export const storeSession = async (): Promise<boolean> => {
 }
 export const getSession = (): UserObj | null => {
     const user = getCookie("session") as UserObj | null;
-    if(user){
-        return user
-    }
+    return user
 }
 export const deleteSession = (): boolean => {
     const user = getSession();
