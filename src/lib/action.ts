@@ -78,6 +78,7 @@ export const storeSession = (value: UserObj | null): boolean => {
 }
 export const getSession = (): UserObj | null => {
     const user = getCookie("session");
+    if(!user) return null
     return JSON.parse(user);
 }
 export const deleteSession = () => {
