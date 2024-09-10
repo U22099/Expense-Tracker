@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 
 export default async function middleware(request: NextRequest){
-    const user = cookies().get("session").value;
+    const user = cookies().get("session")?.value;
     console.log(user, "middleware");
     const { nextUrl } = request;
     const authenticated: boolean = !!user;
