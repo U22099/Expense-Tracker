@@ -79,8 +79,15 @@ export const storeSession = (value: UserObj | null): boolean => {
 }
 export const getSession = (): UserObj | null => {
     const session = getCookie("session");
-    if(!session) return null
-    return JSON.parse(decodeURIComponent(session) || "{}");
+    if(!session) return null;
+    let user: UserObj | undefined;
+    try {
+        const decodedCookie = decodeURIComponent(session);
+        user = JSON.parse(decodedCookie || "{}");
+    } catch (error) {
+        console.error("Error parsing session cookie:", error);
+    }
+    return user;
 }
 export const deleteSession = () => {
     deleteCookie("session");
