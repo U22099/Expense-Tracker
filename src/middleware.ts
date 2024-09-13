@@ -18,12 +18,9 @@ export default function middleware(request: NextRequest) {
         console.error("Error parsing session cookie:", error);
     }
 
-    console.log("User from cookies:", user?.name);
-
     const nextUrl = request.nextUrl;
     const authenticated: boolean = !!user && !!user.name; // Ensure the user is truly authenticated
     const currentPath: string = nextUrl.pathname;
-    console.log("Current path:", currentPath);
 
     // Define the routes that don't require authentication
     const publicRoutes: string[] = ['/', '/register', '/api/auth/callback/google', '/api/auth/callback/github'];

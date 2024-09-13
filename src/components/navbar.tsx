@@ -4,9 +4,15 @@ import { useState, useEffect } from "react";
 import { fetchUser } from "@/lib/utils";
 import Image from "next/image";
 
+interface UserObj{
+  id: string;
+  name: string;
+  image: string;
+  email: string;
+}
 
 export default async function Navbar(){
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<UserObj | null>(null);
   useEffect(()=>{
     fetchUser(setUser);
   }, [])

@@ -92,9 +92,9 @@ export const getSession = (): UserObj | null => {
 export const deleteSession = () => {
     deleteCookie("session");
 }
-type UserObj = {
-    id: string,
-    name: string,
-    image: string,
-    email: string
+interface UserObj{
+    id: string;
+    name: string;
+    image: string;
+    email: string;
 }
