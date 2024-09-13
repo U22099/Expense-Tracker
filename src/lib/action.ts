@@ -60,9 +60,9 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
 export const setCookie = (name: string, value: any, options: Object) => {
     cookies().set(name, value, options);
 }
-export const getCookie = (name: string): string | undefined => {
+export const getCookie = (name: string): string => {
     const data = cookies().get(name)?.value
-    return data;
+    return data || '';
 }
 export const deleteCookie = (name: string) => {
     cookies().delete(name);
@@ -83,7 +83,8 @@ export const getSession = (): UserObj | null => {
     let user: UserObj | null = null;
     try {
         const decodedCookie = decodeURIComponent(session);
-        user = JSON.parse(decodedCookie || "{}") || null;
+        console.log(decodedCookie);
+        user = JSON.parse(decodedCookie) || null;
     } catch (error) {
         console.error("Error parsing session cookie:", error);
     }
