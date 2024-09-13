@@ -29,7 +29,7 @@ export default function middleware(request: NextRequest) {
     const publicRoutes: string[] = ['/', '/register', '/api/auth/callback/google', '/api/auth/callback/github'];
 
     // Determine if the current route is public
-    const isPublicRoute: boolean = publicRoutes.some(route => currentPath.startsWith(route));
+    const isPublicRoute: boolean = publicRoutes.some(route => currentPath === route);
     console.log("Is public route:", isPublicRoute);
 
     const homepage: string = "/homepage";
