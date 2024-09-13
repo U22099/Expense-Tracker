@@ -80,7 +80,7 @@ export const storeSession = (value: UserObj | null): boolean => {
 export const getSession = (): UserObj | null => {
     const session = getCookie("session");
     if(!session) return null;
-    let user: UserObj | null;
+    let user: UserObj | null = null;
     try {
         const decodedCookie = decodeURIComponent(session);
         user = JSON.parse(decodedCookie || "{}") || null;
