@@ -2,8 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
 export default async function middleware(request: NextRequest) {
-    const user =  JSON.parse(cookies().get("session")?.value || '');
-    console.log("User from cookies:", user);
+    const user =  JSON.parse(cookies().get("session")?.value || '{}');
+    console.log("User from cookies:", user.name);
 
     const nextUrl = request.nextUrl;
     const authenticated: boolean = !!user;
