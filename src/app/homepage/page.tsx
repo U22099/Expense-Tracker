@@ -1,10 +1,10 @@
 "use client";
 import { handleLogout, getSession } from "@/lib/action";
-import { useRouter } from "react-dom";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 
-export default async function Page(){
+export default function Page(){
   const router = useRouter();
   const user = getSession() as {
     id: string,
