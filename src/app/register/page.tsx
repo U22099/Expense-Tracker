@@ -35,7 +35,7 @@ export default function Page() {
     if(state?.success){
       router.push("/homepage");
     }
-  }, [state]);
+  }, [state, router]);
   // useEffect(()=>{
 	// 	if(getSession()){
 	// 		router.push("/homepage");

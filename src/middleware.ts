@@ -1,20 +1,26 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
-export default async function middleware(request: NextRequest) {
+export default function middleware(request: NextRequest) {
     let user = null;
+
+    // Ensure synchronous cookie parsing
+    const sessionCookie = cookies().get("session")?.value || '{}';
 
     // Parse the session cookie safely
     try {
-        const sessionCookie = cookies().get("session")?.value || '{}';
-        user = JSON.parse(sessionCookie);
+        // Ensure sessionCookie is a string before parsing
+        if (typeof sessionCookie === 'string') {
+            user = JSON.parse(sessionCookie);
+        }
     } catch (error) {
         console.error("Error parsing session cookie:", error);
     }
-    console.log("User from cookies:", user.name);
+
+    console.log("User from cookies:", user?.name);
 
     const nextUrl = request.nextUrl;
-    const authenticated: boolean = !!user;
+    const authenticated: boolean = !!user && !!user.name; // Ensure the user is truly authenticated
     const currentPath: string = nextUrl.pathname;
     console.log("Current path:", currentPath);
 
