@@ -2,7 +2,15 @@ import { NextResponse, type NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
 export default async function middleware(request: NextRequest) {
-    const user =  JSON.parse(cookies().get("session")?.value || '{}');
+    let user = null;
+
+    // Parse the session cookie safely
+    try {
+        const sessionCookie = cookies().get("session")?.value || '{}';
+        user = JSON.parse(sessionCookie);
+    } catch (error) {
+        console.error("Error parsing session cookie:", error);
+    }
     console.log("User from cookies:", user.name);
 
     const nextUrl = request.nextUrl;
