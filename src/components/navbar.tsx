@@ -18,10 +18,10 @@ export default async function Navbar(){
   }, [])
   return (
     <div>
-        <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
+        <div className="flex text-black dark:text-white bg-white dark:bg-black text-3xl font-serif">Homepage</div>
         <Image src={user?.image ?? ''} alt="image" className="object-cover rounded-full mx-auto w-40 h-40"/>
-        <div className="flex text-black bg-white text-3xl font-serif">{user?.name}</div>
-        <div className="flex text-black bg-white text-3xl font-serif">{user?.email}</div>
+        <div className="flex text-black bg-white text-3xl font-serif  text-black dark:text-white ">{user?.name}</div>
+        <div className="flex text-black bg-white text-3xl font-serif  text-black dark:text-white ">{user?.email}</div>
         <form action={handleLogout}>
           <button className="flex p-4 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black">Logout</button>
         </form>

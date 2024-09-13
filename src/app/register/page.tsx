@@ -54,7 +54,7 @@ export default function Page() {
           <Button text="Sign Up" />
         </form>
       </motion.div>
-      <p className="text-gray-700">Already have an account? <Link href="/" className="text-black custom-font">Sign In</Link></p>
+      <p className="text-gray-700 dark:text-gray-200">Already have an account? <Link href="/" className="text-black dark:text-white custom-font">Sign In</Link></p>
     </motion.div>
   );
 }

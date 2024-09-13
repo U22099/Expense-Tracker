@@ -50,7 +50,7 @@ export default function Page(){
           <motion.button variants={childrenVariant} initial="hidden" animate="visible" name="provider" value="github" className="p-2 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black text-[1.3em] md:text-[1.5em] flex justify-center gap-4"><FaGithub className="fill-[#333333] text-3xl custom-font"/> Sign In with GitHub</motion.button>
         </form>
       </motion.div>
-      <div className="flex justify-center items-center w-[65vw] md:w-[28vw] mx-auto mx-4 gap-1">
+      <div className="flex justify-center items-center w-[65vw] md:w-[28vw] mx-auto mx-4 gap-1  text-black dark:text-white ">
         <span className="max-w-[45%] text-black dark:text-white">-------------</span>
           Or
         <span className="max-w-[45%] text-black dark:text-white">-------------</span>
@@ -63,7 +63,7 @@ export default function Page(){
           <Button text="Sign In"/>
         </form>
       </motion.div>
-      <p className="text-gray-700">New to Expense Tracker? <Link href="/register" className="text-black custom-font">Sign Up</Link></p>
+      <p className="text-gray-700 dark:text-gray-200">New to Expense Tracker? <Link href="/register" className="text-black dark:text-white custom-font">Sign Up</Link></p>
     </motion.div>
   );
 }
