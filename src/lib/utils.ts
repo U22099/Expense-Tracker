@@ -19,7 +19,7 @@ export const connectToDb = async () => {
     }
 }
 
-export async function fetchUser(setUser){
+export async function fetchUser(setUser: any){
     try{
         const response = await axios.get('api/user');
         const data = response.data;

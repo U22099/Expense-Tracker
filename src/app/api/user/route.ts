@@ -12,7 +12,7 @@ export const GET = () => {
         console.error("Error parsing session cookie:", error);
         return new NextResponse("", {status: 500});
     }
-    return new NextResponse(JSON.stringify(user), {status: 200});
+    return new NextResponse.json(user, {status: 200});
 }
 interface UserObj {
     id: string;
