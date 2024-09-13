@@ -23,7 +23,7 @@ export async function fetchUser(setUser: any){
     try{
         const response = await axios.get('api/user');
         const data = response.data;
-        console.log(data);
+        console.log(response);
         if(response.status === 200) setUser(data.user);
     } catch(e){
         console.log(e);
