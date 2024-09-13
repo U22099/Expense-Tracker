@@ -34,12 +34,7 @@ export default function Page(){
 		if(state?.success){
 			router.push("/homepage");
 		}
-	},[state, router])
-	// useEffect(()=>{
-	// 	if(getSession()){
-	// 		router.push("/homepage");
-	// 	}
-	// },[router])
+	},[state, router]);
   return (
     <motion.div
     initial={{opacity: 0, y: 100}}

@@ -4,14 +4,15 @@ import { cookies } from "next/headers";
 export default function middleware(request: NextRequest) {
     let user = null;
 
-    // Ensure synchronous cookie parsing
-    const sessionCookie = cookies().get("session")?.value || '{}';
+    // Get the session cookie
+    const sessionCookie = cookies().get("session")?.value || '';
 
     // Parse the session cookie safely
     try {
-        // Ensure sessionCookie is a string before parsing
-        if (typeof sessionCookie === 'string') {
-            user = JSON.parse(sessionCookie);
+        if (sessionCookie) {
+            // Decode the URL-encoded session string
+            const decodedCookie = decodeURIComponent(sessionCookie);
+            user = JSON.parse(decodedCookie);
         }
     } catch (error) {
         console.error("Error parsing session cookie:", error);

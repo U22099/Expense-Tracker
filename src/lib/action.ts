@@ -68,18 +68,18 @@ export const deleteCookie = (name: string) => {
 }
 
 export const storeSession = (value: UserObj | null): boolean => {
-    const user = value;
-    if(user){
-        setCookie("session", JSON.stringify(user), {expires: new Date(Date.now() + 30 * 24 * 60 * 60), httpOnly: true});
+    const session = value;
+    if(session){
+        setCookie("session", JSON.stringify(session), {expires: new Date(Date.now() + 30 * 24 * 60 * 60), httpOnly: true});
         return true;
     } else {
         return false
     }
 }
 export const getSession = (): UserObj | null => {
-    const user = getCookie("session");
-    if(!user) return null
-    return JSON.parse(user);
+    const session = getCookie("session");
+    if(!session) return null
+    return JSON.parse(decodeURIComponent(session) || "{}");
 }
 export const deleteSession = () => {
     deleteCookie("session");
