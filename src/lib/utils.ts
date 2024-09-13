@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import axios from "axios";
 
 const connection: {
     [index: string]: unknown
@@ -15,5 +16,15 @@ export const connectToDb = async () => {
     } catch(e) {
         console.log(e)
         throw new Error(String(e));
+    }
+}
+
+export async function fetchUser(setUser){
+    try{
+        const response = await axios.get('api/user');
+        const data = response.data;
+        setUser(data.user);
+    } catch(e){
+        console.log(e);
     }
 }

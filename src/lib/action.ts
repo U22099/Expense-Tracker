@@ -80,12 +80,10 @@ export const storeSession = (value: UserObj | null): boolean => {
 export const getSession = (): UserObj | null => {
     const session = getCookie("session");
     if(!session) return null;
-    console.log(session);
     let user: UserObj | null = null;
     try {
         const decodedCookie = decodeURIComponent(session);
-        console.log(decodedCookie);
-        //user = JSON.parse(decodedCookie) || null;
+        user = JSON.parse(decodedCookie) || null;
     } catch (error) {
         console.error("Error parsing session cookie:", error);
     }

@@ -1,17 +1,15 @@
-"use server";
-import { handleLogout, getSession } from "@/lib/action";
-import { redirect } from "next/navigation";
+"use client";
+import { handleLogout } from "@/lib/action";
+import { useState, useEffect } from "react";
+import { fetchUser } from "@/lib/utils";
 import Image from "next/image";
 
 
 export default async function Navbar(){
-  const user = getSession() as {
-    id: string,
-    name: string,
-    image: string,
-    email: string
-  } | null;
-  if(!user) redirect("/");
+  const [user, setUser] = useState({});
+  useEffect(()=>{
+    fetchUser(setUser);
+  }, [])
   return (
     <div>
         <div className="flex text-black bg-white text-3xl font-serif">Homepage</div>
