@@ -60,8 +60,9 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
 export const setCookie = (name: string, value: any, options: Object) => {
     cookies().set(name, value, options);
 }
-export const getCookie = (name: string): any => {
+export const getCookie = (name: string): string => {
     const data = cookies().get(name)?.value
+    return data;
 }
 export const deleteCookie = (name: string) => {
     cookies().delete(name);
