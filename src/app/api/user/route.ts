@@ -14,9 +14,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     return res.json({user});
 }
-interface UserObj = {
-    id: string,
-    name: string,
-    image: string,
-    email: string
+interface UserObj {
+    id: string;
+    name: string;
+    image: string;
+    email: string;
 }
