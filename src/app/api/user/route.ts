@@ -1,18 +1,18 @@
 import { cookies } from "next/headers";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse){
+export const GET = () => {
     const session = cookies().get("session")?.value;
-    if(!session) return res.sendStatus(404);
+    if(!session) return new NextResponse("", {status: 404});
     let user: UserObj | null = null;
     try {
         const decodedCookie = decodeURIComponent(session);
         user = JSON.parse(decodedCookie) || null;
     } catch (error) {
         console.error("Error parsing session cookie:", error);
-        return res.sendStatus(500);
+        return new NextResponse("", {status: 500});
     }
-    return res.json({user});
+    return new NextResponse(JSON.stringify(user), {status: 200});
 }
 interface UserObj {
     id: string;
