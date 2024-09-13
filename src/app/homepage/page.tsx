@@ -4,7 +4,7 @@ import { useRouter } from "react-dom";
 import Image from "next/image";
 
 
-export default async function Page()
+export default async function Page(){
   const router = useRouter();
   const user = getSession() as {
     id: string,
