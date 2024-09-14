@@ -1,30 +1,24 @@
 "use client";
-import { handleLogout } from "@/lib/action";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fetchUser } from "@/lib/utils";
+import { useUser } from "@/store";
 import Image from "next/image";
 
-interface UserObj{
-  id: string;
-  name: string;
-  image: string;
-  email: string;
-}
-
 export default async function Navbar(){
-  const [user, setUser] = useState<UserObj | null>(null);
+  const {user, setUser} = useUser();
   useEffect(()=>{
     fetchUser(setUser);
   }, [])
   return (
-    <div>
-        <div className="flex text-black dark:text-white bg-white dark:bg-black text-3xl font-serif">Homepage</div>
-        <Image src={user?.image ?? ''} alt="image" className="object-cover rounded-full mx-auto w-40 h-40"/>
-        <div className="flex text-black bg-white text-3xl font-serif  text-black dark:text-white ">{user?.name}</div>
-        <div className="flex text-black bg-white text-3xl font-serif  text-black dark:text-white ">{user?.email}</div>
-        <form action={handleLogout}>
-          <button className="flex p-4 px-5 items-center w-[80vw] md:w-[40vw] rounded-full bg-black text-white dark:bg-white dark:text-black">Logout</button>
-        </form>
+    <div className="bg-white dark:bg-black flex items-center justify-between px-5 md:px-10">
+        <div className="flex">
+          <Image src="Logo.JPG" alt="logo" className="object-cover rounded-full mx-auto w-12 h-12"/>
+          <h1 className="text-black dark:text-white text-xl md:text-2xl font-serif">Expense Tracker</h1>
+        </div>
+        <div className="flex">
+          <Image src={user?.image ?? 'avatar.JPG'} alt="image" className="object-cover rounded-full mx-auto w-12 h-12"/>
+          <div className="flex text-xl font-serif text-black dark:text-white">{user?.name.split(" ")[0]}</div>
+        </div>
     </div>
   )
 }
