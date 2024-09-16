@@ -10,7 +10,7 @@ interface UserStore{
     user: UserObj | null,
     setUser: (user: UserObj | null) => void
 }
-export const useUser = create<UserStore>((set: (arg0: Object) => void) => ({
+export const useUser = create<UserStore>((set: (arg0: {user: UserObj | null}) => void) => ({
     user: null,
     setUser: (user: UserObj | null) => {
         set({user});
@@ -22,8 +22,8 @@ export const useUser = create<UserStore>((set: (arg0: Object) => void) => ({
 //2-settings
 //3-expense input
 interface NavStore{
-    user: number,
-    setUser: (user: number) => void
+    nav: number,
+    setNav: (nav: number) => void
 }
 export const useNav = create<NavStore>((set: (arg0: {nav: number}) => void) => ({
     nav: 0,
