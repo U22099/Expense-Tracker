@@ -1,24 +1,48 @@
 "use client";
-import { useEffect } from "react";
-import { fetchUser } from "@/lib/utils";
-import { useUser } from "@/store";
-import Image from "next/image";
+import { useNav } from "@/store";
+import { motion } from "framer-motion";
+import { FaPlus } from "react-icons/fa";
+import { FaGear } from "react-icons/fa";
+import { IoMdHome } from "react-icons/io";
+import { MdBarChart } from "react-icons/md";
 
-export default async function Navbar(){
-  const {user, setUser} = useUser();
-  useEffect(()=>{
-    fetchUser(setUser);
-  }, [])
-  return (
-    <div className="bg-white dark:bg-black flex items-center justify-between px-5 md:px-10">
-        <div className="flex">
-          <Image src="Logo.JPG" alt="logo" className="object-cover rounded-full mx-auto w-12 h-12"/>
-          <h1 className="text-black dark:text-white text-xl md:text-2xl font-serif">Expense Tracker</h1>
-        </div>
-        <div className="flex">
-          <Image src={user?.image ?? 'avatar.JPG'} alt="image" className="object-cover rounded-full mx-auto w-12 h-12"/>
-          <div className="flex text-xl font-serif text-black dark:text-white">{user?.name.split(" ")[0]}</div>
-        </div>
-    </div>
-  )
+export default function NavBar(){
+    const { nav, setNav } = useNav();
+    const container = {
+        hidden: {opacity: 0, x: -200},
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: {
+                duration: 1,
+                delay: 0.5,
+                delayChildren: 0.5,
+                staggerChildren: 0.3
+            }
+        }
+    }
+    const children = {
+        hidden: {opacity: 0},
+        visible: {opacity: 1}
+    }
+    return(
+        <motion.div variants={container} initial="hidden" animate="visible" className="h-24 w-full md:w-[60vw] flex justify-between px-5 py-2 bg-black dark:bg-white rounded-full">
+
+            <div variants={children} initial="hidden" animate="visible" >
+                <IoMdHome className={(nav === 0 ? "bg-white fill-black dark:bg-black dark:fill-white ": "") + "rounded-full p-2 text-md fill-white dark:fill-black"} onClick={() => setNav(0)}/>
+            </div>
+
+            <div variants={children} initial="hidden" animate="visible" >
+                <MdBarChart className={(nav === 1 ? "bg-white fill-black dark:bg-black dark:fill-white ": "") + "rounded-full p-2 text-md fill-white dark:fill-black"} onClick={() => setNav(1)} />
+            </div>
+
+            <div variants={children} initial="hidden" animate="visible" >
+                <FaGear className={(nav === 2 ? "bg-white fill-black dark:bg-black dark:fill-white ": "") + "rounded-full p-2 text-md fill-white dark:fill-black"} onClick={() => setNav(2)} />
+            </div>
+
+            <div variants={children} initial="hidden" animate="visible" >
+                <FaPlus className={(nav === 3 ? "bg-white fill-black dark:bg-black dark:fill-white ": "") + "rounded-full p-2 text-md fill-white dark:fill-black"} onClick={() => setNav(3)} />
+            </div>
+        </motion.div>
+    )
 }

@@ -71,7 +71,7 @@ export const deleteCookie = (name: string) => {
 export const storeSession = (value: UserObj | null): boolean => {
     const session = value;
     if(session){
-        setCookie("session", JSON.stringify(session), {expires: new Date(Date.now() + 30 * 24 * 60 * 60), httpOnly: true});
+        setCookie("session", JSON.stringify(session), {expires: new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000), httpOnly: true});
         return true;
     } else {
         return false
