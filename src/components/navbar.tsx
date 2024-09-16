@@ -2,7 +2,7 @@
 import { useNav } from "@/store";
 import { motion } from "framer-motion";
 import { FaPlus } from "react-icons/fa";
-import { FaGear } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
 import { IoMdHome } from "react-icons/io";
 import { MdBarChart } from "react-icons/md";
 
