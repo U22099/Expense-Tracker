@@ -21,7 +21,7 @@ export const useUser = create<UserStore>((set: (arg0: Object) => void) => ({
 //1-full dashboard
 //2-settings
 //3-expense input
-export const useNav = create((set: (arg0: Object) => void) => ({
+export const useNav = create((set: (arg0: {nav: number}) => void) => ({
     nav: 0,
     setNav: (nav: number) => {
         set({nav});
