@@ -2,6 +2,8 @@
 
 export default function Body(){
     return(
-        <div className="h-[calc(100dvh - 120px)]">Body</div>
+        <div className="pb-10 pt-4 h-full flex">
+            <h1 className="text-black dark:text-white text-lg">Body</h1>
+        </div>
     )
 }

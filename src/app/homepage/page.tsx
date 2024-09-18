@@ -6,10 +6,12 @@ import NavBar from "@/components/navbar";
 
 export default async function Page(){
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center h-screen">
         <Header/>
         <Body />
-        <NavBar />
+        <nav className="fixed bottom-2 w-full">
+          <NavBar />
+        </nav>
     </div>
   )
 }
