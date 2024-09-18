@@ -26,7 +26,7 @@ export default function NavBar(){
         visible: {opacity: 1}
     }
     return(
-        <motion.div variants={container} initial="hidden" animate="visible" className="h-24 w-full md:w-[60vw] flex justify-between items-center px-5 py-2 bg-black dark:bg-white rounded-full">
+        <motion.div variants={container} initial="hidden" animate="visible" className="h-fit w-full md:w-[60vw] flex justify-between items-center px-3 md:px-5 py-3 md:py-5 bg-black dark:bg-white rounded-full">
 
             <motion.div variants={children} initial="hidden" animate="visible" >
                 <IoMdHome className={(nav === 0 ? "bg-white fill-black dark:bg-black dark:fill-white ": "") + "rounded-full p-2 text-[1.5em] md:text-[2em] fill-white dark:fill-black"} onClick={() => setNav(0)}/>
