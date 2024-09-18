@@ -1,6 +1,8 @@
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-export default function Barchart({data}){
+type datatype = {[index: string]: string | number}[];
+
+export default function Barchart({data}: {data: datatype}){
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart

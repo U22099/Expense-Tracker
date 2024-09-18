@@ -3,7 +3,8 @@ import Card from "@/components/utils/Card";
 import BarChart from "@/components/utils/BarChart";
 
 export default function Body(){
-    const data = [
+    type datatype = {[index: string]: string | number}[];
+    const data: datatype = [
         {
           category: 'Page A',
           amount: 4000
