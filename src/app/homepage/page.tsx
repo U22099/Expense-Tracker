@@ -9,7 +9,7 @@ export default async function Page(){
     <div className="flex flex-col justify-start h-screen">
       <Header/>
       <Body />
-      <nav className="fixed bottom-2">
+      <nav className="fixed bottom-2 w-full">
         <NavBar />
       </nav>
     </div>

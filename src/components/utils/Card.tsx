@@ -1,12 +1,13 @@
 import React from "react";
 
 export default function Card({
-  children
+  children, className: ""
 }: {
-  children: React.ReactNode
+  children: React.ReactNode,
+  className: string
 }) {
   return (
-    <main className="flex flex-col justify-center bg-white dark:bg-black shadow-lg dark:border-3 dark:border-white">
+    <main className={`flex flex-col justify-center bg-white dark:bg-black shadow-lg cursor-pointer ${className}`}>
         {children}
     </main>
   );
