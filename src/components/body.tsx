@@ -37,7 +37,7 @@ export default function Body(){
       
     return(
         <div className="pb-10 pt-4 h-full flex px-4 md:px-8 w-full">
-            <Card className="dark:border-1 dark:border-slate-300 p-2 rounded-md w-full md:w-1/2">
+            <Card className="dark:border-1 dark:border-slate-300 p-2 rounded-md w-full md:w-1/2 h-80">
                 <BarChart data={data} name="category" value="amount"/>
             </Card>
         </div>
