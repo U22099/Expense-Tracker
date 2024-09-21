@@ -1,45 +1,19 @@
 "use client";
-import Card from "@/components/utils/Card";
-import BarChart from "@/components/utils/BarChart";
+
+import Home from "/bodyComponents/Home";
+import Dashboard from "/bodyComponents/Dashboard";
+import Settings from "/bodyComponents/Settings";
+import InputExpense from "/bodyComponents/InputExpense";
+import useNav from "@/store";
 
 export default function Body(){
-    type datatype = {[index: string]: string | number}[];
-    const data: datatype = [
-        {
-          category: 'Page A',
-          amount: 4000
-        },
-        {
-          category: 'Page B',
-          amount: 3000
-        },
-        {
-          category: 'Page C',
-          amount: 2000
-        },
-        {
-          category: 'Page D',
-          amount: 2780
-        },
-        {
-          category: 'Page E',
-          amount: 1890
-        },
-        {
-          category: 'Page F',
-          amount: 2390
-        },
-        {
-          category: 'Page G',
-          amount: 3490
-        },
-      ];
-      
-    return(
-        <div className="pb-10 pt-4 h-full flex px-4 md:px-8 w-full">
-            <Card className="dark:border-1 dark:border-slate-300 p-2 rounded-md w-full md:w-1/2 h-80">
-                <BarChart data={data} name="category" value="amount"/>
-            </Card>
-        </div>
-    )
+  const nav = useNav(state => state.nav);
+  return(
+      <div>
+          {nav === 0 && <Home />}
+          {nav === 1 && <Dashboard />}
+          {nav === 2 && <Settings />}
+          {nav === 3 && <InputExpense />}
+      </div>
+  )
 }
