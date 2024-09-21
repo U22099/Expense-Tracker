@@ -2,7 +2,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
 type datatype = {[index: string]: string | number}[];
 
-export default function LineChart({data, name , value}: {data: datatype, name: string, value: string}){
+export default function Linechart({data, name , value}: {data: datatype, name: string, value: string}){
     return (
         <ResponsiveContainer width="100%" height="100%">
         <LineChart
