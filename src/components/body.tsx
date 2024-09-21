@@ -1,9 +1,9 @@
 "use client";
 
-import Home from "/bodyComponents/Home";
-import Dashboard from "/bodyComponents/Dashboard";
-import Settings from "/bodyComponents/Settings";
-import InputExpense from "/bodyComponents/InputExpense";
+import Home from "./bodyComponents/Home";
+import Dashboard from "./bodyComponents/Dashboard";
+import Settings from "./bodyComponents/Settings";
+import InputExpense from "./bodyComponents/InputExpense";
 import useNav from "@/store";
 
 export default function Body(){
