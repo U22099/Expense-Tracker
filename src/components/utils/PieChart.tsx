@@ -13,8 +13,8 @@ export default function Piechart({data, colors , value}: {data: datatype, colors
             <Legend />
             <Pie 
                 data={data}
-                cx={120}
-                cy={200}
+                cx="50%"
+                cy="50%"
                 innerRadius={40}
                 outerRadius={80}
                 fill="#8884d8"
