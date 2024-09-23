@@ -10,13 +10,13 @@ export default function Home(){
             <Chart />
             <div>
                 <Card className="text-black dark:text-white">
-                    Day: #{489}
+                    Day: ${489}
                 </Card>
                 <Card className="text-black dark:text-white">
-                    Week: #{489}
+                    Week: ${489}
                 </Card>
                 <Card className="text-black dark:text-white">
-                    Month: #{489}
+                    Month: ${489}
                 </Card>
             </div>
             <ExpenseList/>
