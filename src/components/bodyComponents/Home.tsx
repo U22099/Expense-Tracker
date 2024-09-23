@@ -8,15 +8,15 @@ export default function Home(){
     return(
         <div>
             <Chart />
-            <div>
-                <Card className="text-black dark:text-white">
-                    Day: ${489}
+            <div className="flex justify-between px-4 mt-2">
+                <Card>
+                    <h1 className="text-black dark:text-white font-bold">Day: ${489}</h1>
                 </Card>
-                <Card className="text-black dark:text-white">
-                    Week: ${489}
+                <Card>
+                    <h1 className="text-black dark:text-white font-bold">Week: ${489}</h1>
                 </Card>
-                <Card className="text-black dark:text-white">
-                    Month: ${489}
+                <Card>
+                    <h1 className="text-black dark:text-white font-bold">Month: ${489}</h1>
                 </Card>
             </div>
             <ExpenseList/>
