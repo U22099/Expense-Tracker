@@ -38,7 +38,7 @@ export default function Chart(){
     ];
       
     return(
-        <div className="pb-10 pt-4 h-full flex px-4 md:px-8 w-[90vw] md:w-screen overflow-hidden overflow-x-auto">
+        <div className="pb-10 pt-4 h-full flex px-4 md:px-8 w-[90vw] md:w-screen overflow-hidden overflow-x-auto gap-4">
             <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md min-w-[90vw] md:min-w-1/2 h-80">
                 <Piechart data={data} colors={categoriesColors} value="amount"/>
             </Card>
