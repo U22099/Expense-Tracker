@@ -11,7 +11,7 @@ export default function ExpenseList(){
 
   return(
     <div className="flex flex-col justify-start items-center gap-2 py-8 px-2">
-      {data.forEach((expense: datatype) => {
+      {data.map((expense: datatype) => {
           return(
             <Card>
               <div className="flex w-full gap-4 items-center">
