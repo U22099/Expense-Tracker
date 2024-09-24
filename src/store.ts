@@ -31,3 +31,52 @@ export const useNav = create<NavStore>((set: (arg0: {nav: number}) => void) => (
         set({nav});
     }
 }))
+
+//Expense Data
+type datatype = {[index: string]: string | number}[];
+interface DataStore {
+    data: datatype,
+    setData: (data: datatype) => void,
+    categoriesColor: string[]
+}
+export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void) => ({
+    data: [
+        {
+            category: 'Housing',
+            amount: 4000
+        },
+        {
+            category: 'Transportation',
+            amount: 2384
+        },
+        {
+            category: 'Food',
+            amount: 3984
+        },
+        {
+            category: 'Entertainment',
+            amount: 2830
+        },
+        {
+            category: 'Personal Care',
+            amount: 2947
+        },
+        {
+            category: 'HealthCare',
+            amount: 2039
+        },
+        {
+            category: 'Debt',
+            amount: 4839
+        },
+        {
+            category: 'Others',
+            amount: 2849
+        }
+    ],
+    setData: (data: datatype) => {
+        set({data});
+    },
+    categoriesColors: ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#3399CC', 'FFD700', 'FFA07A', 'F08080']
+
+}))

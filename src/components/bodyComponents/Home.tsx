@@ -8,7 +8,7 @@ export default function Home(){
     return(
         <div>
             <Chart />
-            <div className="flex justify-between px-4 mt-2">
+            <div className="flex justify-between px-4 mt-2 mx-auto w-fit gap-4">
                 <Card>
                     <h1 className="text-black dark:text-white font-bold">Day: ${489}</h1>
                 </Card>
