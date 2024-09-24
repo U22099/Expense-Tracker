@@ -1,15 +1,17 @@
 "use client";
+
 import Image from "next/image";
 import { useData } from "@/store";
 import Card from "@/components/utils/Card";
 
+type datatype = {[index: string]: string | number};
+
 export default function ExpenseList(){
-  type datatype = {[index: string]: string | number};
   const data = useData(state => state.data);  
+
   return(
     <div className="flex flex-col justify-start items-center gap-2 py-8 px-2">
-      {
-        data.forEach((expense: datatype) => {
+      {data.forEach((expense: datatype) => {
           return(
             <Card>
               <div className="flex w-full gap-4 items-center">
