@@ -5,8 +5,8 @@ import Linechart from "@/components/utils/LineChart";
 import { useData } from "@/store";
 
 export default function Chart(){
-  import data = useData(state => state.data);
-  import categoriesColors = useData(state => state.categoriesColors);
+  const data = useData(state => state.data);
+  const categoriesColors = useData(state => state.categoriesColors);
       
     return(
         <div className="pb-10 pt-4 h-full flex px-4 md:px-8 w-[90vw] md:w-screen overflow-hidden overflow-x-auto gap-4">
