@@ -37,7 +37,7 @@ type datatype = {[index: string]: string | number}[];
 interface DataStore {
     data: datatype,
     setData: (data: datatype) => void,
-    categoriesColor: string[]
+    categoriesColors: string[]
 }
 export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void) => ({
     data: [
@@ -78,5 +78,4 @@ export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void
         set({data});
     },
     categoriesColors: ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#3399CC', 'FFD700', 'FFA07A', 'F08080']
-
 }))
