@@ -77,5 +77,5 @@ export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void
     setData: (data: datatype) => {
         set({data});
     },
-    categoriesColors: ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#3399CC', 'FFD700', 'FFA07A', 'F08080']
+    categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"]
 }))
