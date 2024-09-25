@@ -4,28 +4,27 @@ import Image from "next/image";
 import { useData } from "@/store";
 import Card from "@/components/utils/Card";
 
-type datatype = {[index: string]: string | number};
+type datatype = {
+  category: string,
+  amount: number
+};
 
 export default function ExpenseList(){
-  const data = useData(state => state.data);  
+  const data = useData((state)=> state.data);
 
   return(
+    
     <div className="flex flex-col justify-start items-center gap-2 py-8 px-2">
     
-      {data.map((expense: datatype, i: number) => {
-      
-          return(
-          
+      {data.map((expense: datatype, i: number) => (
             <Card>
               <div key={i} className="flex w-full gap-4 items-center">
                 <Image src="/Logo.JPG" alt="logo" className="object-cover rounded-full w-14 h-14"/>
                 <h1 className="font-bold text-black dark:text-white text-[1.3em] md:text-[1.5em] w-full">{expense.category}</h1>
                 <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">{expense.amount}</p>
-              <div>
+              </div>
             </Card>
-            
-          );
-      })}
+      ))}
     </div>
-  )
+  );
 }
