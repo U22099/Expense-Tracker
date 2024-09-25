@@ -4,10 +4,7 @@ import Image from "next/image";
 import { useData } from "@/store";
 import Card from "@/components/utils/Card";
 
-type datatype = {
-  category: string,
-  amount: number
-};
+type datatype = {[index: string]: string | number};
 
 export default function ExpenseList(){
   const data = useData((state)=> state.data);
