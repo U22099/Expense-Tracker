@@ -39,7 +39,7 @@ interface DataStore {
     setData: (data: datatype) => void,
     categoriesColors: []
 }
-export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void) => ({
+export const useData = create<DataStore>((set: any) => ({
     data: [
         {
             category: 'Housing',
