@@ -18,10 +18,10 @@ export default function ExpenseList(){
               <Card>
                 <div className="flex w-full gap-4 items-center justify-between px-2">
                   <div className="flex items-center gap-3 w-full justify-start">
-                    <Image src="/Logo.JPG" alt="logo" className="object-cover rounded-full w-14 h-14"/>
+                    <Image src="/Logo.JPG" alt="logo" className="object-cover rounded-lg w-14 h-14"/>
                     <h1 className="font-bold text-black dark:text-white text-[1.3em] md:text-[1.5em] w-full">{expense.category}</h1>
                   </div>
-                  <p className="self-end font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">{expense.amount}</p>
+                  <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">{expense.amount}</p>
                 </div>
               </Card>
             </div>
