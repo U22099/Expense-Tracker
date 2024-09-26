@@ -9,7 +9,7 @@ export default function Chart(){
   const categoriesColors = useData(state => state.categoriesColors);
       
     return(
-        <div className="pb-10 pt-4 h-full flex px-4 md:px-8 pl-1 w-[90vw] md:w-screen overflow-hidden overflow-x-auto gap-4">
+        <div className="pb-10 pt-4 h-full flex w-[90vw] md:w-screen overflow-hidden overflow-x-auto gap-4">
             <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md min-w-[90vw] md:min-w-1/2 h-80">
                 <Piechart data={data} colors={categoriesColors} value="amount"/>
             </Card>
