@@ -11,7 +11,7 @@ export default function ExpenseList(){
 
   return(
     
-    <div className="flex flex-col justify-start items-center gap-2 py-8 px-2">
+    <div className="flex flex-col justify-start items-start gap-2 py-8 px-2">
     
       {data.map((expense: datatype, i: number) => (
             <div key={i}>
