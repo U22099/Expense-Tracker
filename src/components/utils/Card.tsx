@@ -7,7 +7,7 @@ export default function Card({
   className?: string
 }) {
   return (
-    <main className={`flex justify-center bg-white dark:bg-black shadow-lg cursor-pointer p-2 md:p-4 ${className ? className : ""}`}>
+    <main className={`flex items-center justify-center bg-white dark:bg-black shadow-lg cursor-pointer p-2 md:p-4 ${className ? className : ""}`}>
         {children}
     </main>
   );
