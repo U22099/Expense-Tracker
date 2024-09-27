@@ -6,7 +6,7 @@ import NavBar from "@/components/navbar";
 
 export default async function Page(){
   return (
-    <div className="flex flex-col justify-start h-screen">
+    <div className="flex flex-col justify-start h-screen overflow-hidden my-6">
       <Header/>
       <Body />
       <nav className="fixed bottom-2 w-full">

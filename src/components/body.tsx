@@ -9,7 +9,7 @@ import { useNav } from "@/store";
 export default function Body(){
   const nav = useNav(state => state.nav);
   return(
-      <div className="flex w-screen p-4 md:p-6 overflow-x-hidden">
+      <div className="flex w-screen p-4 md:p-6 overflow-hidden overflow-y-scroll">
           {nav === 0 && <Home />}
           {nav === 1 && <Dashboard />}
           {nav === 2 && <Settings />}
