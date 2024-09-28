@@ -8,7 +8,7 @@ export default function Header(){
   const {user, setUser} = useUser();
   useEffect(()=>{
     fetchUser(setUser);
-  }, [])
+  }, [setUser])
   return (
     <div className="bg-white dark:bg-black shadow-md dark:border-bottom-3 dark:border-bottom-white flex items-center justify-between px-5 md:px-10 h-16 py-2">
         <div className="flex h-full gap-2 items-center">
