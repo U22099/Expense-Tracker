@@ -6,7 +6,7 @@ import Card from "../utils/Card";
 
 export default function Home(){
     return(
-        <div className="flex flex-col gap-2 w-full justify-center items-start">
+        <div className="flex flex-col gap-2 w-full h-full items-start">
             <Chart />
             <div className="flex justify-between mt-2 mx-auto w-fit gap-4">
                 <Card>
