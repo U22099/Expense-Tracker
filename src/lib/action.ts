@@ -23,6 +23,7 @@ export const handleLogin = async (prevState: any, formData: FormData) => {
     console.log(email, "loginBase");
     try{
         await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
+        return { success: "Successfull" }
     } catch(e: any){
 		if(e.digest.includes("NEXT_REDIRECT")){
     		    return { success: "Successfull" }
