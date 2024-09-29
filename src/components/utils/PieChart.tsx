@@ -2,7 +2,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 
 type datatype = {[index: string]: string | number}[];
 
-export default function Piechart({data, colors , value}: {data: datatype, colors: string[], value: string}){
+export default function Piechart({data, colors , value, name}: {data: datatype, colors: string[], value: string, name: string}){
     return (
       <ResponsiveContainer width="100%" height="100%">
         <PieChart
@@ -19,7 +19,8 @@ export default function Piechart({data, colors , value}: {data: datatype, colors
                 outerRadius={80}
                 fill="#8884d8"
                 paddingAngle={5}
-                dataKey={value} 
+                dataKey={value}
+                nameKey={name}
                 label
             >
                 {data.map((entry, index) => (
