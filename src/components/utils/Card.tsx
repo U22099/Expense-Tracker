@@ -3,7 +3,7 @@ import React from "react";
 export default function Card({
   children, className, onClick
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode | string,
   className?: string,
   onClick?: Function,
 }) {
