@@ -30,8 +30,8 @@ export default function Days() {
       <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md w-[90vw] md:w-1/2 h-80">
           <Linechart data={data} name="name" value="price"/>
       </Card>
-      {data.map(x => {
-        return <Lists name={x.name} price={x.price} />
+      {data.map((x, i) => {
+        return <Lists key={i} name={x.name} price={x.price} />
       })}
     </div>
   )

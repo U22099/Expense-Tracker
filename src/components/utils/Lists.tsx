@@ -3,12 +3,13 @@
 import Image from "next/image";
 import Card from "@/components/utils/Card";
 
-export default function Lists({ name, price } : {
+export default function Lists({ name, price, key } : {
   name: string | number,
   price: string | number,
+  key?: number
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full" key={key || 0}>
       <Card className="w-full items-center justify-between">
         <div className="flex items-center gap-3 w-full justify-start">
         <h1 className="font-bold text-black dark:text-white text-[1.3em] md:text-[1.5em] w-full">{name}</h1>
