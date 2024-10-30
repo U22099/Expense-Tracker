@@ -1,5 +1,5 @@
 "use client";
-import Card from "../../utils/Card.tsx";
+import Card from "../../utils/Card";
 
 export default function Navigation({ setNav, nav }) {
   return (
