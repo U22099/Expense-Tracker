@@ -8,7 +8,7 @@ export default function Card({
   onClick?: React.MouseEventHandler<HTMLElement> | undefined,
 }) {
   return (
-    <main onClick={onClick} className={`flex items-center justify-center shadow-lg cursor-pointer p-2 md:p-4  ${className ? className : "bg-white dark:bg-black text-black dark:text-white"}`}>
+    <main onClick={onClick} className={`flex items-center justify-center shadow-lg rounded-lg cursor-pointer p-2 md:p-4  ${className ? className : "bg-white dark:bg-black text-black dark:text-white"}`}>
         {children}
     </main>
   );
