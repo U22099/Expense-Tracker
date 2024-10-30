@@ -1,7 +1,9 @@
 "use client";
 import Card from "../../utils/Card";
 
-export default function Navigation({ setNav, nav }: {any: any}) {
+export default function Navigation({ setNav, nav }: {setNav: (arg: number) => void,
+  nav: number
+}) {
   return (
     <div className="w-fit flex gap-2 self-start">
       <Card
