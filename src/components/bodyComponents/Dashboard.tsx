@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'React';
+import { useState } from 'react';
 import Navigation from './dashboardComponents/Navigation.tsx';
 import Days from './dashboardComponents/Days.tsx';
 import Weeks from './dashboardComponents/Weeks.tsx';
