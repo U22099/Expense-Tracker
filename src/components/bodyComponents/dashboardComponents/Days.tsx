@@ -27,7 +27,7 @@ export default function Days() {
     }
   ]
   return (
-    <div className="flex flex-col w-full justify-start items-start">
+    <div className="flex flex-col w-full justify-start items-start gap-2">
       <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md w-[90vw] md:w-1/2 h-80">
           <Linechart data={data} name="name" value="price"/>
       </Card>
