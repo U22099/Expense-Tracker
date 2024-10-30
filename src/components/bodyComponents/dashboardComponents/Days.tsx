@@ -1,6 +1,7 @@
 "use client";
 import Linechart from "@/components/utils/LineChart";
 import Lists from "@/components/utils/Lists";
+import Card from "@/components/utils/Card"
 
 export default function Days() {
   const data: {name: string, price: number}[] = [
