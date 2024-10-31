@@ -7,7 +7,7 @@ export default function CategoryDropDownList({ setCategory }: {setCategory: (arg
   
   const [currentIndex, setCurrentIndex]: [currentIndex: number, setCurrentIndex: (arg: number) => void] = useState(0);
   
-  const data: datatype = useData(state => store.data);
+  const data: datatype = useData(state => state.data);
   
   const categoryArr: string[] = [...data.map(x => x.category)];
   
@@ -17,7 +17,7 @@ export default function CategoryDropDownList({ setCategory }: {setCategory: (arg
   }
   useEffect(() => {
     setCategory(categoryArr[currentIndex]);
-  }, [currentIndex]);
+  }, [currentIndex, setCategory, categoryArr]);
   return (
     <main>
       <Card onClick={nextCategory}>{categoryArr[currentIndex]}</Card>
