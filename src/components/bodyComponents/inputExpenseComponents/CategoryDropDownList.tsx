@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useData, type datatype } from "@/store";
 import Card from "@/components/utils/Card";
 
-export default function categoryDropDownList({ setCategory }: {setCategory: (arg: string) => void}) {
+export default function CategoryDropDownList({ setCategory }: {setCategory: (arg: string) => void}) {
   
   const [currentIndex, setCurrentIndex]: [currentIndex: number, setCurrentIndex: (arg: number) => void] = useState(0);
   

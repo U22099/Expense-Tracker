@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import categoryDropDownList from "./inputExpenseComponents/categoryDropDownList";
-import display from "./inputExpenseComponents/display";
-import inputPad from "./inputExpenseComponents/inputPad";
+import CategoryDropDownList from "./inputExpenseComponents/CategoryDropDownList";
+import Display from "./inputExpenseComponents/Display";
+import InputPad from "./inputExpenseComponents/InputPad";
 import { motion } from "framer-motion";
 
 export default function InputExpense(){
@@ -26,9 +26,9 @@ export default function InputExpense(){
           opacity: 0
         }}
         className="flex flex-col justify-start items-start gap-2 p-2 rounded-xl bg-black dark:bg-white fixed bottom-10 w-fit h-fit backdrop-blur-md">
-            <categoryDropDownList setCategory={setCategory}/>
-            <display value={value}/>
-            <inputPad setValue={setValue}/>
+            <CategoryDropDownList setCategory={setCategory}/>
+            <Display value={value}/>
+            <InputPad setValue={setValue}/>
         </motion.div>
     )
 }

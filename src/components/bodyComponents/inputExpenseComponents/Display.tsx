@@ -1,7 +1,7 @@
 "use client";
 import { useData } from "@/store";
 
-export default function display({ value }: {value: number}) {
+export default function Display({ value }: {value: number}) {
   
   const currencySymbol: string = useData(state => state.currencySymbol);
   
