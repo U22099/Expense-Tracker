@@ -1,14 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useData } from "@/store";
+import { useData, type datatype } from "@/store";
 import Card from "@/components/utils/Card";
 
-type datatype = {
-  [index: string]: string | number };
-
 export default function ExpenseList() {
-  const data = useData(state => state.data);
+  const data: datatype = useData(state => state.data);
 
   return (
 

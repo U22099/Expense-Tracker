@@ -33,7 +33,9 @@ export const useNav = create<NavStore>((set: (arg0: {nav: number}) => void) => (
 }))
 
 //Expense Data
-export type datatype = {[index: string]: string | number}[];
+export type datatype = {
+  category: string,
+  amount: number}[];
 interface DataStore {
     data: datatype,
     setData: (data: datatype) => void,

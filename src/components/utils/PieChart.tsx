@@ -1,6 +1,5 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-
-type datatype = {[index: string]: string | number}[];
+import { type datatype } from "@/store";
 
 export default function Piechart({data, colors , value, name}: {data: datatype, colors: string[], value: string, name: string}){
     return (
