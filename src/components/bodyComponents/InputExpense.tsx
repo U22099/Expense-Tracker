@@ -7,9 +7,7 @@ import { motion } from "framer-motion";
 
 export default function InputExpense(){
   
-  const [value, setValue]: [
-    number,
-    (arg: number | ((prevValue: number) => number)) => void] = useState(0);
+  const [value, setValue] = useState<number>(0);
   
   const [ category, setCategory ]= useState<string>("Housing");
   
