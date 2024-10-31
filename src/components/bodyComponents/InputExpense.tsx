@@ -14,15 +14,15 @@ export default function InputExpense(){
     return(
         <motion.div
         initial={{
-          height: 0,
+          y: -200,
           opacity: 0
         }}
         animate={{
-          height: 1,
+          y: 0,
           opacity: 1
         }}
         exit={{
-          height: 0,
+          y: -200,
           opacity: 0
         }}
         className="flex flex-col justify-start items-start gap-2 p-2 rounded-xl bg-black dark:bg-white fixed bottom-10 w-fit h-fit backdrop-blur-md">
