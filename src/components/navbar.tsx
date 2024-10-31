@@ -7,7 +7,7 @@ import { IoMdHome } from "react-icons/io";
 import { MdBarChart } from "react-icons/md";
 
 export default function NavBar(){
-    const { nav, setNav } = useNav();
+    const { nav, setNav, openInput, setOpenInput } = useNav();
     const container = {
         hidden: {opacity: 0, x: -200},
         visible: {
@@ -40,8 +40,8 @@ export default function NavBar(){
                 <FaGear className={"rounded-full p-2 text-[2.5em] md:text-[3.5em]" + (nav === 2 ? " bg-white fill-black dark:bg-black dark:fill-white": " fill-white dark:fill-black")} />
             </motion.div>
 
-            <motion.div variants={children} initial="hidden" animate="visible" onClick={() => setNav(3)} className="cursor-pointer" >
-                <FaPlus className={"rounded-full p-2 text-[2.5em] md:text-[3.5em]" + (nav === 3 ? " bg-white fill-black dark:bg-black dark:fill-white": " fill-white dark:fill-black")} />
+            <motion.div variants={children} initial="hidden" animate="visible" onClick={() => setOpenInput(!openInput)} className="cursor-pointer" >
+                <FaPlus className={"rounded-full p-2 text-[2.5em] md:text-[3.5em]" + (openInput ? " bg-white fill-black dark:bg-black dark:fill-white": " fill-white dark:fill-black")} />
             </motion.div>
         </motion.div>
     )

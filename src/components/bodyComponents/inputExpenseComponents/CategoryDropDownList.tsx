@@ -13,7 +13,7 @@ export default function CategoryDropDownList({ setCategory }: {setCategory: (arg
   
   const nextCategory: React.MouseEventHandler<HTMLElement> | undefined  = () => {
     
-    currentIndex < categoryArr.length ? setCurrentIndex(currentIndex + 1) : setCurrentIndex(0);
+    currentIndex < categoryArr.length - 1 ? setCurrentIndex(currentIndex + 1) : setCurrentIndex(0);
   }
   useEffect(() => {
     setCategory(categoryArr[currentIndex]);

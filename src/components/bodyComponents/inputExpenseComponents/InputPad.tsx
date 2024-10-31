@@ -12,17 +12,17 @@ export default function InputPad({ setValue }: {setValue: (arg: number | ((prevV
         <div className="grid grid-cols-3 gap-2">
           {numberArr.map(num => <Keypad num={num} key={num} setValue={setValue}/>)}
         </div>
-        <div className="flex justify-center items-center font-lg rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center" onClick={() => setValue((prevValue: number) => parseInt(`${prevValue}${0}`))}>
+        <div className="flex justify-center items-center text-2xl shadow-lg active:shadow-none rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center" onClick={() => setValue((prevValue: number) => parseInt(`${prevValue}${0}`))}>
           <p>0</p>
         </div>
       </section>
-      <section>
-        <div className="flex justify-center items-center font-lg rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center" onClick={() => setValue((prevValue: number) => parseInt(`${
-            prevValue.toString().slice(0, -1)
+      <section className="grid grid-rows-[1fr_4fr]">
+        <div className="flex justify-center items-center text-lg shadow-lg active:shadow-none rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center" onClick={() => setValue((prevValue: number) => parseInt(`${
+            prevValue.toString().slice(0, -1) || 0
           }`))}>
           <p>delete</p>
         </div>
-        <div className="flex justify-center items-center font-lg rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center" onClick={submit}>
+        <div className="flex justify-center items-center text-lg shadow-xl active:shadow-none rounded-lg p-2 bg-black dark:bg-white font-bold w-full text-center h-full" onClick={submit}>
           <p>submit</p>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function InputPad({ setValue }: {setValue: (arg: number | ((prevV
 
 const Keypad = ({num, key, setValue}: {num: number, key: number, setValue: (arg: number | ((prevValue: number) => number)) => void}) => {
   return(
-    <div key={key} className="flex justify-center items-center font-lg rounded-lg p-2 bg-black dark:bg-white font-bold" onClick={() => setValue((prevValue: number) => parseInt(`${prevValue}${num}`))}>
+    <div key={key} className="flex justify-center items-center text-2xl shadow-lg active:shadow-none rounded-lg p-2 bg-black dark:bg-white font-bold" onClick={() => setValue((prevValue: number) => parseInt(`${prevValue}${num}`))}>
       <p>{num}</p>
     </div>
   )

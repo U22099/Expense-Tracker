@@ -14,7 +14,7 @@ export default function InputExpense(){
     return(
         <motion.div
         initial={{
-          y: -200,
+          y: 200,
           opacity: 0
         }}
         animate={{
@@ -22,10 +22,10 @@ export default function InputExpense(){
           opacity: 1
         }}
         exit={{
-          y: -200,
+          y: 200,
           opacity: 0
         }}
-        className="flex flex-col justify-start items-start gap-2 p-2 rounded-xl bg-black dark:bg-white fixed bottom-10 w-fit h-fit backdrop-blur-md">
+        className="flex flex-col justify-start items-start gap-2 p-2 rounded-xl bg-black dark:bg-white fixed bottom-10 w-fit h-fit backdrop-blur-md mx-auto">
             <CategoryDropDownList setCategory={setCategory}/>
             <Display value={value}/>
             <InputPad setValue={setValue}/>
