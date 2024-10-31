@@ -30,7 +30,7 @@ export default function InputPad({ setValue }: {setValue: (arg: number | ((prevV
   )
 }
 
-const Keypad = ({num, key, setValue}: {num: number, key: number, setValue: (arg: number) => void}) => {
+const Keypad = ({num, key, setValue}: {num: number, key: number, setValue: (arg: number | ((prevValue: number) => number)) => void}) => {
   return(
     <div key={key} className="flex justify-center items-center font-lg rounded-lg p-2 bg-black dark:bg-white font-bold" onClick={() => setValue((prevValue: number) => parseInt(`${prevValue}${num}`))}>
       <p>{num}</p>
