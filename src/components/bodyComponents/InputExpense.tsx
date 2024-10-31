@@ -25,7 +25,7 @@ export default function InputExpense(){
           y: 200,
           opacity: 0
         }}
-        className="flex flex-col justify-start items-start gap-2 p-2 rounded-xl bg-black dark:bg-white fixed bottom-10 w-fit h-fit backdrop-blur-md mx-auto">
+        className="flex flex-col justify-start items-start gap-2 p-6 rounded-xl bg-black dark:bg-white fixed bottom-14 w-fit h-fit backdrop-blur-md mx-auto">
             <CategoryDropDownList setCategory={setCategory}/>
             <Display value={value}/>
             <InputPad setValue={setValue}/>
