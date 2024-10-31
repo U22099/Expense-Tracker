@@ -8,7 +8,7 @@ type datatype = {
   [index: string]: string | number };
 
 export default function ExpenseList() {
-  const data = useData((state) => state.data);
+  const data = useData(state => state.data);
 
   return (
 

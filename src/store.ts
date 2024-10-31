@@ -33,11 +33,12 @@ export const useNav = create<NavStore>((set: (arg0: {nav: number}) => void) => (
 }))
 
 //Expense Data
-type datatype = {[index: string]: string | number}[];
+export type datatype = {[index: string]: string | number}[];
 interface DataStore {
     data: datatype,
     setData: (data: datatype) => void,
-    categoriesColors: string[]
+    categoriesColors: string[],
+    currencySymbols: string
 }
 export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void) => ({
     data: [
@@ -77,5 +78,6 @@ export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void
     setData: (data: datatype) => {
         set({data});
     },
-    categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"]
+    categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"],
+    currencySymbol: "$"
 }))
