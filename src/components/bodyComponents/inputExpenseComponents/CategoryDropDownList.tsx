@@ -19,7 +19,7 @@ export default function CategoryDropDownList({ setCategory }: {setCategory: (arg
     setCategory(categoryArr[currentIndex]);
   }, [currentIndex, setCategory, categoryArr]);
   return (
-    <main>
+    <main className="select-none">
       <Card onClick={nextCategory}>{categoryArr[currentIndex]}</Card>
     </main>
   )
