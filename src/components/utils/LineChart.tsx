@@ -1,5 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { type datatype } from "@/store";
+
+type datatype = {[index: string]: string | number}[];
 
 export default function Linechart({data, name , value}: {data: datatype, name: string, value: string}){
     return (

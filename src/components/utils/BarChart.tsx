@@ -1,5 +1,6 @@
 import { BarChart, Bar, Rectangle, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { type datatype } from "@/store";
+
+type datatype = {[index: string]: string | number}[];
 
 export default function Barchart({data, name , value}: {data: datatype, name: string, value: string}){
     return (
