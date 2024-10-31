@@ -5,7 +5,7 @@ import Card from "@/components/utils/Card";
 
 export default function CategoryDropDownList({ setCategory }: {setCategory: (arg: string) => void}) {
   
-  const [currentIndex, setCurrentIndex]: [currentIndex: number, setCurrentIndex: (arg: number) => void] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   
   const data: datatype = useData(state => state.data);
   
