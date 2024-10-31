@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Card from "@/components/utils/Card";
 
-export default function Lists({ name, price, key } : {
+export default function Lists({ name, amount, key } : {
   name: string | number,
-  price: string | number,
+  amount: string | number,
   key?: number
 }) {
   return (
@@ -14,7 +14,7 @@ export default function Lists({ name, price, key } : {
         <div className="flex items-center gap-3 w-full justify-start">
         <h1 className="font-bold text-black dark:text-white text-[1.3em] md:text-[1.5em] w-full">{name}</h1>
         </div>
-        <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">${price}
+        <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">${amount}
         </p>
       </Card>
     </div>
