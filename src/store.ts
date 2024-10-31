@@ -25,7 +25,7 @@ interface NavStore {
   nav: number,
   setNav: (nav: number) => void
   openInput: boolean,
-  setOpenInout: (openInput: boolean) => void
+  setOpenInput: (openInput: boolean) => void
 }
 export const useNav = create <NavStore> ((set: (partialState: Partial<NavStore>) => void) => ({
   nav: 0,
