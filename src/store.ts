@@ -40,7 +40,7 @@ interface DataStore {
     data: datatype,
     setData: (data: datatype) => void,
     categoriesColors: string[],
-    currencySymbols: string
+    currencySymbol: string
 }
 export const useData = create<DataStore>((set: (arg0: {data: datatype}) =>  void) => ({
     data: [
