@@ -11,7 +11,10 @@ export default function ExpenseList() {
 
     <div className="flex flex-col items-start gap-2 py-8 w-full">
     
-      {data.map((expense: datatype, i: number) => (
+      {data.map((expense: {
+        category: string,
+        amount: number
+      }, i: number) => (
             <div key={i} className="w-full">
               <Card className="w-full items-center justify-between">
                   <div className="flex items-center gap-3 w-full justify-start">
