@@ -8,9 +8,9 @@ export interface UserObj {
 }
 interface UserStore {
   user: UserObj | null,
-  setUser: (user: UserObj | null) => void
+  setUser: (user: Partial<UserStore>) => void
 }
-export const useUser = create <UserStore> ((set: (arg0: Partial<UserStore>) => void) => ({
+export const useUser = create <UserStore> ((set: (partialState: Partial<UserStore>) => void) => ({
   user: null,
   setUser: (user: Partial<UserStore>) => {
     set({ user });
@@ -155,13 +155,13 @@ export const useData = create <DataStore> ((set: (partialState: Exclude<Exclude<
   setData: (partialState: Exclude<Exclude<Partial<DataStore>, string>, string[]>) => {
     set({ data });
   },
-  setDays: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+  setDays: (partialState: Exclude <Exclude <Partial <DataStore> , string> , string[]> ) => {
     set({ days: data });
   },
-  setWeeks: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+  setWeeks: (partialState: Exclude <Exclude <Partial <DataStore> , string> , string[]> ) => {
     set({ weeks: data });
   },
-  setMonths: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+  setMonths: (partialState: Exclude <Exclude <Partial <DataStore> , string> , string[]> ) => {
     set({ months: data });
   },
   categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"],
