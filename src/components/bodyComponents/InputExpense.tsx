@@ -23,13 +23,10 @@ export default function InputExpense(){
   });
   
   const submit = async () => {
-    const obj = {
-      category,
-      amount: value
-    };
-    const updatedData = [...data, obj];
-    console.log(updatedData)
-    setData(updatedData);
+    const index = data.findIndex((item) => item.category === category);
+    const newData = [...data];
+    newData[index].amount = value;
+    setData(newData);
     setOpenInput(false);
     await updateData(updatedData);
   }
