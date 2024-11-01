@@ -41,7 +41,7 @@ const authenticate = async (): Promise<UserType | null> => {
 
 export const GET = () => {
     try {
-    const user: UserObj = getUser();
+    const user = getUser();
     
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     
@@ -55,7 +55,7 @@ export const GET = () => {
 
 export const POST = async (req: Request): Promise <NextResponse> => {
   try {
-    const user: UserType = await authenticate();
+    const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     const { username, image }: { username: string, image: string } = req.body.data;
     user.username = username;

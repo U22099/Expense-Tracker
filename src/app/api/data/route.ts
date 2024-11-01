@@ -40,7 +40,7 @@ const authenticate = async (): Promise<UserType | null> => {
 
 export const GET = async (): Promise<NextResponse> => {
   try{
-    const user: UserType = await authenticate();
+    const user = await authenticate();
     if(!user) return NextResponse.json({ message: "User not found"}, {status: 404});
     return NextResponse.json({ data: user.expenses.data }, {status: 200});
   } catch(e) {
@@ -51,7 +51,7 @@ export const GET = async (): Promise<NextResponse> => {
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   try{
-    const user: UserType = await authenticate();
+    const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     const data = req.body.data;
     user.expenses.data = data;
