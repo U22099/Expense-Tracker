@@ -4,7 +4,7 @@ import CategoryDropDownList from "./inputExpenseComponents/CategoryDropDownList"
 import Display from "./inputExpenseComponents/Display";
 import InputPad from "./inputExpenseComponents/InputPad";
 import { motion } from "framer-motion";
-import { useData } from "@/store";
+import { useData, useNav } from "@/store";
 import { updateData } from "@/lib/utils";
 
 export default function InputExpense(){
@@ -12,6 +12,8 @@ export default function InputExpense(){
   const [value, setValue] = useState<number>(0);
   
   const [ category, setCategory ]= useState<string>("Housing");
+  
+  const { setOpenInput } = useNav(state => state.setOpenInput);
   
   const { setData, data } = useData(state => {
     return {
@@ -26,7 +28,9 @@ export default function InputExpense(){
       amount: value
     };
     const updatedData = [...data, obj];
+    console.log(updatedData)
     setData(updatedData);
+    setOpenInput(false);
     await updateData(updatedData);
   }
   

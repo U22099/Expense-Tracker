@@ -18,7 +18,7 @@ export default function Body(){
   const setData = useData(state => state.setData);
   
   useEffect(() => {
-    fetchData(setData);
+    //fetchData(setData);
   }, [setData]);
   return(
       <div className="flex flex-col justify-start w-screen p-4 md:p-6">
