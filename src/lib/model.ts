@@ -8,7 +8,12 @@ export interface UserType {
   image: string;
   email: string;
   password: string;
-  expenses: object;
+  expenses: {
+    data: [],
+    days: [],
+    weeks: [],
+    months: [],
+  } | {};
 }
 
 const userSchema = new Schema({

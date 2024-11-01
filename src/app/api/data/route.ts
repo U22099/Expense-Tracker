@@ -30,7 +30,7 @@ export const GET = async (): Promise<NextResponse> => {
   try{
     const user = await authenticate();
     if(!user) return NextResponse.json({ message: "User not found"}, {status: 404});
-    return NextResponse.json({ data: user.expenses.data }, {status: 200});
+    return NextResponse.json({ data: user.expenses?.data }, {status: 200});
   } catch(e) {
     console.log(e);
     return NextResponse.json({message: "Error"}, {status: 500});
@@ -42,7 +42,7 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     const data = req.body.data;
-    user.expenses.data = data;
+    user.expenses?.data = data;
     await user.save();
     
     return NextResponse.json({ message: "Success" }, { status: 200 });
