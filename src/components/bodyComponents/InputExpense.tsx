@@ -13,7 +13,7 @@ export default function InputExpense(){
   
   const [ category, setCategory ]= useState<string>("Housing");
   
-  const { setOpenInput } = useNav(state => state.setOpenInput);
+  const setOpenInput = useNav(state => state.setOpenInput);
   
   const { setData, data } = useData(state => {
     return {
