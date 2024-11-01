@@ -16,48 +16,51 @@ export const connectToDb = async () => {
         connection.isConnected = db.connections[0].readyState;
     } catch(e) {
         console.log(e)
-        throw new Error(String(e));
+        return false;
     }
 }
 
 export async function fetchUser(setUser: any){
     try{
-        const response = await axios.get('api/user');
-        const data = response.data;
-        if(response.status === 200) setUser(data.user);
+      const response = await axios.get('api/user');
+      const data = response.data;
+      if(response.status === 200) setUser(data.user);
     } catch(e){
-        console.log(e);
+      console.log(e);
+      return false;
     }
 }
 
 export async function fetchData(setData: any) {
   try {
     const response = await axios.get('api/data');
+    if(!response.data) return false;
     const data = response.data as {
       data: datatype
     };
     if (response.status === 200) setData((prevValue: datatype) => data.data || prevValue);
   } catch (e) {
     console.log(e);
+    return false;
   }
 }
 
-export async function updateData(data) {
+export async function updateData(data: datatype) {
   try {
     const response = await axios.post('api/data', { data });
     if (response.status === 200) return true;
   } catch (e) {
     console.log(e);
-    return false
+    return false;
   }
 }
 
-export async function updateUser(data) {
+export async function updateUser(data: any) {
   try {
     const response = await axios.post('api/user', { data });
     if (response.status === 200) return true;
   } catch (e) {
     console.log(e);
-    return false
+    return false;
   }
 }
