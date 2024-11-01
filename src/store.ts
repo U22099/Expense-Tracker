@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface UserObj {
+export interface UserObj {
   id: string;
   name: string;
   image: string;

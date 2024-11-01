@@ -3,20 +3,8 @@ import { cookies } from "next/headers";
 import mongoose from "mongoose";
 import { connectToDb } from "@/lib/utils";
 import { User } from "@/lib/model";
-
-interface UserObj {
-  id: string;
-  name: string;
-  image: string;
-  email: string;
-}
-
-interface UserType {
-  _id: mongoose.Types.ObjectId;
-  name: string;
-  image: string;
-  email: string;
-}
+import { type UserObj } from "@/store";
+import { type UserType } from "@/lib/model";
 
 const getUser = (): UserObj | null => {
   const user_session = cookies().get("session")?.value;
