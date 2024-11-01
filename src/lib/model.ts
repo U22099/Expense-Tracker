@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
+import { type datatype, type datatype2 } from "@/store";
 
-const Schema = mongoose.Schema;
+export interface Expense {
+  data: datatype;
+  days: datatype2;
+  weeks: datatype2;
+  months: datatype2;
+}
 
 export interface UserType {
   _id: mongoose.Types.ObjectId;
@@ -8,33 +14,34 @@ export interface UserType {
   image: string;
   email: string;
   password: string;
-  expenses: {
-    data: [],
-    days: [],
-    weeks: [],
-    months: [],
-  } | {};
+  expenses: Expense;
 }
 
-const userSchema = new Schema({
-    username: {
-        type: String,
-        required: true
+const userSchema = new mongoose.Schema < UserType > ({
+  username: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  image: {
+    type: String
+  },
+  password: {
+    type: String
+  },
+  expenses: {
+    type: Object,
+    default: {
+      data: [],
+      days: [],
+      weeks: [],
+      months: [],
     },
-    email: {
-        type: String,
-        required: true
-    },
-    image: {
-        type: String,
-    },
-    password: {
-        type: String
-    },
-    expenses: {
-        type: Object,
-        default: {}
-    },
+  },
 });
 
-export const User = mongoose.models.User || mongoose.model('User', userSchema);
+export const User: mongoose.Model < UserType > =
+  mongoose.models.User || mongoose.model('User', userSchema);
