@@ -66,11 +66,12 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                         await newUser.save();
                     }
                     const session = user || newUser;
+                    if(!session) return false;
                     const data = {
                         id: "",
-                        name: session?.username,
-                        image: session?.image,
-                        email: session?.email
+                        name: session.username,
+                        image: session.image,
+                        email: session.email
                     }
                     storeSession(data);
                 } catch(e) {
@@ -92,11 +93,12 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                         await newUser.save();
                     }
                     const session = user || newUser;
+                    if(!session) return false;
                     const data = {
                         id: "",
-                        name: session?.username,
-                        image: session?.image,
-                        email: session?.email
+                        name: session.username,
+                        image: session.image,
+                        email: session.email
                     }
                     storeSession(data);
 
