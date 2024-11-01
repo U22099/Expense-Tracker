@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import mongoose from "mongoose";
+import mongoose, { HydratedDocument } from "mongoose";
 import { connectToDb } from "@/lib/utils";
 import { User } from "@/lib/model";
 import { type UserObj } from "@/store";
@@ -15,7 +15,7 @@ const getUser = (): UserObj | null => {
   return user;
 }
 
-const authenticate = async (): Promise<UserType | null> => {
+const authenticate = async (): Promise<UserType & HydratedDocument<UserType> | null> => {
   const user = getUser();
   if (!user) {
     console.log(" No session ");
