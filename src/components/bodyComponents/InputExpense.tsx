@@ -27,7 +27,7 @@ export default function InputExpense(){
     };
     const updatedData = [...data, obj];
     setData(updatedData);
-    await updateData(updateData);
+    await updateData(updatedData);
   }
   
     return(
