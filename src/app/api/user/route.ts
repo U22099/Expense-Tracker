@@ -45,7 +45,8 @@ export const POST = async (req: Request): Promise <NextResponse> => {
   try {
     const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
-    const { username, image }: { username: string, image: string } = req.body.data;
+    const { username, image }: { username: string, image: string } = req.body?.data;
+    if(!username, !image) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     user.username = username;
     user.image = image;
     await user.save();
