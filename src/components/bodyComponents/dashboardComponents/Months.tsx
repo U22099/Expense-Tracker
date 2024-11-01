@@ -1,27 +1,11 @@
 "use client";
 import Linechart from "@/components/utils/LineChart";
 import Lists from "@/components/utils/Lists";
-import Card from "@/components/utils/Card"
+import Card from "@/components/utils/Card";
+import { useData } from "@/store";
 
 export default function Months() {
-  const data: { name: string, amount: number } [] = [
-    {
-      name: "June",
-      amount: 4536
-    },
-    {
-      name: "July",
-      amount: 536
-    },
-    {
-      name: "August",
-      amount: 4536
-    },
-    {
-      name: "September",
-      amount: 2536
-    }
-  ]
+  const data: { name: string, amount: number } [] = useData(state => state.months);
   return (
     <div className="flex flex-col w-full justify-start items-start gap-2">
       <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md w-[90vw] md:w-1/2 h-80">

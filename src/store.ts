@@ -10,9 +10,9 @@ interface UserStore {
   user: UserObj | null,
   setUser: (user: UserObj | null) => void
 }
-export const useUser = create <UserStore> ((set: (arg0: { user: UserObj | null }) => void) => ({
+export const useUser = create <UserStore> ((set: (arg0: Partial<UserStore>) => void) => ({
   user: null,
-  setUser: (user: UserObj | null) => {
+  setUser: (user: Partial<UserStore>) => {
     set({ user });
   }
 }))
@@ -43,49 +43,126 @@ export type datatype = {
   category: string,
   amount: number
 } [];
+export type datatype2 = {
+  name: string,
+  amount: number
+} [];
 interface DataStore {
   data: datatype,
+  days: datatype2,
+  weeks: datatype2,
+  months: datatype2,
   setData: (data: datatype) => void,
+  setDays: (data: datatype2) => void,
+  setWeeks: (data: datatype2) => void,
+  setMonths: (data: datatype2) => void,
   categoriesColors: string[],
   currencySymbol: string
 }
-export const useData = create <DataStore> ((set: (arg0: { data: datatype }) => void) => ({
+export const useData = create <DataStore> ((set: (partialState: Exclude<Exclude<Partial<DataStore>, string>, string[]>) => void) => ({
   data: [
     {
       category: 'Housing',
-      amount: 4000
-        },
+      amount: 0
+    },
     {
       category: 'Transportation',
-      amount: 2384
-        },
+      amount: 0
+    },
     {
       category: 'Food',
-      amount: 3984
-        },
+      amount: 0
+    },
     {
       category: 'Entertainment',
-      amount: 2830
-        },
+      amount: 0
+    },
     {
       category: 'Personal Care',
-      amount: 2947
-        },
+      amount: 0
+    },
     {
       category: 'HealthCare',
-      amount: 2039
-        },
+      amount: 0
+    },
     {
       category: 'Debt',
-      amount: 4839
-        },
+      amount: 0
+    },
     {
       category: 'Others',
-      amount: 2849
-        }
-    ],
-  setData: (data: datatype) => {
+      amount: 0
+    }
+  ],
+  days: [
+  {
+    name: "Monday",
+    amount: 0
+    },
+  {
+    name: "Tuesday",
+    amount: 0
+    },
+  {
+    name: "Wednesday",
+    amount: 0
+    },
+  {
+    name: "Thursday",
+    amount: 0
+    },
+  {
+    name: "Friday",
+    amount: 0
+    }
+  ],
+  weeks: [
+  {
+    name: "04/07",
+    amount: 0
+    },
+  {
+    name: "11/07",
+    amount: 0
+    },
+  {
+    name: "18/07",
+    amount: 0
+    },
+  {
+    name: "25/07",
+    amount: 0
+    }
+  ],
+  months: [
+  {
+    name: "June",
+    amount: 0
+    },
+  {
+    name: "July",
+    amount: 0
+    },
+  {
+    name: "August",
+    amount: 0
+    },
+  {
+    name: "September",
+    amount: 0
+    }
+  ],
+  setData: (partialState: Exclude<Exclude<Partial<DataStore>, string>, string[]>) => {
     set({ data });
+  },
+  setDays: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+    set({ days: data });
+  },
+  setWeeks: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+    set({ weeks: data });
+  },
+  setMonths: (partialState: Exclude < Exclude < Partial < DataStore > , string > , string[] > ) => {
+    set({ months: data });
   },
   categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"],
   currencySymbol: "$"

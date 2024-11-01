@@ -1,11 +1,8 @@
 "use client";
 
-export default function InputPad({ setValue }: {setValue: (arg: number | ((prevValue: number) => number)) => void}){
+export default function InputPad({ setValue, submit }: {setValue: (arg: number | ((prevValue: number) => number)) => void, submit: () => void}){
   
   const numberArr = [1,2,3,4,5,6,7,8,9];
-  const submit = () => {
-    console.log("submitting");
-  }
   return(
     <main className="flex gap-2">
       <section className="flex flex-col gap-2">
@@ -22,7 +19,7 @@ export default function InputPad({ setValue }: {setValue: (arg: number | ((prevV
           }`))}>
           <p>delete</p>
         </div>
-        <div className="flex justify-center items-center text-lg shadow-xl active:shadow-none rounded-lg px-2 bg-white dark:bg-black dark:text-white font-bold w-full text-center h-full select-none" onClick={submit}>
+        <div className="flex justify-center items-center text-lg shadow-xl active:shadow-none rounded-lg px-2 bg-white dark:bg-black dark:text-white font-bold w-full text-center h-full select-none" onClick={async () => await submit()}>
           <p>submit</p>
         </div>
       </section>

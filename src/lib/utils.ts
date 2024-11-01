@@ -23,8 +23,38 @@ export async function fetchUser(setUser: any){
     try{
         const response = await axios.get('api/user');
         const data = response.data;
-        if(response.status === 200.) setUser(data.user);
+        if(response.status === 200) setUser(data.user);
     } catch(e){
         console.log(e);
     }
+}
+
+export async function fetchData(setData: any) {
+  try {
+    const response = await axios.get('api/data');
+    const data = response.data;
+    if (response.status === 200) setData(prevValue => data.data || prevValue);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+export async function updateData(data) {
+  try {
+    const response = await axios.post('api/data', { data });
+    if (response.status === 200) return true;
+  } catch (e) {
+    console.log(e);
+    return false
+  }
+}
+
+export async function updateUser(data) {
+  try {
+    const response = await axios.post('api/user', { data });
+    if (response.status === 200) return true;
+  } catch (e) {
+    console.log(e);
+    return false
+  }
 }
