@@ -14,9 +14,9 @@ interface UserStore {
 interface UserSetPartial {
   user: UserObj | ((user: UserObj | null) => UserObj | null) | null;
 }
-export const useUser = create <UserStore> ((set: (partialState: UserSetPartial) => void) => ({
+export const useUser = create <UserStore> ((set: (partialState: UserObj | null) => void) => ({
   user: null,
-  setUser: (user: UserSetPartial) => {
+  setUser: (user: UserObj | null) => {
     set({ user });
   }
 }))
