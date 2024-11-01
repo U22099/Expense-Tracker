@@ -38,7 +38,7 @@ export async function fetchData(setData: any) {
     const data = response.data as {
       data: datatype
     };
-    if (response.status === 200 && data.data) setData(data.data);
+    if (response.status === 200 && data.data.length > 0) setData(data.data);
   } catch (e) {
     console.log(e);
     return false;
