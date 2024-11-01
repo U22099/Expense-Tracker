@@ -10,7 +10,7 @@ export interface Expense {
 
 export interface UserType {
   _id: mongoose.Types.ObjectId;
-  name: string;
+  username: string;
   image: string;
   email: string;
   password: string;
