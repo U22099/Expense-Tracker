@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import axios from "axios";
+import { type datatype } from "@/store";
 
 const connection: {
     [index: string]: unknown
@@ -32,8 +33,10 @@ export async function fetchUser(setUser: any){
 export async function fetchData(setData: any) {
   try {
     const response = await axios.get('api/data');
-    const data = response.data;
-    if (response.status === 200) setData(prevValue => data.data || prevValue);
+    const data = response.data as {
+      data: datatype
+    };
+    if (response.status === 200) setData((prevValue: datatype) => data.data || prevValue);
   } catch (e) {
     console.log(e);
   }
