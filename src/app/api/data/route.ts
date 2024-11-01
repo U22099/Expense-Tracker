@@ -5,6 +5,7 @@ import { connectToDb } from "@/lib/utils";
 import { User } from "@/lib/model";
 import { type UserObj } from "@/store";
 import { type UserType } from "@/lib/model";
+import { type datatype } from "@/store";
 
 const getUser = (): UserObj | null => {
   const user_session = cookies().get("session")?.value;
@@ -41,7 +42,7 @@ export const POST = async (req: Request): Promise<NextResponse> => {
   try{
     const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
-    const data = req.body?.data;
+    const { data }: { data: datatype }  = req.body?.json();
     if(!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     user.expenses.data = data;
     await user.save();
