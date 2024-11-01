@@ -1,20 +1,16 @@
 import { create } from "zustand";
 
 export interface UserObj {
-  id: string;
-  name: string;
-  image: string;
-  email: string;
+  id: string,
+  name: string,
+  image: string,
+  email: string,
 }
 interface UserStore {
-  user: UserObj | null;
-  setUser: (user: UserObj | null) => void;
+  user: UserObj | null,
+  setUser: (user: UserObj | null) => void,
 }
-
-interface UserSetPartial {
-  user: UserObj | ((user: UserObj | null) => UserObj | null) | null;
-}
-export const useUser = create <UserStore> ((set: (partialState: UserObj | null) => void) => ({
+export const useUser = create <UserStore> (set => ({
   user: null,
   setUser: (user: UserObj | null) => {
     set({ user });
@@ -26,16 +22,12 @@ export const useUser = create <UserStore> ((set: (partialState: UserObj | null) 
 //2-settings
 //openinput-expense-input
 interface NavStore {
-  nav: number;
-  setNav: (nav: number) => void;
-  openInput: boolean;
-  setOpenInput: (openInput: boolean) => void;
+  nav: number,
+  setNav: (nav: number) => void,
+  openInput: boolean,
+  setOpenInput: (openInput: boolean) => void,
 }
-interface NavSetPartial{
-  nav: number | ((nav: number) => number);
-  openInput: boolean | ((openInput: boolean) => boolean);
-}
-export const useNav = create <NavStore> ((set: (partialState: Partial<NavSetPartial>) => void) => ({
+export const useNav = create <NavStore> ((set) => ({
   nav: 0,
   openInput: false,
   setOpenInput: (openInput: boolean) => {
@@ -56,24 +48,18 @@ export type datatype2 = {
   amount: number
 } [];
 interface DataStore {
-  data: datatype;
-  days: datatype2;
-  weeks: datatype2;
-  months: datatype2;
-  setData: (data: datatype) => void;
-  setDays: (data: datatype2) => void;
-  setWeeks: (data: datatype2) => void;
-  setMonths: (data: datatype2) => void;
-  categoriesColors: string[];
-  currencySymbol: string;
+  data: datatype,
+  days: datatype2,
+  weeks: datatype2,
+  months: datatype2,
+  setData: (data: datatype) => void,
+  setDays: (data: datatype2) => void,
+  setWeeks: (data: datatype2) => void,
+  setMonths: (data: datatype2) => void,
+  categoriesColors: string[],
+  currencySymbol: string,
 }
-interface DataSetPartial {
-  data: datatype | ((data: datatype) => datatype);
-  days: datatype2 | ((data: datatype2) => datatype2);
-  weeks: datatype2 | ((data: datatype2) => datatype2);
-  months: datatype2 | ((data: datatype2) => datatype2);
-}
-export const useData = create <DataStore> ((set: (partialState: Partial<DataSetPartial>) => void) => ({
+export const useData = create <DataStore> ((set) => ({
   data: [
     {
       category: 'Housing',
@@ -166,16 +152,16 @@ export const useData = create <DataStore> ((set: (partialState: Partial<DataSetP
     amount: 0
     }
   ],
-  setData: (data: Partial<DataSetPartial>) => {
+  setData: (data: datatype) => {
     set({ data });
   },
-  setDays: (days: Partial<DataSetPartial>) => {
+  setDays: (days: datatype2) => {
     set({ days });
   },
-  setWeeks: (weeks: Partial<DataSetPartial>) => {
+  setWeeks: (weeks: datatype2) => {
     set({ weeks });
   },
-  setMonths: (months: Partial<DataSetPartial>) => {
+  setMonths: (months: datatype2) => {
     set({ months });
   },
   categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"],
