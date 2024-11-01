@@ -68,9 +68,9 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     const session = user || newUser;
                     const data = {
                         id: "",
-                        name: session.username,
-                        image: session.image,
-                        email: session.email
+                        name: session?.username,
+                        image: session?.image,
+                        email: session?.email
                     }
                     storeSession(data);
                 } catch(e) {
@@ -94,9 +94,9 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
                     const session = user || newUser;
                     const data = {
                         id: "",
-                        name: session.username,
-                        image: session.image,
-                        email: session.email
+                        name: session?.username,
+                        image: session?.image,
+                        email: session?.email
                     }
                     storeSession(data);
 
