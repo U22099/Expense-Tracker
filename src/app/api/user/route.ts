@@ -33,7 +33,7 @@ const authenticate = async (): Promise<UserType | null> => {
     return null;
   };
   await connectToDb();
-  const _id = mongoose.Types.ObjectId(user.id);
+  const _id = new mongoose.Types.ObjectId(user.id);
   const userObj = await User.findOne({ _id });
   return userObj;
 }
