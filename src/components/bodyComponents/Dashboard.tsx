@@ -8,7 +8,7 @@ import Months from './dashboardComponents/Months';
 export default function Dashboard(){
   const [nav, setNav] = useState<number>(0);
     return(
-        <div className="flex flex-col gap-2 w-full justify-start align-start">
+        <div className="flex flex-col gap-2 w-full justify-start align-start pb-12">
             <Navigation setNav={setNav} nav={nav} />
             {nav === 0 ? <Days /> 
             : nav === 1 ? <Weeks />
