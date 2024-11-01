@@ -20,7 +20,7 @@ interface UserType {
 
 const getUser = (): UserObj | null => {
   const user_session = cookies().get("session")?.value;
-  if (!user_session) return;
+  if (!user_session) return null;
   const decodedCookie = decodeURIComponent(user_session);
   const user = JSON.parse(decodedCookie);
   return user;
@@ -30,7 +30,7 @@ const authenticate = async (): Promise<UserType | null> => {
   const user = getUser();
   if (!user) {
     console.log(" No session ");
-    return;
+    return null;
   };
   await connectToDb();
   const _id = mongoose.Types.ObjectId(user.id);
