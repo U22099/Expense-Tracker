@@ -14,7 +14,10 @@ export default function InputExpense(){
   const [ category, setCategory ]= useState<string>("Housing");
   
   const { setData, data } = useData(state => {
-    return {setData: state.setData, data: state.data}
+    return {
+      setData: state.setData, 
+      data: state.data
+    }
   });
   
   const submit = async () => {

@@ -15,7 +15,7 @@ export default function Body(){
       openInput: state.openInput
     }
   });
-  const { setData } = useData(state => state.setData);
+  const setData = useData(state => state.setData);
   
   useEffect(() => {
     fetchData(setData);
