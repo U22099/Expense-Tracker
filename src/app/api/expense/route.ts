@@ -24,6 +24,7 @@ const authenticate = async (): Promise <UserType & HydratedDocument <UserType> |
   await connectToDb();
   const _id = new mongoose.Types.ObjectId(user.id);
   const userObj = await User.findOne({ _id });
+  console.log(userObj)
   return userObj;
 }
 
@@ -41,9 +42,14 @@ export const GET = async (): Promise <NextResponse> => {
 export const POST = async (req: Request): Promise <NextResponse> => {
   try {
     const user = await authenticate();
+    
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
+    
     const { data }: { data: datatype3 } = await req.json();
+    
+    console.log(data)
     if (!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
+    
     user.expenses.expense = data;
     await user.save();
 
