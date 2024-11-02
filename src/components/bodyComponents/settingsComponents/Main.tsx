@@ -6,7 +6,7 @@ export default function Main(){
   const { user, setUser } = useUser();
   return (
     <main>
-      <header className={`flex justify-center items-center font-3xl text-black dark:text-white blur-sm w-full h-80 bg-image-[${user?.image ?? "avatar.jpg"}]`}>
+      <header className={`flex justify-center items-center font-3xl text-black dark:text-white blur-sm w-full h-80 bg-[url('${user?.image ?? "avatar.jpg"}')]`}>
         <label htmlFor="input">
           Tap To Upload
         </label>

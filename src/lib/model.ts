@@ -8,11 +8,12 @@ export interface Expense {
 
 export interface UserType {
   _id: mongoose.Types.ObjectId;
-  username: string;
-  image: string;
-  email: string;
-  password: string;
-  expenses: Expense;
+  username: string,
+  image: string,
+  email: string,
+  password: string,
+  expenses: Expense,
+  currency: string,
 }
 
 const userSchema = new mongoose.Schema < UserType > ({
@@ -36,6 +37,10 @@ const userSchema = new mongoose.Schema < UserType > ({
       data: [],
       expense: [],
     },
+  },
+  currency: {
+    type: String,
+    default: "$"
   },
 });
 

@@ -6,7 +6,7 @@ import Settings from "./bodyComponents/Settings";
 import InputExpense from "./bodyComponents/InputExpense";
 import { useNav, useData } from "@/store";
 import { useEffect } from "react";
-import { fetchData, fetchExpenseData } from "@/lib/utils";
+import { fetchData, fetchExpenseData, fetchCurrency } from "@/lib/utils";
 
 export default function Body(){
   const {nav, openInput} = useNav(state => {
@@ -15,14 +15,16 @@ export default function Body(){
       openInput: state.openInput
     }
   });
-  const { setData, setExpense }= useData(state => {
+  const { setData, setExpense, setCurrencySymbol }= useData(state => {
     return {
       setData: state.setData,
-      setExpense: state.setExpense
+      setExpense: state.setExpense,
+      setCurrencySymbol: state.setCurrencySymbol
     }
   });
   
   useEffect(() => {
+    fetchCurrency(setCurrencySymbol);
     fetchData(setData);
     fetchExpenseData(setExpense, setData);
   }, [setData, setExpense]);

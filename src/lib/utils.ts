@@ -15,7 +15,7 @@ export const connectToDb = async () => {
         }
         const db = await mongoose.connect(process.env.DATABASE_URL as string);
         connection.isConnected = db.connections[0].readyState;
-    } catch(e) {
+    } catch(err) {
         console.log("Error at connectToDb " , err, response.data.message)
         return false;
     }
@@ -40,7 +40,7 @@ export async function fetchData(setData: any) {
       data: datatype
     };
     if (response.status === 200 && data.data.length > 0) setData(data.data);
-  } catch (e) {
+  } catch(err) {
     console.log("Error at fetchData " , err, response.data.message)
     return false;
   }
@@ -65,8 +65,19 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       setExpense(expense);
       return true;
     }
-  } catch (e) {
+  } catch(err) {
     console.log("Error at fetchExpenseData " , err, response.data.message)
+    return false;
+  }
+}
+
+export async function fetchCurrency(setCurrencySymbol: any) {
+  try {
+    const response = await axios.get('api/user');
+    const { data } = response.data;
+    if (response.status === 200) setCurrencySymbol(data);
+  } catch (err) {
+    console.log("Error at fetchUser ", err, response.data.message)
     return false;
   }
 }
@@ -75,7 +86,7 @@ export async function updateData(data: datatype) {
   try {
     const response = await axios.post('api/data', { data });
     if (response.status === 200) return true;
-  } catch (e) {
+  } catch(err) {
     console.log("Error at updateData " , err, response.data.message)
     return false;
   }
@@ -85,7 +96,7 @@ export async function updateUser(data: any) {
   try {
     const response = await axios.post('api/user', { data });
     if (response.status === 200) return true;
-  } catch (e) {
+  } catch(err) {
     console.log("Error at updateUser " , err, response.data.message)
     return false;
   }
@@ -95,7 +106,17 @@ export async function updateExpenseData(data: datatype3) {
   try {
     const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
-  } catch (e) {
+  } catch(err) {
+    console.log("Error at updateExpenseData " , err, response.data.message)
+    return false;
+  }
+}
+
+export async function updateCurrency(data: string) {
+  try {
+    const response = await axios.post('api/expense', { data });
+    if (response.status === 200) return true;
+  } catch(err) {
     console.log("Error at updateExpenseData " , err, response.data.message)
     return false;
   }
