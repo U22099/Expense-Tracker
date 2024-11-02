@@ -5,10 +5,7 @@ type datatype = {[index: string]: string | number}[];
 export default function Piechart({data, colors , value, name}: {data: datatype, colors: string[], value: string, name: string}){
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart
-          width={500}
-          height={300}
-        >
+        <PieChart>
             <Tooltip />
             <Legend />
             <Pie 

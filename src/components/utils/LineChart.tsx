@@ -6,8 +6,6 @@ export default function Linechart({data, name , value}: {data: datatype, name: s
     return (
         <ResponsiveContainer width="100%" height="100%">
         <LineChart
-            width={500}
-            height={300}
             data={data}
         >
             <CartesianGrid strokeDasharray="3 3" />

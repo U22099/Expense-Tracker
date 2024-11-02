@@ -25,7 +25,7 @@ export default function InputExpense(){
   const submit = async () => {
     const index = data.findIndex((item) => item.category === category);
     const newData = [...data];
-    newData[index].amount = value;
+    newData[index].amount += value;
     setData(newData);
     setOpenInput(false);
     await updateData(newData);
