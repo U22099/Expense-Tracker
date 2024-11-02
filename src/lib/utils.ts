@@ -117,10 +117,10 @@ export async function updateExpenseData(data: datatype3 | []) {
 
 export async function updateCurrency(data: string) {
   try {
-    const response = await axios.post('api/expense', { data });
+    const response = await axios.post('api/currency', { data });
     if (response.status === 200) return true;
   } catch(err) {
-    console.log("Error at updateExpenseData " , err)
+    console.log("Error at updateCurrency " , err)
     return false;
   }
 }

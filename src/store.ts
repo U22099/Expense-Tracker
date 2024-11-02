@@ -79,11 +79,11 @@ export const useData = create <DataStore> ((set) => ({
       amount: 0
     },
     {
-      category: 'Personal Care',
+      category: 'Personal',
       amount: 0
     },
     {
-      category: 'HealthCare',
+      category: 'Health',
       amount: 0
     },
     {
