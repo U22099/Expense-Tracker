@@ -32,6 +32,7 @@ export default function Page(){
   }
 	useEffect(()=>{
 		if(state?.success){
+		  alert("called redirect")
 			router.push("/homepage");
 		}
 	},[state, router]);
