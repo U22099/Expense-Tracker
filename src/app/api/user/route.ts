@@ -49,7 +49,7 @@ export const POST = async (req: Request): Promise <NextResponse> => {
     if(!username && !image) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     user.username = username;
     user.image = image;
-    await user.save();
+    await User.updateOne({ _id: user._id }, { $set: { image: user.image, username: user.username } });
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (e) {
