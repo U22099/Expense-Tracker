@@ -18,7 +18,9 @@ export default function InputExpense(){
   const { setData, data, setExpense, expense } = useData(state => {
     return {
       setData: state.setData, 
-      data: state.data
+      data: state.data,
+      setExpense: state.setExpense,
+      expense: state.expense
     }
   });
   
