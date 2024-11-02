@@ -57,7 +57,7 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       const expense = data.data;
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
-      if (!todaysExpense || todaysExpense.amount === 0) {
+      if (!todaysExpense || !todaysExpense?.amount) {
         setData(template);
       }
       setExpense(expense);
@@ -99,7 +99,7 @@ export async function updateExpenseData(data: datatype3) {
 }
 
 
-const template = [
+const template: datatype = [
   {
     category: 'Housing',
     amount: 0
