@@ -106,6 +106,7 @@ export async function updateUser(data: any) {
 
 export async function updateExpenseData(data: datatype3) {
   try {
+    console.log("Updating Expense ", data)
     const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
   } catch(err) {
