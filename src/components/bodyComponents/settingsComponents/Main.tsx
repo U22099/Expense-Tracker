@@ -10,7 +10,7 @@ export default function Main(){
         <label htmlFor="input">
           Tap To Upload
         </label>
-        <input type="file" accepts="image/*" hidden id="input"/>
+        <input type="file" accept="image/*" hidden id="input"/>
       </header>
       <section>
         <p>Change Currency Symbol</p>
