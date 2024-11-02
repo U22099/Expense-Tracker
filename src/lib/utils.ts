@@ -40,7 +40,7 @@ export async function fetchData(setData: any) {
       data: datatype
     };
     console.log("data ",data)
-    if (response.status === 200 && data.data.length > 0) setData(data.data);
+    if (response.status === 200 && data.data.length> 0) setData(data.data);
   } catch(err) {
     console.log("Error at fetchData " , err)
     return false;
@@ -83,7 +83,7 @@ export async function fetchCurrency(setCurrencySymbol: any) {
   }
 }
 
-export async function updateData(data: datatype) {
+export async function updateData(data: datatype | []) {
   try {
     console.log("Updating Data ", data)
     const response = await axios.post('api/data', { data });
@@ -104,7 +104,7 @@ export async function updateUser(data: any) {
   }
 }
 
-export async function updateExpenseData(data: datatype3) {
+export async function updateExpenseData(data: datatype3 | []) {
   try {
     console.log("Updating Expense ", data)
     const response = await axios.post('api/expense', { data });
@@ -124,6 +124,16 @@ export async function updateCurrency(data: string) {
     return false;
   }
 }
+export async function reset(): Promise <boolean | undefined | null> {
+  try {
+    await updateData([]);
+    await updateExpenseData([]);
+  } catch (err) {
+    console.log("Error at reset ", err)
+    return false;
+  }
+}
+
 const template: datatype = [
   {
     category: 'Housing',
