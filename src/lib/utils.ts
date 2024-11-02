@@ -48,7 +48,7 @@ export async function fetchData(setData: any) {
 
 export async function fetchExpenseData(setExpense: any, setData: any) {
   try {
-    const response = await axios.get('api/data');
+    const response = await axios.get('api/expense');
     if (!response.data) return false;
     const data = response.data as {
       data: datatype3
@@ -57,7 +57,7 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       const expense = data.data || [];
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
-      if (!todaysExpense) {
+      if (!todaysExpense || !todaysExpense?.amount) {
         setData(template);
       }
       setExpense(expense);
