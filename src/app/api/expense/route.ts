@@ -48,8 +48,7 @@ export const POST = async (req: Request): Promise <NextResponse> => {
     
     if (!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     user.expenses.expense = data;
-    await connectToDb();
-    await user.save();
+    await User.updateOne({ _id: user._id }, { $set: { expenses: user.expenses } });
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (e) {
