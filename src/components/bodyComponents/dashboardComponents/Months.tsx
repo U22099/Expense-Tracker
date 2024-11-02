@@ -3,10 +3,11 @@ import Barchart from "@/components/utils/BarChart";
 import Lists from "@/components/utils/Lists";
 import Card from "@/components/utils/Card";
 import { useData } from "@/store";
+import { type datatype3 } from "@/store";
 
 export default function Months() {
-  const expense: { date: string, amount: number } [] = useData(state => state.expense);
-  const data = getMonthExpense(expense);
+  const expense = useData(state => state.expense);
+  const data: datatype3 = getMonthExpense(expense);
   return (
     <div className="flex flex-col w-full justify-start items-start gap-2">
       <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md w-[90vw] md:w-1/2 h-80">
@@ -19,7 +20,7 @@ export default function Months() {
   )
 }
 
-const getMonthExpense = (expense) => {
+const getMonthExpense = (expense: datatype3): datatype3 => {
   const month = expense.reduce((acc, current) => {
     const monthDate = current.date.slice(3);
     const existDate = acc.find(entry => entry.date === monthDate

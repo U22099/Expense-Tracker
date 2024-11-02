@@ -6,6 +6,7 @@ import InputPad from "./inputExpenseComponents/InputPad";
 import { motion } from "framer-motion";
 import { useData, useNav } from "@/store";
 import { updateData, updateExpenseData } from "@/lib/utils";
+import { type datatype3 } from "@/store";
 
 export default function InputExpense(){
   
@@ -63,7 +64,7 @@ export default function InputExpense(){
     )
 }
 
-const updateExpense = async (value, date, setExpense, expense) => {
+const updateExpense = async (value: number, date: string, setExpense: (expense: datatype3) => void, expense: datatype3): void => {
   let expenseArr = [...expense];
   if(!expenseArr.length){
     expenseArr.push({
