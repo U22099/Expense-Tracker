@@ -115,7 +115,7 @@ export const getCurrentDate = (): string => {
   const date = currentDate.toLocaleDateString('en-UK', {
     year: 'numeric',
     month: 'numeric',
-  day: 'numeric',
+    day: 'numeric',
   });
   return date;
 }
