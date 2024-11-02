@@ -159,7 +159,7 @@ const template: datatype = [
 
 
 //Developer Utils
-export async function resetDatabase(): Promise<void>{
+export async function resetDatabase(): Promise<boolean | undefined | null>{
   try {
     const response = await axios.post('api/dev/reset-db', { });
     if (response.status === 200) return true;
