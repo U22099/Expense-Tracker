@@ -85,6 +85,7 @@ export async function fetchCurrency(setCurrencySymbol: any) {
 
 export async function updateData(data: datatype) {
   try {
+    console.log("Updating Data ", data)
     const response = await axios.post('api/data', { data });
     if (response.status === 200) return true;
   } catch(err) {

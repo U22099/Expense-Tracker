@@ -1,6 +1,7 @@
 "use client";
+import { AiOutlineLoading } from "react-icons/ai";
 
-export default function InputPad({ setValue, submit }: {setValue: (arg: number | ((prevValue: number) => number)) => void, submit: () => void}){
+export default function InputPad({ setValue, submit, pending }: {setValue: (arg: number | ((prevValue: number) => number)) => void, submit: () => void, pending: boolean}){
   
   const numberArr = [1,2,3,4,5,6,7,8,9];
   return(
@@ -20,7 +21,7 @@ export default function InputPad({ setValue, submit }: {setValue: (arg: number |
           <p>delete</p>
         </div>
         <div className="flex justify-center items-center text-lg shadow-xl active:shadow-none rounded-lg px-2 bg-white dark:bg-black dark:text-white font-bold w-full text-center h-full select-none" onClick={async () => await submit()}>
-          <p>submit</p>
+          <p>{pending ? <AiOutlineLoading className="animate-spin fill-white text-md dark:fill-black"/> : "submit"}</p>
         </div>
       </section>
     </main>

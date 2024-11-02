@@ -11,6 +11,7 @@ import { getCurrentDate } from "@/store";
 
 export default function InputExpense(){
   
+  const [ pending, setPending ] = useState<boolean>(false);
   const [value, setValue] = useState<number>(0);
   
   const [ category, setCategory ]= useState<string>("Housing");
@@ -27,6 +28,7 @@ export default function InputExpense(){
   });
   
   const submit = async () => {
+    setPending(true);
     const index = data.findIndex((item) => item.category === category);
     const newData = [...data];
     newData[index].amount += value;
@@ -34,6 +36,7 @@ export default function InputExpense(){
     const date: string = getCurrentDate();
     await updateExpense(value, date, setExpense, expense);
     await updateData(newData);
+    setPending(false);
     setOpenInput(false);
   }
   
@@ -54,7 +57,7 @@ export default function InputExpense(){
         className="flex flex-col justify-start items-start gap-2 py-2 px-4 rounded-xl bg-black dark:bg-white fixed bottom-20 w-fit h-fit backdrop-blur-md mx-auto self-center">
             <CategoryDropDownList setCategory={setCategory}/>
             <Display value={value}/>
-            <InputPad setValue={setValue} submit={submit}/>
+            <InputPad setValue={setValue} pending={pending} submit={submit}/>
         </motion.div>
     )
 }
