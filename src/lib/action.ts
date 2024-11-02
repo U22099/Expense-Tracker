@@ -21,7 +21,7 @@ export const handleLogin = async (prevState: any, formData: FormData) => {
   const { email, password } = Object.fromEntries(formData) as { email: string, password: string };
 
   try {
-    await signIn("credentials", { email: email.trim(), password: password.trim(), redirectTo: "/homepage" });
+    await signIn("credentials", { email: email.trim(), password: password.trim(), redirect: false, callbackUrl: "/homepage" });
     return { success: "Successfull" }
   } catch (e: any) {
     if (e.digest.includes("NEXT_REDIRECT")) {
@@ -50,7 +50,7 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
       image: "/avatar.JPG",
     })
     await newUser.save();
-    await signIn("credentials", { email, password, redirectTo: "/homepage" });
+    await signIn("credentials", { email, password, redirect: false, callbackUrl: "/homepage" });
     return { success: "Successfull" }
   } catch (err) {
     return { error: "Error while registering user, Try again" }

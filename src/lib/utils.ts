@@ -39,6 +39,7 @@ export async function fetchData(setData: any) {
     const data = response.data as {
       data: datatype
     };
+    console.log(data)
     if (response.status === 200 && data.data.length > 0) setData(data.data);
   } catch(err) {
     console.log("Error at fetchData " , err)
@@ -53,12 +54,11 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
     const data = response.data as {
       data: datatype3
     };
+    console.log(data);
     if (response.status === 200){
       const expense = data.data || [];
-      console.log(expense);
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
-      console.log(todaysExpense);
       if (!todaysExpense || !todaysExpense?.amount) {
         setData(template);
       }
@@ -75,7 +75,8 @@ export async function fetchCurrency(setCurrencySymbol: any) {
   try {
     const response = await axios.get('api/user');
     const { data } = response.data;
-    if (response.status === 200) setCurrencySymbol(data);
+    console.log(data);
+    if (response.status === 200) setCurrencySymbol(data || "$");
   } catch (err) {
     console.log("Error at fetchUser ", err)
     return false;

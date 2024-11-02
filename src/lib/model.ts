@@ -40,7 +40,7 @@ const userSchema = new mongoose.Schema < UserType > ({
   },
   currency: {
     type: String,
-    default: "$"
+    default: "$",
   },
 });
 
