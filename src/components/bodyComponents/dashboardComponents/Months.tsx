@@ -21,7 +21,7 @@ export default function Months() {
 }
 
 const getMonthExpense = (expense: datatype3): datatype3 => {
-  const month = expense.reduce((acc, current) => {
+  const month = expense.reduce((acc: datatype3 , current) => {
     const monthDate = current.date.slice(3);
     const existDate = acc.find(entry => entry.date === monthDate
     );

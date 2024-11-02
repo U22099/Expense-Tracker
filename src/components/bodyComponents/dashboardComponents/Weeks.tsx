@@ -22,7 +22,7 @@ export default function Weeks() {
 }
 
 const getWeekExpense = (expense: datatype3): datatype3 => {
-  const week = expense.reduce((acc, current) => {
+  const week = expense.reduce((acc: datatype3, current) => {
     const existDate = acc.find(entry => entry.date === getWeekNumber(current.date).toString()
     );
     if(existDate){
