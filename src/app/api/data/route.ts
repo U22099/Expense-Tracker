@@ -43,7 +43,6 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     const { data }: { data: datatype }  = await req.json();
-    console.log(data);
     if(!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     user.expenses.data = data;
     await user.save();

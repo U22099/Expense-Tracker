@@ -24,7 +24,6 @@ const authenticate = async (): Promise <UserType & HydratedDocument <UserType> |
   await connectToDb();
   const _id = new mongoose.Types.ObjectId(user.id);
   const userObj = await User.findOne({ _id });
-  console.log(userObj)
   return userObj;
 }
 
@@ -47,7 +46,6 @@ export const POST = async (req: Request): Promise <NextResponse> => {
     
     const { data }: { data: datatype3 } = await req.json();
     
-    console.log(data)
     if (!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
     
     user.expenses.expense = data;

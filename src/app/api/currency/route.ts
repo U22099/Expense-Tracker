@@ -44,7 +44,6 @@ export const POST = async (req: Request): Promise <NextResponse> => {
 
     const { data }: { data: string } = await req.json();
 
-    console.log(data)
     if (!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
 
     user.currency = data;
