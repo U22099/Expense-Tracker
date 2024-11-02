@@ -2,9 +2,8 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import mongoose, { HydratedDocument } from "mongoose";
 import { connectToDb } from "@/lib/utils";
-import { User } from "@/lib/model";
+import { User, type UserType } from "@/lib/model";
 import { type UserObj } from "@/store";
-import { type UserType } from "@/lib/model";
 
 const getUser = (): UserObj | null => {
   const user_session = cookies().get("session")?.value;

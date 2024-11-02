@@ -6,7 +6,8 @@ import Settings from "./bodyComponents/Settings";
 import InputExpense from "./bodyComponents/InputExpense";
 import { useNav, useData } from "@/store";
 import { useEffect } from "react";
-import { fetchData, fetchExpenseData, fetchCurrency } from "@/lib/utils";
+import { fetchData, fetchExpenseData, fetchCurrency, resetDatabase } from "@/lib/utils";
+import { handleLogout } from "@/lib/action";
 
 export default function Body(){
   const {nav, openInput} = useNav(state => {
@@ -24,6 +25,8 @@ export default function Body(){
   });
   
   useEffect(() => {
+    //resetDatabase();
+    //handleLogout();
     fetchCurrency(setCurrencySymbol);
     fetchData(setData);
     fetchExpenseData(setExpense, setData);

@@ -16,7 +16,7 @@ export const connectToDb = async () => {
         const db = await mongoose.connect(process.env.DATABASE_URL as string);
         connection.isConnected = db.connections[0].readyState;
     } catch(err) {
-        console.log("Error at connectToDb " , err, response.data.message)
+        console.log("Error at connectToDb " , err)
         return false;
     }
 }
@@ -121,8 +121,6 @@ export async function updateCurrency(data: string) {
     return false;
   }
 }
-
-
 const template: datatype = [
   {
     category: 'Housing',
@@ -157,3 +155,16 @@ const template: datatype = [
     amount: 0
   }
 ];
+
+
+
+//Developer Utils
+export async function resetDatabase(): Promise<void>{
+  try {
+    const response = await axios.post('api/dev/reset-db', { });
+    if (response.status === 200) return true;
+  } catch (err) {
+    console.log("Error at resetDatabase ", err, response.data.message)
+    return false;
+  }
+}
