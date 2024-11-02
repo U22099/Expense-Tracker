@@ -5,7 +5,7 @@ import Display from "./inputExpenseComponents/Display";
 import InputPad from "./inputExpenseComponents/InputPad";
 import { motion } from "framer-motion";
 import { useData, useNav } from "@/store";
-import { updateData } from "@/lib/utils";
+import { updateData, updateExpenseData } from "@/lib/utils";
 
 export default function InputExpense(){
   
@@ -15,7 +15,7 @@ export default function InputExpense(){
   
   const setOpenInput = useNav(state => state.setOpenInput);
   
-  const { setData, data } = useData(state => {
+  const { setData, data, setExpense, expense } = useData(state => {
     return {
       setData: state.setData, 
       data: state.data
@@ -28,6 +28,14 @@ export default function InputExpense(){
     newData[index].amount += value;
     setData(newData);
     setOpenInput(false);
+    const currentDate = new Date();
+
+    const date = currentDate.toLocaleDateString('en-UK', {
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric',
+    });
+    await updateExpense(value, date, setExpense, expense);
     await updateData(newData);
   }
   
@@ -51,4 +59,27 @@ export default function InputExpense(){
             <InputPad setValue={setValue} submit={submit}/>
         </motion.div>
     )
+}
+
+const updateExpense = async (value, date, setExpense, expense) => {
+  let expenseArr = [...expense];
+  if(!expenseArr.length){
+    expenseArr.push({
+      amount: value,
+      date
+    });
+  } else {
+    const sameExpenseDate = expenseArr.find(x => x.date === date);
+    if(sameExpenseDate){
+      sameExpenseDate.amount += value;
+    } else {
+      expenseArr.push({
+        amount: value,
+        date
+      });
+    }
+  }
+  console.log(expenseArr);
+  setExpense(expenseArr);
+  await updateExpenseData(expenseArr);
 }

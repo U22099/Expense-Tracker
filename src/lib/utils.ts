@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import axios from "axios";
-import { type datatype } from "@/store";
+import { type datatype, type datatype3 } from "@/store";
 
 const connection: {
     [index: string]: unknown
@@ -45,6 +45,20 @@ export async function fetchData(setData: any) {
   }
 }
 
+export async function fetchExpenseData(setExpense: any) {
+  try {
+    const response = await axios.get('api/data');
+    if (!response.data) return false;
+    const data = response.data as {
+      data: datatype3
+    };
+    if (response.status === 200) setExpense(data.data);
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}
+
 export async function updateData(data: datatype) {
   try {
     const response = await axios.post('api/data', { data });
@@ -58,6 +72,16 @@ export async function updateData(data: datatype) {
 export async function updateUser(data: any) {
   try {
     const response = await axios.post('api/user', { data });
+    if (response.status === 200) return true;
+  } catch (e) {
+    console.log(e);
+    return false;
+  }
+}
+
+export async function updateExpenseData(data: datatype3) {
+  try {
+    const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
   } catch (e) {
     console.log(e);

@@ -5,15 +5,35 @@ import Card from "@/components/utils/Card";
 import { useData } from "@/store";
 
 export default function Months() {
-  const data: { name: string, amount: number } [] = useData(state => state.months);
+  const expense: { date: string, amount: number } [] = useData(state => state.expense);
+  const data = getMonthExpense(expense);
   return (
     <div className="flex flex-col w-full justify-start items-start gap-2">
       <Card className="dark:border-slate-300 dark:border-2 p-2 rounded-md w-[90vw] md:w-1/2 h-80">
           <Barchart data={data} name="name" value="amount"/>
       </Card>
-      {data.map((x, i) => {
-        return <Lists key={i} name={x.name} amount={x.amount} />
+      {data.reverse().map((x, i) => {
+        return <Lists key={i} name={x.date} amount={x.amount} />
       })}
     </div>
   )
+}
+
+const getMonthExpense = (expense) => {
+  const month = expense.reduce((acc, current) => {
+    const monthDate = current.date.slice(3);
+    const existDate = acc.find(entry => entry.date === monthDate
+    );
+    if(existDate){
+      existDate.amount += current.amount;
+    } else {
+      acc.push({
+        date: monthDate,
+        amount: current.amount
+      });
+    }
+    return acc;
+  });
+  console.log(month);
+  return month;
 }

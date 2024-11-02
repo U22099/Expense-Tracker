@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
-import { type datatype, type datatype2 } from "@/store";
+import { type datatype, type datatype3 } from "@/store";
 
 export interface Expense {
-  data: datatype;
-  days: datatype2;
-  weeks: datatype2;
-  months: datatype2;
+  data: datatype,
+  expense: datatype3,
 }
 
 export interface UserType {
@@ -36,9 +34,7 @@ const userSchema = new mongoose.Schema < UserType > ({
     type: Object,
     default: {
       data: [],
-      days: [],
-      weeks: [],
-      months: [],
+      expense: [],
     },
   },
 });
