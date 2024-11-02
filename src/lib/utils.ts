@@ -16,7 +16,7 @@ export const connectToDb = async () => {
         const db = await mongoose.connect(process.env.DATABASE_URL as string);
         connection.isConnected = db.connections[0].readyState;
     } catch(e) {
-        console.log(e)
+        console.log("Error" + e)
         return false;
     }
 }
@@ -26,8 +26,9 @@ export async function fetchUser(setUser: any){
       const response = await axios.get('api/user');
       const data = response.data;
       if(response.status === 200) setUser(data.user);
+      console.log("Error" + response.data.message);
     } catch(e){
-      console.log(e);
+      console.log("Error" + e)
       return false;
     }
 }
@@ -40,8 +41,9 @@ export async function fetchData(setData: any) {
       data: datatype
     };
     if (response.status === 200 && data.data.length > 0) setData(data.data);
+    console.log("Error" + response.data.message);
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e)
     return false;
   }
 }
@@ -63,9 +65,11 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
         setData(template);
       }
       setExpense(expense);
+      return true;
     }
+    console.log("Error" + response.data.message);
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e)
     return false;
   }
 }
@@ -75,7 +79,7 @@ export async function updateData(data: datatype) {
     const response = await axios.post('api/data', { data });
     if (response.status === 200) return true;
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e)
     return false;
   }
 }
@@ -85,7 +89,7 @@ export async function updateUser(data: any) {
     const response = await axios.post('api/user', { data });
     if (response.status === 200) return true;
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e)
     return false;
   }
 }
@@ -95,7 +99,7 @@ export async function updateExpenseData(data: datatype3) {
     const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
   } catch (e) {
-    console.log(e);
+    console.log("Error" + e)
     return false;
   }
 }

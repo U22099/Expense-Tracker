@@ -6,13 +6,13 @@ export default function Main(){
   const { user, setUser } = useUser();
   return (
     <main>
-      <header className={`text-slate-300 blur-sm w-full h-80 bg-[${user?.image ?? "avatar.jpg"}]`}>
+      <header className={`flex justify-center items-center font-3xl text-black dark:text-white blur-sm w-full h-80 bg-image-[${user?.image ?? "avatar.jpg"}]`}>
         <label htmlFor="input">
           Tap To Upload
         </label>
         <input type="file" accept="image/*" hidden id="input"/>
       </header>
-      <section>
+      <section className="dark:text-white">
         <p>Change Currency Symbol</p>
         <p>Log Out</p>
         <p>Reset</p>
