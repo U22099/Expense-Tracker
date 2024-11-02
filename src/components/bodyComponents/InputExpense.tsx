@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { useData, useNav } from "@/store";
 import { updateData, updateExpenseData } from "@/lib/utils";
 import { type datatype3 } from "@/store";
+import { getCurrentDate } from "@/store";
 
 export default function InputExpense(){
   
@@ -31,13 +32,7 @@ export default function InputExpense(){
     newData[index].amount += value;
     setData(newData);
     setOpenInput(false);
-    const currentDate = new Date();
-
-    const date = currentDate.toLocaleDateString('en-UK', {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    });
+    const date: string = getCurrentDate();
     await updateExpense(value, date, setExpense, expense);
     await updateData(newData);
   }

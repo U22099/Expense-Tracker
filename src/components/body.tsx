@@ -15,11 +15,17 @@ export default function Body(){
       openInput: state.openInput
     }
   });
-  const setData = useData(state => state.setData);
+  const { setData, setExpense }= useData(state => {
+    return {
+      setData: state.setData,
+      setExpense: state.setExpense
+    }
+  });
   
   useEffect(() => {
-    //fetchData(setData);
-  }, [setData]);
+    fetchData(setData);
+    fetchExpenseData(setExpense, setData);
+  }, [setData, setExpense]);
   return(
       <div className="flex flex-col justify-start w-screen p-4 md:p-6">
           {nav === 0 && <Home />}

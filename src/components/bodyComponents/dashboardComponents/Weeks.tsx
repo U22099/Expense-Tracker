@@ -39,7 +39,7 @@ const getWeekExpense = (expense: datatype3): datatype3 => {
   return week;
 }
 
-function getWeekNumber(date: string): number{
+export function getWeekNumber(date: string): number{
   const parseddate = parse(date, "dd/MM/yyyy", new Date());
   const weekNumber = getWeek(parseddate);
   console.log(weekNumber);

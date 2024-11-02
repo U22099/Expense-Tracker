@@ -58,6 +58,7 @@ interface DataStore {
   setExpense: (data: datatype3) => void,
   categoriesColors: string[],
   currencySymbol: string,
+  setCurrencySymbol: (currencySymbol: string) => void,
 }
 export const useData = create <DataStore> ((set) => ({
   data: [
@@ -102,5 +103,19 @@ export const useData = create <DataStore> ((set) => ({
     set({ expense });
   },
   categoriesColors: ["#8B9467", "#CC6633", "#03A9F4", "#FFD700", "#4CAF50", "#9C27B0", "#33CC33", "#787878"],
-  currencySymbol: "$"
+  currencySymbol: "$",
+  setCurrencySymbol: (currencySymbol: string) => {
+    set({ currencySymbol });
+  },
 }));
+
+//Utils Function
+export const getCurrentDate = (): string => {
+  const currentDate = new Date();
+  const date = currentDate.toLocaleDateString('en-UK', {
+    year: 'numeric',
+    month: 'numeric',
+  day: 'numeric',
+  });
+  return date;
+}
