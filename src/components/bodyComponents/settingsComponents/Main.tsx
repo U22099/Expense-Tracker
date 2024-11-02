@@ -26,8 +26,8 @@ export default function Main(){
         <input type="file" accept="image/*" hidden id="input"/>
       </header>
       <Card>
-        <h1>Name: {user.username}</h1>
-        <h1>Email: {user.email}</h1>
+        <h1>Name: {user?.username}</h1>
+        <h1>Email: {user?.email}</h1>
       </Card>
       <section className="text-black dark:text-white text-xl font-bold">
         <Card onClick={() => setShowList(!showList)} className="relative text-black dark:text-white bg-white dark:bg-black">
