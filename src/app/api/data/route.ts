@@ -44,9 +44,8 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
     const { data }: { data: datatype }  = await req.json();
     if(!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
-    console.log("Got data ", data);
     user.expenses.data = data;
-    console.log("data from user ",user.expenses.data);
+    await connectToDb();
     await user.save();
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (e) {
