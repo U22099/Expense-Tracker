@@ -31,10 +31,10 @@ export default function InputExpense(){
     const newData = [...data];
     newData[index].amount += value;
     setData(newData);
-    setOpenInput(false);
     const date: string = getCurrentDate();
     await updateExpense(value, date, setExpense, expense);
     await updateData(newData);
+    setOpenInput(false);
   }
   
     return(
