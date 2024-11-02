@@ -6,8 +6,6 @@ export default function Barchart({data, name , value}: {data: datatype, name: st
     return (
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          width={500}
-          height={300}
           data={data}
         >
           <XAxis dataKey={name} />
