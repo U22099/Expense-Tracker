@@ -58,6 +58,7 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       console.log(expense);
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
+      console.log(todaysExpense);
       if (!todaysExpense || !todaysExpense?.amount) {
         setData(template);
       }

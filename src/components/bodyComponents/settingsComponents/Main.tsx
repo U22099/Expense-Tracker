@@ -7,7 +7,7 @@ export default function Main(){
   return (
     <main>
       <header className={`text-slate-300 blur-sm w-full h-80 bg-[${user?.image ?? "avatar.jpg"}]`}>
-        <label for="input">
+        <label htmlFor="input">
           Tap To Upload
         </label>
         <input type="file" accepts="image/*" hidden id="input"/>
