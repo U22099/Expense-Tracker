@@ -6,7 +6,7 @@ import Settings from "./bodyComponents/Settings";
 import InputExpense from "./bodyComponents/InputExpense";
 import { useNav, useData } from "@/store";
 import { useEffect } from "react";
-import { fetchData } from "@/lib/utils";
+import { fetchData, fetchExpenseData } from "@/lib/utils";
 
 export default function Body(){
   const {nav, openInput} = useNav(state => {
