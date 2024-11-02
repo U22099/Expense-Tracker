@@ -19,7 +19,7 @@ export default function Main(){
   }, [currencySymbol]);
   return (
     <main className="pb-12 flex flex-col gap-2">
-      <header className={`rounded-md flex justify-center items-center w-full h-80 bg-[url('${user?.image ?? "/avatar.JPG"}')]`}>
+      <header className={`rounded-md flex justify-center items-center w-full h-80 bg-[url('${user?.image ?? "./avatar.JPG"}')]`}>
         <label htmlFor="input" className="w-full h-full flex justify-center items-center text-3xl font-bold text-center text-black dark:text-white">
           Tap To Upload
         </label>
