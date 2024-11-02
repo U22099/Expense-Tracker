@@ -21,7 +21,7 @@ export default function InputPad({ setValue, submit, pending }: {setValue: (arg:
           <p>delete</p>
         </div>
         <div className="flex justify-center items-center text-lg shadow-xl active:shadow-none rounded-lg px-2 bg-white dark:bg-black dark:text-white font-bold w-full text-center h-full select-none" onClick={async () => await submit()}>
-          <p>{pending ? <AiOutlineLoading className="animate-spin fill-white text-md dark:fill-black"/> : "submit"}</p>
+          <p>{pending ? <AiOutlineLoading className="animate-spin fill-black text-md dark:fill-white"/> : "submit"}</p>
         </div>
       </section>
     </main>

@@ -7,8 +7,10 @@ import { updateCurrency, reset } from "@/lib/utils";
 
 export default function Main(){
   const { user, setUser } = useUser();
-  const { currencySymbol, setCurrencySymbol } = useData(state => {
+  const { setData, setExpense, currencySymbol, setCurrencySymbol } = useData(state => {
     return {
+      setData: state.setData,
+      setExpense: state.setExpense,
       currencySymbol: state.currencySymbol,
       setCurrencySymbol: state.setCurrencySymbol
     }
@@ -37,7 +39,7 @@ export default function Main(){
         
         <Card onClick={async () => await handleLogout()} >Log Out</Card>
         
-        <Card onClick={async () => await reset()}>Reset</Card>
+        <Card onClick={async () => await reset(setData, setExpense)}>Reset</Card>
         
       </section>
     </main>

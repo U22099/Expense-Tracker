@@ -124,10 +124,12 @@ export async function updateCurrency(data: string) {
     return false;
   }
 }
-export async function reset(): Promise <boolean | undefined | null> {
+export async function reset(setData, setExpense): Promise <boolean | undefined | null> {
   try {
     await updateData([]);
     await updateExpenseData([]);
+    setData([]);
+    setExpense([]);
   } catch (err) {
     console.log("Error at reset ", err)
     return false;
@@ -152,11 +154,11 @@ const template: datatype = [
     amount: 0
   },
   {
-    category: 'Personal Care',
+    category: 'Personal',
     amount: 0
   },
   {
-    category: 'HealthCare',
+    category: 'Health',
     amount: 0
   },
   {
