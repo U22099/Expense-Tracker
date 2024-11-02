@@ -25,8 +25,8 @@ export default function Body(){
   });
   
   useEffect(() => {
-    resetDatabase();
-    handleLogout();
+    //resetDatabase();
+    //handleLogout();
     fetchCurrency(setCurrencySymbol);
     fetchData(setData);
     fetchExpenseData(setExpense, setData);
