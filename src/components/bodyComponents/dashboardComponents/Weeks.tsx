@@ -34,7 +34,7 @@ const getWeekExpense = (expense: datatype3): datatype3 => {
       });
     }
     return acc;
-  });
+  }, []);
   console.log(week);
   return week;
 }
