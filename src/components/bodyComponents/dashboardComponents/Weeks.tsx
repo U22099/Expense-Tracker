@@ -39,8 +39,8 @@ const getWeekExpense = (expense) => {
 }
 
 function getWeekNumber(date){
-  const date = parse(date, "dd/MM/yyyy", new Date());
-  const weekNumber = getWeek(date);
+  const parseddate = parse(date, "dd/MM/yyyy", new Date());
+  const weekNumber = getWeek(parseddate);
   console.log(weekNumber);
   return weekNumber;
 }
