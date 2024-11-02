@@ -18,18 +18,18 @@ export default function Main(){
     updateCurrency(currencySymbol);
   }, [currencySymbol]);
   return (
-    <main>
-      <header className={`flex justify-center items-center font-3xl text-black dark:text-white w-full h-80 bg-[url('${user?.image ?? "/avatar.JPG"}')]`}>
-        <label htmlFor="input" className="w-full h-full bg-gray-100">
+    <main className="pb-12">
+      <header className={`rounded-md flex justify-center items-center w-full h-80 bg-[url('${user?.image ?? "/avatar.JPG"}')]`}>
+        <label htmlFor="input" className="w-full h-full flex justify-center items-center text-3xl font-bold text-center text-black dark:text-white">
           Tap To Upload
         </label>
         <input type="file" accept="image/*" hidden id="input"/>
       </header>
-      <Card>
+      <Card className="gap-2 flex-col">
         <h1>Name: {user?.name}</h1>
         <h1>Email: {user?.email}</h1>
       </Card>
-      <section className="text-black dark:text-white text-xl font-bold">
+      <section className="text-black dark:text-white text-xl font-bold flex flex-col gap-4">
         <Card onClick={() => setShowList(!showList)} className="relative text-black dark:text-white bg-white dark:bg-black">
         Change Currency Symbol {currencySymbol}
         {showList&&<List setCurrencySymbol={setCurrencySymbol}/>}
@@ -46,7 +46,7 @@ export default function Main(){
 
 const List = ({ setCurrencySymbol }: { setCurrencySymbol: (arg: string) => void}) => {
   return(
-    <div className="flex absolute max-w-[40vw] h-fit flex-wrap p-2 rounded-md bg-black dark:bg-white">
+    <div className="flex absolute max-w-[60vw] w-fit text-2xl h-fit flex-wrap p-2 rounded-md bg-black dark:bg-white">
       <p onClick={() => setCurrencySymbol("$")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">$</p>
         <p onClick={() => setCurrencySymbol("€")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">€</p>
         <p onClick={() => setCurrencySymbol("£")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">£</p>
