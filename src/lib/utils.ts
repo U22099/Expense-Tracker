@@ -27,7 +27,7 @@ export async function fetchUser(setUser: any){
       const data = response.data;
       if(response.status === 200) setUser(data.user);
     } catch(err){
-      console.log("Error at fetchUser " , err, err.response.data.message)
+      console.log("Error at fetchUser " , err)
       return false;
     }
 }
@@ -41,7 +41,7 @@ export async function fetchData(setData: any) {
     };
     if (response.status === 200 && data.data.length > 0) setData(data.data);
   } catch(err) {
-    console.log("Error at fetchData " , err, err.response.data.message)
+    console.log("Error at fetchData " , err)
     return false;
   }
 }
@@ -66,7 +66,7 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       return true;
     }
   } catch(err) {
-    console.log("Error at fetchExpenseData " , err, err.response.data.message)
+    console.log("Error at fetchExpenseData " , err)
     return false;
   }
 }
@@ -77,7 +77,7 @@ export async function fetchCurrency(setCurrencySymbol: any) {
     const { data } = response.data;
     if (response.status === 200) setCurrencySymbol(data);
   } catch (err) {
-    console.log("Error at fetchUser ", err, err.response.data.message)
+    console.log("Error at fetchUser ", err)
     return false;
   }
 }
@@ -87,7 +87,7 @@ export async function updateData(data: datatype) {
     const response = await axios.post('api/data', { data });
     if (response.status === 200) return true;
   } catch(err) {
-    console.log("Error at updateData " , err, err.response.data.message)
+    console.log("Error at updateData " , err)
     return false;
   }
 }
@@ -97,7 +97,7 @@ export async function updateUser(data: any) {
     const response = await axios.post('api/user', { data });
     if (response.status === 200) return true;
   } catch(err) {
-    console.log("Error at updateUser " , err, err.response.data.message)
+    console.log("Error at updateUser " , err)
     return false;
   }
 }
@@ -107,7 +107,7 @@ export async function updateExpenseData(data: datatype3) {
     const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
   } catch(err) {
-    console.log("Error at updateExpenseData " , err, err.response.data.message)
+    console.log("Error at updateExpenseData " , err)
     return false;
   }
 }
@@ -117,7 +117,7 @@ export async function updateCurrency(data: string) {
     const response = await axios.post('api/expense', { data });
     if (response.status === 200) return true;
   } catch(err) {
-    console.log("Error at updateExpenseData " , err, err.response.data.message)
+    console.log("Error at updateExpenseData " , err)
     return false;
   }
 }
@@ -164,7 +164,7 @@ export async function resetDatabase(): Promise<void>{
     const response = await axios.post('api/dev/reset-db', { });
     if (response.status === 200) return true;
   } catch (err) {
-    console.log("Error at resetDatabase ", err, err.response.data.message)
+    console.log("Error at resetDatabase ", err)
     return false;
   }
 }
