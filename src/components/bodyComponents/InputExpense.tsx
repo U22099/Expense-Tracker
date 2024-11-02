@@ -28,7 +28,7 @@ export default function InputExpense(){
     newData[index].amount = value;
     setData(newData);
     setOpenInput(false);
-    await updateData(updatedData);
+    await updateData(newData);
   }
   
     return(
