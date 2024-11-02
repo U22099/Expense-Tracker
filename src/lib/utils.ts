@@ -39,7 +39,7 @@ export async function fetchData(setData: any) {
     const data = response.data as {
       data: datatype
     };
-    console.log(data)
+    console.log("data ",data)
     if (response.status === 200 && data.data.length > 0) setData(data.data);
   } catch(err) {
     console.log("Error at fetchData " , err)
@@ -54,9 +54,9 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
     const data = response.data as {
       data: datatype3
     };
-    console.log(data);
+    console.log("expense ",data);
     if (response.status === 200){
-      const expense = data.data || [];
+      const expense = data.data;
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
       if (!todaysExpense || !todaysExpense?.amount) {
