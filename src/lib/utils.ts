@@ -128,7 +128,7 @@ export async function reset(setData: any, setExpense: any): Promise <boolean | u
   try {
     await updateData([]);
     await updateExpenseData([]);
-    setData([]);
+    setData(template);
     setExpense([]);
   } catch (err) {
     console.log("Error at reset ", err)
