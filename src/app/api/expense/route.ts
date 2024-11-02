@@ -5,7 +5,7 @@ import { connectToDb } from "@/lib/utils";
 import { User } from "@/lib/model";
 import { type UserObj } from "@/store";
 import { type UserType } from "@/lib/model";
-import { type datatype } from "@/store";
+import { type datatype, type datatype3 } from "@/store";
 
 const getUser = (): UserObj | null => {
   const user_session = cookies().get("session")?.value;
