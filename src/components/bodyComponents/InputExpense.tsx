@@ -64,7 +64,7 @@ export default function InputExpense(){
     )
 }
 
-const updateExpense = async (value: number, date: string, setExpense: (expense: datatype3) => void, expense: datatype3): void => {
+const updateExpense = async (value: number, date: string, setExpense: (expense: datatype3) => void, expense: datatype3): Promise<void> => {
   let expenseArr = [...expense];
   if(!expenseArr.length){
     expenseArr.push({
