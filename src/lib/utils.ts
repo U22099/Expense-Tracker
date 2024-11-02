@@ -54,10 +54,10 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
       data: datatype3
     };
     if (response.status === 200){
-      const expense = data.data;
+      const expense = data.data || [];
       const date = getCurrentDate();
       const todaysExpense = expense.find(entry => entry.date === date);
-      if (!todaysExpense || !todaysExpense?.amount) {
+      if (!todaysExpense) {
         setData(template);
       }
       setExpense(expense);
