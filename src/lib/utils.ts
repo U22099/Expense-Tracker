@@ -124,7 +124,7 @@ export async function updateCurrency(data: string) {
     return false;
   }
 }
-export async function reset(setData, setExpense): Promise <boolean | undefined | null> {
+export async function reset(setData: any, setExpense: any): Promise <boolean | undefined | null> {
   try {
     await updateData([]);
     await updateExpenseData([]);
