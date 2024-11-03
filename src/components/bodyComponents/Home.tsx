@@ -4,6 +4,7 @@ import ExpenseList from "./homeComponents/ExpenseList";
 import Card from "../utils/Card";
 import { getCurrentDate, useData } from "@/store";
 import { getWeekNumber } from "./dashboardComponents/Weeks";
+import { type datatype3 } from "@/store";
 
 export default function Home(){
   const date = getCurrentDate();
@@ -34,12 +35,12 @@ export default function Home(){
         </div>
     )
 }
-function getWeekAmount(expense: any, date: any){
+function getWeekAmount(expense: datatype3, date: string){
   const weekArr = (expense.filter(entry => getWeekNumber(entry.date) === getWeekNumber(date))).map(a => a.amount);
   const weekAmount = (weekArr.reduce((a, b) => a + b, 0 ))[0] || 0;
   return weekAmount;
 }
-function getMonthAmount(expense: any, date: any){
+function getMonthAmount(expense: datatype3, date: string){
   const monthArr = (expense.filter(entry => entry.date.slice(3) === date.slice(3))).map(a => a.amount);
   const monthAmount = (monthArr.reduce((a,b) => a + b, 0))[0] || 0;
   return monthAmount;
