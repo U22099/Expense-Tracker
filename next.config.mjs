@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+import('next').NextConfig
 import withPWA from "next-pwa";
 
 withPWA({
@@ -19,7 +19,7 @@ const nextConfig = {
                 hostname: "lh3.googleusercontent.com",
             },
         ],
-    },
+   },
 };
 
-export default withPWA(nextConfig);
+export default nextConfig;
