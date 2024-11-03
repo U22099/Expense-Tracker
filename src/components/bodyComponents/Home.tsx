@@ -34,12 +34,12 @@ export default function Home(){
         </div>
     )
 }
-function getWeekAmount(expense, date){
+function getWeekAmount(expense: any, date: any){
   const weekArr = (expense.filter(entry => getWeekNumber(entry.date) === getWeekNumber(date))).map(a => a.amount);
   const weekAmount = (weekArr.reduce((a, b) => a + b, 0 ))[0] || 0;
   return weekAmount;
 }
-function getMonthAmount(expense, date){
+function getMonthAmount(expense: any, date: any){
   const monthArr = (expense.filter(entry => entry.date.slice(3) === date.slice(3))).map(a => a.amount);
   const monthAmount = (monthArr.reduce((a,b) => a + b, 0))[0] || 0;
   return monthAmount;
