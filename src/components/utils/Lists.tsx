@@ -16,7 +16,7 @@ export default function Lists({ name, amount, key } : {
         <div className="flex items-center gap-3 w-full justify-start">
         <h1 className="font-bold text-black dark:text-white text-[1.3em] md:text-[1.5em] w-full">{name}</h1>
         </div>
-        <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">{currencySymbol}{amount}
+        <p className="font-bold text-black dark:text-white text-[1em] md:text-[1.2em]">{currencySymbol}{amount.toString().length >= 6 ? `${((amount/1000).toFixed(2))}K` : amount}
         </p>
       </Card>
     </div>

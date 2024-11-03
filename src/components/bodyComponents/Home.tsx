@@ -22,13 +22,13 @@ export default function Home(){
             <Chart />
             <div className="flex justify-between mt-2 mx-auto w-fit gap-4">
                 <Card>
-                    <h1 className="text-black dark:text-white font-bold">Day: {currencySymbol}{dayAmount}</h1>
+                    <h1 className="text-black dark:text-white font-bold">Day: {currencySymbol}{dayAmount.toString().length >= 6 ? `${((dayAmount/1000).toFixed(2))}K` : dayAmount}</h1>
                 </Card>
                 <Card>
-                    <h1 className="text-black dark:text-white font-bold">Week: {currencySymbol}{weekAmount}</h1>
+                    <h1 className="text-black dark:text-white font-bold">Week: {currencySymbol}{weekAmount.toString().length >= 6 ? `${((weekAmount/1000).toFixed(2))}K` : weekAmount}</h1>
                 </Card>
                 <Card>
-                    <h1 className="text-black dark:text-white font-bold">Month: {currencySymbol}{monthAmount}</h1>
+                    <h1 className="text-black dark:text-white font-bold">Month: {currencySymbol}{monthAmount.toString().length >= 6 ? `${((monthAmount/1000).toFixed(2))}K` : monthAmount}</h1>
                 </Card>
             </div>
             <ExpenseList/>
