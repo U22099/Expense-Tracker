@@ -53,10 +53,10 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
     await signIn("credentials", { email: email.trim(), password: password.trim(), redirect: false });
     return { success: "Successfull" }
   } catch (err) {
-    if (e.digest.includes("NEXT_REDIRECT")) {
+    if (err.digest.includes("NEXT_REDIRECT")) {
       return { success: "Successfull" }
     }
-    console.log("*Start*", e, "*End*");
+    console.log("*Start*", err, "*End*");
     return { error: "Error while registering user, Try again" }
   }
 }
