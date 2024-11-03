@@ -1,6 +1,6 @@
 { 
   "name": "Expense Tracker ", 
-  "short_name": "ET", 
+  "short_name": "Expense Tracker", 
   "theme_color": "#fff", 
   "background_color": "#000", 
   "display": "standalone", 
