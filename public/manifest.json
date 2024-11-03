@@ -1,0 +1,21 @@
+{ 
+  "name": "Expense Tracker ", 
+  "short_name": "ET", 
+  "theme_color": "#fff", 
+  "background_color": "#000", 
+  "display": "standalone", 
+  "orientation": "portrait", 
+  "scope": "/", 
+  "start_url": "/", 
+  "icons": [{ 
+    "src": "/logo-192.png", 
+    "type": "image/png", 
+    "sizes": "192x192" }, 
+    { "src": "/logo-256.png", 
+    "type": "image/png", 
+    "sizes": "256x256" }, 
+    { "src": "/logo-512.png", 
+    "type": "image/png", 
+    "sizes": "512x512" }
+  ] 
+}
