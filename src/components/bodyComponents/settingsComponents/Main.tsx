@@ -21,11 +21,11 @@ export default function Main(){
     updateCurrency(currencySymbol);
   }, [currencySymbol]);
   return (
-    <main className="pb-12 flex flex-col gap-2">
+    <main className="pb-16 flex flex-col gap-2">
       <header className="rounded-md flex justify-center items-center w-full h-80 relative">
         <Image src={`${user?.image ?? "/avatar.JPG"}`} alt="Profile Picture" className="absolute bg-fixed h-80 w-full" />
       </header>
-      <Card className="gap-2 flex-col">
+      <Card className="gap-2 flex-col text-black dark:text-white">
         <h1>Name: {user?.name}</h1>
         <h1>Email: {user?.email}</h1>
       </Card>
