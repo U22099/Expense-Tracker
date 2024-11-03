@@ -52,7 +52,7 @@ export const handleRegister = async (prevState: any, formData: FormData) => {
     await newUser.save();
     await signIn("credentials", { email: email.trim(), password: password.trim(), redirect: false });
     return { success: "Successfull" }
-  } catch (err) {
+  } catch (err: any) {
     if (err.digest.includes("NEXT_REDIRECT")) {
       return { success: "Successfull" }
     }
