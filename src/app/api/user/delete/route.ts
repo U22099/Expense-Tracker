@@ -14,7 +14,7 @@ const getUser = (): UserObj | null => {
   return user;
 }
 
-const authenticate = async (): Promise<UserType & HydratedDocument<UserType> | null> => {
+const authenticate = async (): Promise <UserType & HydratedDocument <UserType> | null> => {
   const user = getUser();
   if (!user) {
     console.log(" No session ");
@@ -25,30 +25,11 @@ const authenticate = async (): Promise<UserType & HydratedDocument<UserType> | n
   const userObj = await User.findOne({ _id });
   return userObj;
 }
-
-
-export const GET = () => {
-    try {
-    const user = getUser();
-    
-    if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
-    
-    return NextResponse.json({ user }, { status: 200 });
-    
-  } catch (e) {
-    console.log(e);
-    return NextResponse.json({ message: "Error" }, { status: 500 });
-  }
-}
-
 export const POST = async (req: Request): Promise <NextResponse> => {
   try {
     const user = await authenticate();
     if (!user) return NextResponse.json({ message: "User not found" }, { status: 404 });
-    const { image }: { image: string } = await req.json();
-    if(!image) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
-    user.image = image;
-    await User.updateOne({ _id: user._id }, { $set: { image: user.image } });
+    await User.findOneAndDelete({ _id: user._id });
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (e) {

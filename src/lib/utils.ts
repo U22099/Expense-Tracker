@@ -124,6 +124,17 @@ export async function updateCurrency(data: string) {
     return false;
   }
 }
+
+export async function deleteUser(): Promise <boolean | undefined | null> {
+  try {
+    const response = await axios.post('api/user/delete', { });
+    if (response.status === 200) return true;
+  } catch (err) {
+    console.log("Error at deleteUser ", err)
+    return false;
+  }
+}
+
 export async function reset(setData: any, setExpense: any): Promise <boolean | undefined | null> {
   try {
     await updateData([]);

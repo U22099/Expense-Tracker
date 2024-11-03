@@ -1,9 +1,10 @@
 "use client";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { useUser, useData } from "@/store";
 import Card from "@/components/utils/Card";
 import { handleLogout } from "@/lib/action";
-import { updateCurrency, reset } from "@/lib/utils";
+import { updateCurrency, reset, deleteUser } from "@/lib/utils";
 
 export default function Main(){
   const { user, setUser } = useUser();
@@ -21,7 +22,8 @@ export default function Main(){
   }, [currencySymbol]);
   return (
     <main className="pb-12 flex flex-col gap-2">
-      <header className={`rounded-md flex justify-center items-center w-full h-80 bg-[url('${user?.image ?? "./avatar.JPG"}')]`}>
+      <header className="rounded-md flex justify-center items-center w-full h-80 relative">
+        <Image src={`${user?.image ?? "/avatar.JPG"}`} alt="Profile Picture" className="absolute bg-fixed h-80 w-full" />
         <label htmlFor="input" className="w-full h-full flex justify-center items-center text-3xl font-bold text-center text-black dark:text-white">
           Tap To Upload
         </label>
@@ -39,8 +41,12 @@ export default function Main(){
         
         <Card onClick={async () => await handleLogout()} >Log Out</Card>
         
-        <Card onClick={async () => await reset(setData, setExpense)}>Reset</Card>
+        <Card onClick={async () => await reset(setData, setExpense)}>Reset</Card>        
         
+        <Card className="text-red-700" onClick={async () => {
+          await deleteUser();
+          await handleLogout();
+        }}>Delete Account</Card>
       </section>
     </main>
   )
@@ -55,9 +61,6 @@ const List = ({ setCurrencySymbol }: { setCurrencySymbol: (arg: string) => void}
         <p onClick={() => setCurrencySymbol("₹")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">₹</p>
         <p onClick={() => setCurrencySymbol("₦")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">₦</p>
         <p onClick={() => setCurrencySymbol("¥")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">¥</p>
-        <p onClick={() => setCurrencySymbol("¥")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">¥</p>
-        <p onClick={() => setCurrencySymbol("$")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">$</p>
-        <p onClick={() => setCurrencySymbol("$")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">$</p>
         <p onClick={() => setCurrencySymbol("R")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">R</p>
         <p onClick={() => setCurrencySymbol("৳")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">৳</p>
         <p onClick={() => setCurrencySymbol("₽")} className="flex justify-center items-center p-2 rounded-md text-white dark:text-black active:bg-white active:dark:bg-black">₽</p>
