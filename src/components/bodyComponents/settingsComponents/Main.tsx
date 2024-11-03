@@ -23,9 +23,9 @@ export default function Main(){
   return (
     <main className="pb-16 flex flex-col gap-2">
       <header className="rounded-md flex justify-center items-center w-full h-80 relative">
-        <Image src={`${user?.image ?? "/avatar.JPG"}`} alt="Profile Picture" className="absolute bg-fixed h-80 w-full" />
+        <Image src={`${user?.image ?? "/avatar.JPG"}`} alt="Profile Picture" className="absolute bg-fixed h-80 w-full object-cover" />
       </header>
-      <Card className="gap-2 flex-col text-black dark:text-white">
+      <Card className="gap-2 flex-col text-black dark:text-white text-[gold] text-xl font-bold">
         <h1>Name: {user?.name}</h1>
         <h1>Email: {user?.email}</h1>
       </Card>
