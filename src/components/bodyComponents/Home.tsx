@@ -3,8 +3,7 @@ import Chart from "./homeComponents/Chart";
 import ExpenseList from "./homeComponents/ExpenseList";
 import Card from "../utils/Card";
 import { getCurrentDate, useData } from "@/store";
-import { getWeekExpense, getWeekNumber } from "./dashboardComponents/Weeks";
-import { getMonthExpense } from "./dashboardComponents/months";
+import { getWeekNumber } from "./dashboardComponents/Weeks";
 
 export default function Home(){
   const date = getCurrentDate();
