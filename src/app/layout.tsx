@@ -22,8 +22,6 @@ export const metadata: Metadata = {
     { url: "/logo-512.png", type: "image/png", sizes: "512x512" },
   ],
   themeColor: "#000000",
-  appleMobileWebAppCapable: "yes",
-  appleMobileWebAppStatusBarStyle: "default",
   manifest: "/manifest.json",
 };
 
