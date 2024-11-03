@@ -12,6 +12,7 @@
     "@ducanh2912/next-pwa": "^10.2.9",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
+    "date-fns": "4.1.0",
     "framer-motion": "^11.5.2",
     "mongoose": "^8.6.1",
     "next": "14.2.7",
