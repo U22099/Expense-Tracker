@@ -1,19 +1,19 @@
 "use client";
-
 import Chart from "./homeComponents/Chart";
 import ExpenseList from "./homeComponents/ExpenseList";
 import Card from "../utils/Card";
 import { getCurrentDate, useData } from "@/store";
-import { getWeekNumber } from "./dashboardComponents/Weeks";
+import { getWeekExpense, getWeekNumber } from "./dashboardComponents/Weeks";
+import { getMonthExpense } from "./dashboardComponents/months";
 
 export default function Home(){
   const date = getCurrentDate();
   const expense = useData(state => state.expense);
   const dayAmount = (expense.find(entry => entry.date === date))?.amount || 0;
   
-  const weekAmount = (expense.find(entry => getWeekNumber(entry.date) === getWeekNumber(date)))?.amount || 0;
+  const weekAmount = getWeekAmount(expense, date);
   
-  const monthAmount = (expense.find(entry => entry.date.slice(3) === date.slice(3)))?.amount || 0;
+  const monthAmount = getMonthAmount(expense, date);
   
   const currencySymbol: string = useData(state => state.currencySymbol);
   
@@ -34,4 +34,14 @@ export default function Home(){
             <ExpenseList/>
         </div>
     )
+}
+function getWeekAmount(expense, date){
+  const weekArr = (expense.filter(entry => getWeekNumber(entry.date) === getWeekNumber(date))).map(a => a.amount);
+  const weekAmount = (weekArr.reduce((a, b) => a + b, 0 ))[0] || 0;
+  return weekAmount;
+}
+function getMonthAmount(expense, date){
+  const monthArr = (expense.filter(entry => entry.date.slice(3) === date.slice(3))).map(a => a.amount);
+  const monthAmount = (monthArr.reduce((a,b) => a + b, 0))[0] || 0;
+  return monthAmount;
 }
