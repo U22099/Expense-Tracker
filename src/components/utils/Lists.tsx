@@ -6,7 +6,7 @@ import { useData } from "@/store";
 
 export default function Lists({ name, amount, key } : {
   name: string | number,
-  amount: string | number,
+  amount: number,
   key?: number
 }) {
   const currencySymbol: string = useData(state => state.currencySymbol);
