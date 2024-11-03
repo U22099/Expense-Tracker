@@ -24,10 +24,6 @@ export default function Main(){
     <main className="pb-12 flex flex-col gap-2">
       <header className="rounded-md flex justify-center items-center w-full h-80 relative">
         <Image src={`${user?.image ?? "/avatar.JPG"}`} alt="Profile Picture" className="absolute bg-fixed h-80 w-full" />
-        <label htmlFor="input" className="w-full h-full flex justify-center items-center text-3xl font-bold text-center text-black dark:text-white">
-          Tap To Upload
-        </label>
-        <input type="file" accept="image/*" hidden id="input"/>
       </header>
       <Card className="gap-2 flex-col">
         <h1>Name: {user?.name}</h1>

@@ -46,7 +46,6 @@ export const POST = async (req: Request): Promise <NextResponse> => {
 
     if (!data) return NextResponse.json({ message: "Empty Data" }, { status: 404 });
 
-    console.log(" From Currency ", data);
     user.currency = data;
     await User.updateOne({ _id: user._id }, { $set: { currency: user.currency } });
 

@@ -74,11 +74,11 @@ export async function fetchExpenseData(setExpense: any, setData: any) {
 export async function fetchCurrency(setCurrencySymbol: any) {
   try {
     const response = await axios.get('api/user');
-    const { data } = response.data;
+    const data = response.data;
     console.log(data);
-    if (response.status === 200) setCurrencySymbol(data || "$");
+    if (response.status === 200) setCurrencySymbol(data.data || "$");
   } catch (err) {
-    console.log("Error at fetchUser ", err)
+    console.log("Error at fetchCurrency ", err)
     return false;
   }
 }
