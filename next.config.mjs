@@ -1,25 +1,23 @@
 import('next').NextConfig
-import withPWA from "next-pwa";
+import withPWAInit from "@ducanh2912/next-pwa";
 
-withPWA({
-  dest: 'public',
+const withPWA = withPWAInit({
+  dest: "public",
   register: true,
-  skipWaiting: true
 });
 
-const nextConfig = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: "https",
-                hostname: "avatars.githubusercontent.com",
-            },
-            {
-                protocol: "https",
-                hostname: "lh3.googleusercontent.com",
-            },
-        ],
+export default withPWA({
+  images: {
+      remotePatterns: [
+          {
+              protocol: "https",
+              hostname: "avatars.githubusercontent.com",
+          },
+          {
+              protocol: "https",
+              hostname: "lh3.googleusercontent.com",
+          },
+      ],
    },
-};
+});
 
-export default nextConfig;
