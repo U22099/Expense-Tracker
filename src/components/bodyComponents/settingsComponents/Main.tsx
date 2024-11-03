@@ -5,8 +5,12 @@ import { useUser, useData } from "@/store";
 import Card from "@/components/utils/Card";
 import { handleLogout } from "@/lib/action";
 import { updateCurrency, reset, deleteUser } from "@/lib/utils";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export default function Main(){
+  const [ logoutpending, setLogOutPending ] = useState<boolean>(false);
+  const [ resetpending, setResetPending ] = useState<boolean>(false);
+  const [ deletepending, setDeletePending ] = useState<boolean>(false);
   const { user, setUser } = useUser();
   const { setData, setExpense, currencySymbol, setCurrencySymbol } = useData(state => {
     return {
@@ -35,14 +39,24 @@ export default function Main(){
         {showList&&<List setCurrencySymbol={setCurrencySymbol}/>}
         </Card>
         
-        <Card onClick={async () => await handleLogout()} >Log Out</Card>
+        <Card onClick={async () => {
+          setLogOutPending(true);
+          await handleLogout();
+          setLogOutPending(false);
+        }} >{logoutpending ? <AiOutlineLoading className="animate-spin fill-black text-lg dark:fill-white"/> : "Log Out"}</Card>
         
-        <Card onClick={async () => await reset(setData, setExpense)}>Reset</Card>        
+        <Card onClick={async () => {
+          setResetPending(true);
+          await reset(setData, setExpense)
+          setResetPending(false);
+        }}>{resetpending ? <AiOutlineLoading className="animate-spin fill-black text-lg dark:fill-white"/> : "Reset"}</Card>        
         
         <Card className="text-red-700" onClick={async () => {
+          setDeletePending(true);
           await deleteUser();
           await handleLogout();
-        }}>Delete Account</Card>
+          setDeletePending(false);
+        }}>{deletepending ? <AiOutlineLoading className="animate-spin fill-black text-lg dark:fill-white"/> : "Delete Account"}</Card>
       </section>
     </main>
   )
